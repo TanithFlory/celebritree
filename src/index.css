@@ -1,0 +1,22 @@
+*{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background-color: var(--primary-color);
+  overflow-x: hidden;
+}
+
+:root {
+  --primary-color: #012c3c;
+  --secondary-color: #227b9b;
+  --green-color: #53c24d;
+  --black-color: #030303;
+  --lightGray-color: #e4e4e4;
+  --gray-color: #6b7688;
+  --brown-color: #46364a;
+  --white-color: #ffffff;
+}
