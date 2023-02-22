@@ -15,7 +15,6 @@ const Card = () => {
             <div className="card__header">
             {data.id===2 ? <h1>Popular!</h1>:null}
               <h3>{data.title}</h3>
-              <h1>{data.price}</h1>
               <h4>{data.desc}</h4>
             </div>
             <img src={data.img} alt="tree" />

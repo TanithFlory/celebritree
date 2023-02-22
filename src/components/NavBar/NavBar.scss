@@ -9,11 +9,22 @@
   transition: 0.5s ease-in-out;
   &:hover {
     background-color: var(--green-color);
+    button{
+      border:2px solid var(--primary-color);
+    }
   }
   @media screen and (max-width: 968px) {
     display: none;
   }
 }
+
+.on__scroll-active{
+  background-color: var(--green-color);
+  button{
+    border:2px solid var(--primary-color);
+  }
+}
+
 .app__navbar-logo {
   display: flex;
   justify-content: flex-start;

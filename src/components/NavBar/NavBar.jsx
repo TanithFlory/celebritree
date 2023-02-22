@@ -10,10 +10,12 @@ import {
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { motion } from "framer-motion";
 import "./NavBar.scss";
-const NavBar = () => {
+
+const NavBar = (props) => {
+  const visible = props.onScrollUpdate;
   return (
     <>
-      <nav className="app__navbar">
+      <nav className={`app__navbar ${visible&&"on__scroll-active"}`}>
         <div className="app__navbar-logo">
           <img src={images.logo} alt="logo" className="app__navbar-logo" />
         </div>

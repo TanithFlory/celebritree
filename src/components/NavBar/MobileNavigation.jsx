@@ -17,7 +17,7 @@ const MobileNavigation = () => {
 
   return (
     <nav className="app__navbar-phone">
-      <img src={images.logo} />
+      <img src={images.logo} alt="logo" />
       {!toggleMenu && (
         <HiMenu className="controlSvg" onClick={() => setToggleMenu(true)} />
       )}
