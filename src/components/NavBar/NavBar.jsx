@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import ScrollContext from "../../constants/scroll-context";
+import { Link } from "react-router-dom";
 import images from "../../constants/images";
 import MobileNavigation from "./MobileNavigation";
 import NewUserBtn from "../UI/Button/NewUserBtn";
@@ -9,13 +11,16 @@ import {
 } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { motion } from "framer-motion";
-import "./NavBar.scss";
+import "./Navbar.scss";
 
-const NavBar = (props) => {
-  const visible = props.onScrollUpdate;
+const Navbar = () => {
+
+  const visible = useContext(ScrollContext);
   return (
     <>
-      <nav className={`app__navbar ${visible&&"on__scroll-active"}`}>
+      <nav
+        className={`app__navbar ${visible.isVisible && "on__scroll-active"}`}
+      >
         <div className="app__navbar-logo">
           <img src={images.logo} alt="logo" className="app__navbar-logo" />
         </div>
@@ -27,7 +32,7 @@ const NavBar = (props) => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <a href={`#${data}`}>{data}</a>
+                <Link to={`/${data}`}>{data}</Link>
                 <div />
               </motion.li>
             );
@@ -36,10 +41,12 @@ const NavBar = (props) => {
         <div className="app__navbar-user-options">
           <MdAccountCircle />
           <MdShoppingCart />
-          <NewUserBtn>
-            <AiOutlineUserAdd />
-            Sign Up
-          </NewUserBtn>
+          <Link to="/signup">
+            <NewUserBtn>
+              <AiOutlineUserAdd />
+              Sign Up
+            </NewUserBtn>
+          </Link>
           <NewUserBtn>
             <MdOutlineLogin />
             &nbsp;Login
@@ -51,4 +58,4 @@ const NavBar = (props) => {
   );
 };
 
-export default NavBar;
+export default Navbar;

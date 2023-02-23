@@ -7,13 +7,16 @@
   top: 0;
   align-items: center;
   transition: 0.5s ease-in-out;
+  a{
+    text-decoration: none;
+  }
   &:hover {
     background-color: var(--green-color);
     button{
       border:2px solid var(--primary-color);
     }
   }
-  @media screen and (max-width: 968px) {
+  @media screen and (max-width: 912px) {
     display: none;
   }
 }
@@ -160,7 +163,7 @@
       }
     }
   }
-  @media screen and (min-width: 968px) {
+  @media screen and (min-width: 913px) {
     display: none;
   }
 }

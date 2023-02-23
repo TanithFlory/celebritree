@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import NewUserBtn from "../UI/Button/NewUserBtn";
 import images from "../../constants/images";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { HiMenu, HiOutlineX } from "react-icons/hi";
 import {
   MdAccountCircle,
@@ -8,7 +10,6 @@ import {
   MdOutlineLogin,
 } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { motion } from "framer-motion";
 const MobileNavigation = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const toggleMenuHandler = () => {
@@ -37,19 +38,21 @@ const MobileNavigation = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <a onClick={toggleMenuHandler} href={`#${data}`}>
+                    <Link onClick={toggleMenuHandler} to={`/${data}`}>
                       {data}{" "}
-                    </a>
+                    </Link>
                   </motion.li>
                 );
               })}
               <div>
                 <MdAccountCircle onClick={toggleMenuHandler} />
                 <MdShoppingCart onClick={toggleMenuHandler} />
-                <NewUserBtn>
-                  <AiOutlineUserAdd />
-                  Sign Up
-                </NewUserBtn>
+                <Link to="/signup">
+                  <NewUserBtn>
+                    <AiOutlineUserAdd />
+                    Sign Up
+                  </NewUserBtn>
+                </Link>
                 <NewUserBtn>
                   <MdOutlineLogin />
                   &nbsp;Login

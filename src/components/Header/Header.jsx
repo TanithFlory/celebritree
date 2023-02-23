@@ -1,5 +1,5 @@
 import React from "react";
-import GreenButton from "../UI/Button/GreenButton";
+import CustomButton from "../UI/Button/CustomButton";
 import images from "../../constants/images";
 import { motion } from "framer-motion";
 import "./Header.scss";
@@ -32,8 +32,18 @@ const Header = () => {
                 pressing global issues: starvation and climate change."
               </p>
               <div>
-                <GreenButton>About</GreenButton>
-                <GreenButton>Join Us</GreenButton>
+                <CustomButton
+                  textColor="var(--white-color)"
+                  backgroundColor="var(--green-color)"
+                >
+                  About
+                </CustomButton>
+                <CustomButton
+                  textColor="var(--white-color)"
+                  backgroundColor="var(--green-color)"
+                >
+                  Join Us
+                </CustomButton>
               </div>
             </div>
           </div>

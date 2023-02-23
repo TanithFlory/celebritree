@@ -1,0 +1,123 @@
+//fontSizes
+$formFontSize: 1.2rem;
+$validateFontSize: 0.8rem;
+$headingFontSize: 1.5rem;
+
+.signup {
+  display: flex;
+  justify-content: center;
+  margin: 6.5rem 2rem;
+  h1 {
+    margin: 0;
+    font-size: $headingFontSize;
+  }
+
+  @media screen and (max-width: 912px) and (min-width: 350px) {
+    margin: 1rem 2rem;
+
+    .signup__img {
+      display: none;
+    }
+    .signup__form {
+      width: auto;
+      form {
+        width: auto;
+      }
+    }
+  }
+  @media screen and (max-width: 349px) {
+    $formFontSize: 1rem;
+    $validateFontSize: 0.6rem;
+    $headingFontSize: 1rem;
+
+    margin: 1rem 2rem;
+
+    .signup__img {
+      display: none;
+    }
+    .signup__form {
+      width: 250px;
+      form {
+        width: auto;
+        max-width: 250px;
+
+        input,input:focus{
+          width: 230px;
+        }
+      }
+    }
+  }
+}
+
+.signup__form {
+  display: flex;
+  background-color: white;
+  border-radius: 12px;
+  height: 530px;
+  width: 900px;
+  svg {
+    height: 50px;
+    width: 50px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 0.5rem;
+    width: 500px;
+
+    input,
+    input:focus {
+      border: none;
+      outline: none;
+      border-bottom: 1px solid var(--lightGray-color);
+      width: 320px;
+      font-size: $formFontSize;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--black-color);
+      font-size: $validateFontSize;
+      width: 320px;
+      text-align: center;
+      padding-bottom: 10px;
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+  }
+  div {
+    a {
+      padding-bottom: 0;
+      border-bottom: 3px solid var(--black-color);
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+.sign__form-userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding-inline: 1.5rem;
+
+  h5 {
+    margin: 5px 0 0 0;
+    color: red;
+    text-align: start;
+    font-size: $validateFontSize;
+    max-width: 323px;
+  }
+}
+
+.signup__img {
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}

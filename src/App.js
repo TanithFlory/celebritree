@@ -1,44 +1,17 @@
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import NavBar from "./components/NavBar/NavBar";
-import Header from "./components/Header/Header";
-import Body from "./components/Body/Body";
-import { useEffect, useRef, useState } from "react";
-
-const useOnScroll = (ref, options) => {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setVisible(entry.isIntersecting);
-    }, options);
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if(ref.current)
-      {
-        observer.unobserve(ref.current);
-      }
-    }
-  }, [ref]);
-
-  return visible;
-};
-
+import Home from "./components/Home/Home";
+import Signup from "./components/NewUser/Signup";
 function App() {
-  const ref = useRef();
-  const options = { rootMargin: '-300px'};
-  const visible = useOnScroll(ref, options);
-  console.log(visible);
+
   return (
     <>
-      <NavBar onScrollUpdate = {visible}/>
-      <Header />
-      <div id="scrollCheck" ref={ref}>
-        <Body />
-      </div>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/home" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
     </>
   );
 }
