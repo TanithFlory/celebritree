@@ -22,7 +22,7 @@ const Navbar = () => {
         className={`app__navbar ${visible.isVisible && "on__scroll-active"}`}
       >
         <div className="app__navbar-logo">
-          <img src={images.logo} alt="logo" className="app__navbar-logo" />
+          <Link to={'/home'}><img src={images.logo} alt="logo" className="app__navbar-logo" /></Link>
         </div>
         <ul className="app__navbar-bullets">
           {["home", "about", "mission", "contact"].map((data) => {
