@@ -76,7 +76,7 @@ const Signup = () => {
                   placeholder="Email"
                   {...register("email", {
                     required: true,
-                    maxLength: 18,
+                    maxLength: 30,
                     pattern: /^[\w-\.\_]+@([\w-]{3,}\.)+[\w-]{2,4}$/,
                   })}
                 />

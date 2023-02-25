@@ -11,7 +11,7 @@ body {
 }
 
 :root {
-  --primary-color: #012c3c;
+  --primary-color: #022B3A;
   --secondary-color: #227b9b;
   --green-color: #53c24d;
   --black-color: #030303;
@@ -19,5 +19,8 @@ body {
   --gray-color: #6b7688;
   --brown-color: #46364a;
   --white-color: #ffffff;
+  --aqi-orange: #FFC000;
+  --aqi-red: #FE0000;
+  --aqi-hazardous: #990134;
 }
 

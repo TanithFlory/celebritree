@@ -1,15 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "../UI/Button/CustomButton";
+import fetchLocation from "./fetchLocation";
+import api from "../../ApiService/api";
 import images from "../../constants/images";
 import { motion } from "framer-motion";
+import { ImLocation2 } from "react-icons/im";
+import { FaBiohazard } from "react-icons/fa";
 import "./Header.scss";
 const Header = () => {
+  const [userLocation, setUserLocation] = useState({
+    location: "",
+    flag: false,
+    aqi: ""
+  });
+  useEffect(() => {
+    const city = "bangalore";
+    api.getAqi(city).then((response)=>setUserLocation((prevState)=>({
+      ...prevState,
+      aqi: response
+    })));
+    fetchLocation().then((res) => {
+      setUserLocation({
+        location: res[0],
+        flag: res[1].toString().toLowerCase(),
+      });
+    });
+  }, []);
+
   const scrollHandler = () => {
     const cardWrapper = document.getElementById("card-wrapper");
     if (cardWrapper) {
       cardWrapper.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   return (
     <>
       <div>
@@ -45,6 +69,22 @@ const Header = () => {
                   Join Us
                 </CustomButton>
               </div>
+              <div className="header__air-insights">
+                <div className="header__location">
+                  <ImLocation2 />
+                  {userLocation.flag && (
+                    <img
+                      src={`https://flagcdn.com/${userLocation.flag}.svg`}
+                      alt="flag"
+                    />
+                  )}
+                  <h3>{userLocation.location}</h3>
+                </div>
+                <div className="header__aqi">
+                  <FaBiohazard style={{fill:userLocation.aqi<'100'?'var(--green-color)':userLocation.aqi<150?'var(--aqi-orange)':userLocation.aqi<200?'var(--aqi-red)':'var(--aqi-hazardous)'}}/>
+                  <h3>{userLocation.aqi}</h3>
+                </div>
+              </div>
             </div>
           </div>
           <img
@@ -54,7 +94,7 @@ const Header = () => {
             onClick={scrollHandler}
           />
           <div className="header__svg">
-            <img src={images.TreeReveal} alt="Tree" />
+            <img src={images.TreeReveal} alt="" />
           </div>
         </motion.div>
       </div>

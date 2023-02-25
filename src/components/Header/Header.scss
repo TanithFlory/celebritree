@@ -8,7 +8,7 @@
   @media screen and (max-width: 912px) {
     flex-direction: column;
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
 
     .header__main-button {
       position: static;
@@ -22,7 +22,7 @@
       }
     }
   }
-  button{
+  button {
     width: 120px;
     height: 50px;
   }
@@ -51,10 +51,45 @@
   p {
     font-size: 1.3rem;
   }
-  div {
+  &>div {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     justify-content: center;
+    align-items: center;
+  }
+}
+
+.header__air-insights {
+  flex-direction: column;
+  margin-top: 2rem;
+  .header__location {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      margin: 0;
+    }
+    img {
+      width: 30px;
+      height: 30px;
+    }
+    svg {
+      fill: var(--green-color);
+      transform: scale(1.8);
+    }
+  }
+  .header__aqi{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    h3{
+      margin: 0;
+    }
+    svg{
+      fill: var(--red-color);
+      transform: scale(2);
+    }
   }
 }
 
