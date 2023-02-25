@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const NewUserBtn = styled.button`
+const StyledButton = styled.button`
   background-color: transparent;
   border: 2px solid green;
   color: var(--white-color);
@@ -22,5 +22,11 @@ const NewUserBtn = styled.button`
     }
   }
 `;
+
+const NewUserBtn = (props) => {
+  return <StyledButton onClick={props.onClick}>
+  {props.children}
+  </StyledButton>
+}
 
 export default NewUserBtn;

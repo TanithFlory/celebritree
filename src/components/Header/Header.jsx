@@ -11,20 +11,27 @@ const Header = () => {
   const [userLocation, setUserLocation] = useState({
     location: "",
     flag: false,
-    aqi: ""
+    aqi: "",
+    city: "",
   });
   useEffect(() => {
-    const city = "bangalore";
-    api.getAqi(city).then((response)=>setUserLocation((prevState)=>({
-      ...prevState,
-      aqi: response
-    })));
     fetchLocation().then((res) => {
       setUserLocation({
         location: res[0],
         flag: res[1].toString().toLowerCase(),
+        city: res[2],
       });
     });
+    
+    (async () => {
+      const city = await fetchLocation().then((res) => res[2]);
+      api.getAqi(city).then((res)=>{
+        setUserLocation((prevState)=>({
+          ...prevState,
+          aqi:res
+        }))
+      })
+    })();
   }, []);
 
   const scrollHandler = () => {
@@ -81,8 +88,19 @@ const Header = () => {
                   <h3>{userLocation.location}</h3>
                 </div>
                 <div className="header__aqi">
-                  <FaBiohazard style={{fill:userLocation.aqi<'100'?'var(--green-color)':userLocation.aqi<150?'var(--aqi-orange)':userLocation.aqi<200?'var(--aqi-red)':'var(--aqi-hazardous)'}}/>
-                  <h3>{userLocation.aqi}</h3>
+                  <FaBiohazard
+                    style={{
+                      fill:
+                        userLocation.aqi < 100
+                          ? "var(--green-color)"
+                          : userLocation.aqi < 150
+                          ? "var(--aqi-orange)"
+                          : userLocation.aqi < 200
+                          ? "var(--aqi-red)"
+                          : "var(--aqi-hazardous)",
+                    }}
+                  />
+                  <h3>AQI : {userLocation.aqi}</h3>
                 </div>
               </div>
             </div>

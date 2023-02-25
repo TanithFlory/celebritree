@@ -4,8 +4,7 @@ import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import images from "../../constants/images";
 const LoginModal = () => {
-  const body = document.querySelector("body");
-  body.classList.add("overflow")
+
   return (
     <motion.div
     initial={{ opacity: 0, scale: 0.5 }}

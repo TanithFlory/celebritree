@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Navbar from "../NavBar/Navbar";
+import Navbar from "../Navbar/Navbar";
 import Header from "../Header/Header";
 import Body from "../Body/Body";
 import useOnScroll from "../../CustomHooks/useOnScroll";

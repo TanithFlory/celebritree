@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../NavBar/Navbar";
+import Navbar from "../Navbar/Navbar";
 import CustomButton from "../UI/Button/CustomButton";
 import images from "../../constants/images";
 import { Link } from "react-router-dom";
