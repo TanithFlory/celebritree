@@ -22,15 +22,15 @@ const Header = () => {
         city: res[2],
       });
     });
-    
+
     (async () => {
       const city = await fetchLocation().then((res) => res[2]);
-      api.getAqi(city).then((res)=>{
-        setUserLocation((prevState)=>({
+      api.getAqi(city).then((res) => {
+        setUserLocation((prevState) => ({
           ...prevState,
-          aqi:res
-        }))
-      })
+          aqi: res,
+        }));
+      });
     })();
   }, []);
 
@@ -85,7 +85,11 @@ const Header = () => {
                       alt="flag"
                     />
                   )}
-                  <h3>{userLocation.location}</h3>
+                  <h3>
+                    {userLocation.location === ""
+                      ? "Location permission required "
+                      : userLocation.location}
+                  </h3>
                 </div>
                 <div className="header__aqi">
                   <FaBiohazard
@@ -100,7 +104,12 @@ const Header = () => {
                           : "var(--aqi-hazardous)",
                     }}
                   />
-                  <h3>AQI : {userLocation.aqi}</h3>
+                  <h3>
+                    AQI :{" "}
+                    {userLocation.aqi === ""
+                      ? "Cannot determine"
+                      : userLocation.aqi}
+                  </h3>
                 </div>
               </div>
             </div>

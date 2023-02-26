@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../Navbar/Navbar";
 import CustomButton from "../UI/Button/CustomButton";
 import images from "../../constants/images";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
@@ -15,8 +16,14 @@ const Signup = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (formData) => {
+    axios({
+      method: 'POST',
+      url: 'http://localhost:3001/api/signup',
+      data: formData
+    }).then(()=>{
+      alert("done");
+    });
   };
   return (
     <>
