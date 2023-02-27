@@ -7,8 +7,8 @@ import Facebook from "../assets/Facebook.svg";
 import Google from "../assets/Google.svg";
 import Twitter from "../assets/Twitter.svg";
 import Instagram from "../assets/Instagram.svg";
-import TreeReveal1 from "../assets/TreeReveal1.mp4";
-import Earth from "../assets/Earth.png";
+import Arrow from "../assets/Arrow.png";
+import EarthRotate from "../assets/EarthRotate.svg";
 const images = {
   logo,
   contribute,
@@ -17,10 +17,10 @@ const images = {
   signupImg,
   Facebook,
   Google,
-  TreeReveal1,
-  Earth,
   Twitter,
   Instagram,
+  Arrow,
+  EarthRotate,
 };
 
 export default images;

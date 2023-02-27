@@ -7,15 +7,15 @@
   border-radius: 12px;
   color: var(--white-color);
   padding: 1rem;
-  margin: 5,rem 1rem 1rem;
   transition: 0.3s ease-in-out;
+  transform: scale(0.9);
   img {
     width: 250px;
     height: 200px;
     border-radius: 12px;
   }
   &:hover{
-    transform: scale(1.05);
+    transform: scale(0.93);
   }
 }
 
@@ -44,10 +44,10 @@
 }
 
 .cardSpecific {
-  background-color: var(--secondary-color);
+  background-color: #004C6D;
   color: var(--green-color);
   h1 {
-    color: var(--primary-color);
+    color: var(--green-color);
     margin:0;
   }
   h3 {
