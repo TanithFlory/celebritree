@@ -1,39 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CustomButton from "../UI/Button/CustomButton";
-import fetchLocation from "./fetchLocation";
-import api from "../../ApiService/api";
+import AirQualityIndex from "../AirQualityIndex/AirQualityIndex";
 import images from "../../constants/images";
 import { motion } from "framer-motion";
-import { ImLocation2 } from "react-icons/im";
-import { FaBiohazard } from "react-icons/fa";
+
 import "./Header.scss";
 const Header = () => {
-  const [userLocation, setUserLocation] = useState({
-    location: "",
-    flag: false,
-    aqi: "",
-    city: "",
-  });
-  useEffect(() => {
-    fetchLocation().then((res) => {
-      setUserLocation({
-        location: res[0],
-        flag: res[1].toString().toLowerCase(),
-        city: res[2],
-      });
-    });
-
-    (async () => {
-      const city = await fetchLocation().then((res) => res[2]);
-      api.getAqi(city).then((res) => {
-        setUserLocation((prevState) => ({
-          ...prevState,
-          aqi: res,
-        }));
-      });
-    })();
-  }, []);
-
   const scrollHandler = () => {
     const cardWrapper = document.getElementById("card-wrapper");
     if (cardWrapper) {
@@ -76,46 +48,7 @@ const Header = () => {
                   Join Us
                 </CustomButton>
               </div>
-              <div className="header__air-insights">
-                <div className="header__location">
-                  <ImLocation2 />
-                  {userLocation.flag && (
-                    <img
-                      src={`https://flagcdn.com/${userLocation.flag}.svg`}
-                      alt="flag"
-                    />
-                  )}
-                  <h3>
-                    {userLocation.location === ""
-                      ? "Location permission required "
-                      : userLocation.location}
-                  </h3>
-                </div>
-                <div className="header__aqi">
-                  <FaBiohazard
-                    style={{
-                      fill:
-                        userLocation.aqi < 51
-                          ? "var(--green-color)"
-                          : userLocation.aqi < 101
-                          ? "var(--aqi-orange-moderate)"
-                          : userLocation.aqi < 151
-                          ? "var(--aqi-orange-severe)"
-                          : userLocation.aqi < 201
-                          ? "var(--aqi-red)"
-                          : userLocation.aqi < 301
-                          ? "var(--aqi-purple)"
-                          : "var(--aqi-hazardous)",
-                    }}
-                  />
-                  <h3>
-                    Air Quality Index :{" "}
-                    {userLocation.aqi === ""
-                      ? " Cannot determine"
-                      : userLocation.aqi}
-                  </h3>
-                </div>
-              </div>
+              <AirQualityIndex />
             </div>
           </div>
           <img
