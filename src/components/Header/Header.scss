@@ -1,3 +1,11 @@
+* {
+  --aqi-orange-moderate: #ffc000;
+  --aqi-orange-severe: #ff6600;
+  --aqi-red: #fe0000;
+  --aqi-hazardous: #990134;
+  --aqi-purple:#9933FF;
+}
+
 .header {
   display: flex;
   margin-top: 6rem;
@@ -51,7 +59,7 @@
   p {
     font-size: 1.3rem;
   }
-  &>div {
+  & > div {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
@@ -79,14 +87,14 @@
       transform: scale(1.8);
     }
   }
-  .header__aqi{
+  .header__aqi {
     display: flex;
     align-items: center;
     gap: 1rem;
-    h3{
+    h3 {
       margin: 0;
     }
-    svg{
+    svg {
       fill: var(--red-color);
       transform: scale(2);
     }

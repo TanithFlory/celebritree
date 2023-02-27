@@ -95,19 +95,23 @@ const Header = () => {
                   <FaBiohazard
                     style={{
                       fill:
-                        userLocation.aqi < 100
+                        userLocation.aqi < 51
                           ? "var(--green-color)"
-                          : userLocation.aqi < 150
-                          ? "var(--aqi-orange)"
-                          : userLocation.aqi < 200
+                          : userLocation.aqi < 101
+                          ? "var(--aqi-orange-moderate)"
+                          : userLocation.aqi < 151
+                          ? "var(--aqi-orange-severe)"
+                          : userLocation.aqi < 201
                           ? "var(--aqi-red)"
+                          : userLocation.aqi < 301
+                          ? "var(--aqi-purple)"
                           : "var(--aqi-hazardous)",
                     }}
                   />
                   <h3>
-                    AQI :{" "}
+                    Air Quality Index :{" "}
                     {userLocation.aqi === ""
-                      ? "Cannot determine"
+                      ? " Cannot determine"
                       : userLocation.aqi}
                   </h3>
                 </div>

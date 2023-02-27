@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import ScrollContext from "../../constants/scroll-context";
 import { Link } from "react-router-dom";
 import images from "../../constants/images";
 import MobileNavigation from "./MobileNavigation";
@@ -14,8 +13,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import { motion } from "framer-motion";
 import "./Navbar.scss";
 
-const Navbar = () => {
-  const visible = useContext(ScrollContext);
+const Navbar = (props) => {
   const [login,setLogin] = useState(false);
     const body = document.querySelector("body");
     login===true? body.classList.add("overflow") : body.classList.remove("overflow");;
@@ -23,7 +21,7 @@ const Navbar = () => {
     <>
       {login&&<LoginModal/>}
       <nav
-        className={`app__navbar ${visible.isVisible && "on__scroll-active"}`}
+        className={`app__navbar ${props.bgColor && "on__scroll-active"}`}
       >
         <div className="app__navbar-logo">
           <Link to={"/home"}>

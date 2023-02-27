@@ -84,7 +84,7 @@ const Signup = () => {
                   {...register("email", {
                     required: true,
                     maxLength: 30,
-                    pattern: /^[\w-\.\_]+@([\w-]{3,}\.)+[\w-]{2,4}$/,
+                    pattern: /^[\w-._]+@([\w-]{3,}\.)+[\w-]{2,4}$/,
                   })}
                 />
                 {errors.email && <h5>Please enter a valid E-mail.</h5>}
@@ -133,6 +133,7 @@ const Signup = () => {
             <img src={images.signupImg} alt="welcome" />
           </div>
         </div>
+        
       </motion.div>
     </>
   );
