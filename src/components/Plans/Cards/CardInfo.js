@@ -1,7 +1,7 @@
 const CardInfo = [
     {   
         id:1,
-        title: "Fruit Tree",
+        title: "Fruit Trees",
         price: "₹120",
         desc: "Grow a Fruit Tree, the edibles will be donated to the needy", 
         img:"https://images.pexels.com/photos/3541364/pexels-photo-3541364.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -14,9 +14,9 @@ const CardInfo = [
 
     },
     {   id:3,
-        title: "Anti-Smog Tree",
+        title: "Anti-Smog Trees",
         price: "₹150",
-        desc: "Take a step towards saving the nature! Grow well-know anti smog trees.", 
+        desc: "Take a step towards saving the nature! Lets grow some anti smog trees.", 
         img:"https://images.pexels.com/photos/975416/pexels-photo-975416.jpeg?auto=compress&cs=tinysrgb&w=600",
 
     },
