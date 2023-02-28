@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import images from "../../constants/images";
 import MobileNavigation from "./MobileNavigation";

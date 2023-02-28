@@ -54,6 +54,9 @@
   @media screen and (max-width: 912px) {
     margin-left: 0;
     position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     & > img {
       width: 200px;
       height: 200px;
@@ -61,6 +64,11 @@
     & > div {
       img {
         margin-left: 0;
+      }
+      div:nth-child(1){
+        img{
+          margin-left: 0;
+        }
       }
       div:nth-child(2) {
         & > h2 {

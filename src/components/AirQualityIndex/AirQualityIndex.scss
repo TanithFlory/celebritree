@@ -1,35 +1,38 @@
-
 .header__air-insights {
-    flex-direction: column;
-    margin-top: 2rem;
-    .header__location {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      align-items: center;
-      h3 {
-        margin: 0;
-      }
-      img {
-        width: 30px;
-        height: 30px;
-      }
-      svg {
-        fill: var(--green-color);
-        transform: scale(1.8);
-      }
+  flex-direction: column;
+  margin-top: 2rem;
+  padding: 3px;
+  .header__location {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      margin: 0;
+      font-size: 1rem;
     }
-    .header__aqi {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      h3 {
-        margin: 0;
-      }
-      svg {
-        fill: var(--red-color);
-        transform: scale(2);
-      }
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+    svg {
+      fill: var(--green-color);
+      transform: scale(1.8);
     }
   }
-  
+  .header__aqi {
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+    svg {
+      fill: var(--red-color);
+      transform: scale(2);
+      position: relative;
+      right: 12px;
+      top: 3px;
+    }
+
+  }
+}

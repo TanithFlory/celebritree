@@ -41,7 +41,6 @@
   justify-content: center;
   flex: 0.4;
   color: var(--white-color);
-  margin-inline: 1rem;
 }
 
 .header__content-main {
@@ -72,12 +71,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   img {
     width: 100%;
     height: 100%;
     min-height: 80vh;
-    margin: 1rem 0 0 1rem;
     border-radius: 250px 0 0 0;
   }
 }

@@ -10,7 +10,7 @@ const AirQualityIndex = () => {
     location: "",
     flag: false,
     aqi: "",
-    city: ""
+    city: "",
   });
   useEffect(() => {
     fetchLocation().then((res) => {
@@ -50,23 +50,23 @@ const AirQualityIndex = () => {
           </h3>
         </div>
         <div className="header__aqi">
-          <FaBiohazard
-            style={{
-              fill:
-                userLocation.aqi < 51
-                  ? "var(--green-color)"
-                  : userLocation.aqi < 101
-                  ? "var(--aqi-orange-moderate)"
-                  : userLocation.aqi < 151
-                  ? "var(--aqi-orange-severe)"
-                  : userLocation.aqi < 201
-                  ? "var(--aqi-red)"
-                  : userLocation.aqi < 301
-                  ? "var(--aqi-purple)"
-                  : "var(--aqi-hazardous)",
-            }}
-          />
           <h3>
+            <FaBiohazard
+              style={{
+                fill:
+                  userLocation.aqi < 51
+                    ? "var(--green-color)"
+                    : userLocation.aqi < 101
+                    ? "var(--aqi-orange-moderate)"
+                    : userLocation.aqi < 151
+                    ? "var(--aqi-orange-severe)"
+                    : userLocation.aqi < 201
+                    ? "var(--aqi-red)"
+                    : userLocation.aqi < 301
+                    ? "var(--aqi-purple)"
+                    : "var(--aqi-hazardous)",
+              }}
+            />
             Air Quality Index :{" "}
             {userLocation.aqi === "" ? " Cannot determine" : userLocation.aqi}
           </h3>
