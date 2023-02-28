@@ -9,6 +9,7 @@ import Twitter from "../assets/Twitter.svg";
 import Instagram from "../assets/Instagram.svg";
 import Arrow from "../assets/Arrow.png";
 import EarthRotate from "../assets/EarthRotate.svg";
+
 const images = {
   logo,
   contribute,

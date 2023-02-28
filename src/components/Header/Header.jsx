@@ -1,9 +1,8 @@
 import React from "react";
 import CustomButton from "../UI/Button/CustomButton";
+import MotionWrapper from "../UI/MotionWrapper/MotionWrapper";
 import AirQualityIndex from "../AirQualityIndex/AirQualityIndex";
 import images from "../../constants/images";
-import { motion } from "framer-motion";
-
 import "./Header.scss";
 const Header = () => {
   const scrollHandler = () => {
@@ -16,16 +15,7 @@ const Header = () => {
   return (
     <>
       <div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            duration: 0.8,
-            delay: 0.5,
-            ease: [0, 0.71, 0.2, 1.01],
-          }}
-          className="header"
-        >
+        <MotionWrapper className="header">
           <div className="header__content">
             <div className="header__content-main">
               <h2>Making world a</h2>
@@ -60,7 +50,7 @@ const Header = () => {
           <div className="header__svg">
             <img src={images.TreeReveal} alt="" />
           </div>
-        </motion.div>
+        </MotionWrapper>
       </div>
     </>
   );

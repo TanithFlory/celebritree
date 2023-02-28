@@ -1,11 +1,11 @@
 import React from "react";
 import "./Card.scss";
-import CardInfo from "./CardInfo";
+import cardDetails from "./cardDetails";
 import CustomButton from "../../UI/Button/CustomButton";
 const Card = () => {
   return (
     <>
-      {CardInfo.map((data) => {
+      {cardDetails.map((data) => {
         return (
           <div
             className={data.id === 2 ? "card cardSpecific" : "card"}

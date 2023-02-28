@@ -2,22 +2,26 @@
   display: flex;
   flex-direction: column;
   margin: 1rem;
-  color: white;
+  color: var(--white-color);
   height: 100vh;
   background-image: linear-gradient(rgba(2, 43, 58, 0.5), rgba(2, 43, 58, 0.8)),
-    url("../../assets/Earth.png");
+    url("../../assets/EarthBG.gif");
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: 100vw;
   & > div {
     display: flex;
     justify-content: center;
     & > h1 {
       margin-top: 2.5rem;
-      padding: 1rem;
+      padding: 5px;
       text-align: center;
       font-size: 2.5rem;
       width: auto;
       border-radius: 40%;
+      span{
+        color: var(--green-color);
+      } 
     }
   }
   @media screen and (max-width: 912px) {
@@ -39,108 +43,21 @@
         max-width: 400px;
       }
     }
-    .about__socials{
-      margin-left: 0;
-      position: static;
-      &>img{
-        width: 200px;
-        height: 200px;
-      }
-      &>div{
-        img{
-          margin-left: 0;  
-        }
-        div:nth-child(2){
-          &>h2{
-            left: 16px;
-            font-size: 18px;
-          }
-        }
-      }
-    }
   }
 }
 
-.about__earth-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: -1;
-  img {
-    width: 200px;
-    height: 200px;
-  }
-  h1 {
-    align-items: flex-start;
-  }
-}
-
-.about__socials {
-  margin-left: 3rem;
-  position: relative;
-  bottom: 50px;
-  & > img {
-    width: 300px;
-    height: 300px;
-  }
-  & > div {
-    display: flex;
-    & > div {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      &:nth-child(2) {
-        img {
-          width: 100px;
-          height: 100px;
-          cursor: default;
-          position: relative;
-          top: 50px;
-        }
-        h2 {
-          position: relative;
-          left: 30px;
-          & > div {
-            content: "";
-            height: 6px;
-            width: 100%;
-            margin-top: 5px;
-            background: rgb(2, 0, 36);
-            background: linear-gradient(
-              90deg,
-              rgba(2, 0, 36, 1) 0%,
-              rgba(4, 2, 52, 1) 5%,
-              rgba(9, 9, 121, 1) 27%,
-              rgba(5, 3, 67, 1) 27%,
-              rgba(0, 212, 255, 0.5158438375350141) 84%
-            );
-          }
-        }
-      }
-    }
-    img {
-      height: 50px;
-      width: 50px;
-      margin-left: 50px;
-      cursor: pointer;
-      &:hover {
-        transform: scale(1.05);
-      }
-    }
-  }
-}
 .about__content {
   margin-top: 1rem;
   max-width: 850px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  & > h1 {
+   h1 {
     font-size: 1.5rem;
     text-align: center;
+    span{
+      color: var(--green-color);
+    }
   }
   & > div {
     margin-left: 35%;

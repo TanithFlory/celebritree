@@ -10,7 +10,7 @@ const AirQualityIndex = () => {
     location: "",
     flag: false,
     aqi: "",
-    city: "",
+    city: ""
   });
   useEffect(() => {
     fetchLocation().then((res) => {

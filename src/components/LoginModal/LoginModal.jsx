@@ -1,20 +1,11 @@
 import "./LoginModal.scss";
 import CustomButton from "../UI/Button/CustomButton";
+import MotionWrapper from "../UI/MotionWrapper/MotionWrapper";
 import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
-import { motion } from "framer-motion";
 import images from "../../constants/images";
 const LoginModal = () => {
-
   return (
-    <motion.div
-    initial={{ opacity: 0, scale: 0.5 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{
-      duration: 0.8,
-      ease: [0, 0.71, 0.2, 1.01],
-    }}
-    className="login__modal-backdrop"
-  >
+    <MotionWrapper delay="0.1" className="login__modal-backdrop">
       <div className="login__modal">
         <form>
           <h2>Sign In</h2>
@@ -26,7 +17,7 @@ const LoginModal = () => {
           <div className="login__inputs">
             <RiLockPasswordFill /> <input type="password"></input>
           </div>
-          <a href="#">Forgot Password?</a>
+          <a href="/signup">Forgot Password?</a>
           <CustomButton
             backgroundColor="var(--green-color)"
             textColor="var(--black-color)"
@@ -42,7 +33,7 @@ const LoginModal = () => {
           </div>
         </form>
       </div>
-    </motion.div>
+    </MotionWrapper>
   );
 };
 

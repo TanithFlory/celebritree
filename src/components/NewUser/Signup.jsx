@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
 import CustomButton from "../UI/Button/CustomButton";
+import MotionWrapper from "../UI/MotionWrapper/MotionWrapper";
 import images from "../../constants/images";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { motion } from "framer-motion";
 import { RiAccountPinCircleLine } from "react-icons/ri";
 import "./Signup.scss";
 
@@ -18,26 +18,17 @@ const Signup = () => {
   } = useForm();
   const onSubmit = (formData) => {
     axios({
-      method: 'POST',
-      url: 'http://localhost:3001/api/signup',
-      data: formData
-    }).then(()=>{
+      method: "POST",
+      url: "http://localhost:3001/api/signup",
+      data: formData,
+    }).then(() => {
       alert("done");
     });
   };
   return (
     <>
       <Navbar />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{
-          duration: 0.8,
-          delay: 0.5,
-          ease: [0, 0.71, 0.2, 1.01],
-        }}
-        className="signup"
-      >
+      <MotionWrapper className="signup">
         <div className="signup__form">
           <form onSubmit={handleSubmit(onSubmit)}>
             <RiAccountPinCircleLine />
@@ -101,7 +92,9 @@ const Signup = () => {
                       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\w\W]{6,}$/,
                   })}
                 />
-                {errors.password&&<h5>Password must contain one symbol and an uppercase.</h5>}
+                {errors.password && (
+                  <h5>Password must contain one symbol and an uppercase.</h5>
+                )}
               </div>
               <div>
                 <input
@@ -133,8 +126,7 @@ const Signup = () => {
             <img src={images.signupImg} alt="welcome" />
           </div>
         </div>
-        
-      </motion.div>
+      </MotionWrapper>
     </>
   );
 };

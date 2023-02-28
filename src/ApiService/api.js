@@ -1,6 +1,5 @@
 import axios from "axios";
 const getLocation = (lat, lng) => {
-  // const apiKey = "AIzaSyA0GwEcj5h-9Oi4euNqyuXPk9I_31f0xJg";
   const apiKey=null;
   const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
   return new Promise((resolve, reject) => {
