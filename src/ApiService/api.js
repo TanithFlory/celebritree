@@ -1,9 +1,9 @@
 import axios from "axios";
+
 const getLocation = (lat, lng) => {
-  const apiKey=null;
+  const apiKey = null;
   const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
   return new Promise((resolve, reject) => {
-
     resolve(
       axios.get(url).then((response) => {
         return [
@@ -23,6 +23,7 @@ const getAqi = (city) => {
     resolve(axios.get(url).then((response) => response.data.data.aqi));
   });
 };
+
 
 const api = {
   getLocation,

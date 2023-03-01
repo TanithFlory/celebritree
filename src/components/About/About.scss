@@ -5,8 +5,8 @@
   background-image: linear-gradient(rgba(2, 43, 58, 0.5), rgba(2, 43, 58, 0.8)),
     url("../../assets/EarthBG.gif");
   background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 100vw;
+  background-position: center 0;
+  background-size: cover;
   & > div {
     display: flex;
     justify-content: center;
@@ -23,6 +23,8 @@
     }
   }
   @media screen and (max-width: 912px) {
+    background-size: auto;
+    background-position: center center;
     & > div {
       flex-wrap: wrap;
     }

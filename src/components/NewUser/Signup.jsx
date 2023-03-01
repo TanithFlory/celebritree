@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
 import CustomButton from "../UI/Button/CustomButton";
+import Footer from "../Footer/Footer";
 import MotionWrapper from "../UI/MotionWrapper/MotionWrapper";
 import images from "../../constants/images";
 import axios from "axios";
@@ -127,6 +128,7 @@ const Signup = () => {
           </div>
         </div>
       </MotionWrapper>
+      <Footer/>
     </>
   );
 };

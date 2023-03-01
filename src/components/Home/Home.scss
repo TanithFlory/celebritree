@@ -1,0 +1,17 @@
+.Home {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "body"
+    "footer";
+}
+
+#header {
+  grid-area: header;
+}
+#body {
+  grid-area: body;
+}
+#footer {
+  grid-area: footer;
+}

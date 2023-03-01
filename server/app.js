@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require("cors"); //installed because cors denial on post
+const cors = require("cors"); 
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -44,6 +44,8 @@ app.post("/api/signup", (req, res) => {
     user.save();
   });
 });
+
+
 
 app.listen(port, () => {
   console.log("listening to 3001");

@@ -1,0 +1,88 @@
+.footer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
+    url("./EarthFooter.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.footer__heading {
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--white-color);
+    padding-top: 2rem;
+    margin: 0;
+  }
+  span {
+    color: var(--green-color);
+  }
+}
+
+.footer__links-wrapper {
+  margin: 4rem 3rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: "socials articles-1 articles-2 newsletter";
+  #socials {
+    grid-area: socials;
+  }
+  #articles-1 {
+    grid-area: articles-1;
+  }
+  #articles-2 {
+    grid-area: articles-2;
+  }
+  #newsletter {
+    grid-area: newsletter;
+  }
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-inline: 1rem;
+    & > img {
+      width: 250px;
+      height: 250px;
+    }
+  }
+  & > div:not(:last-child) {
+    border-right: 3px solid white;
+  }
+  & > div:not(:first-child) {
+    gap: 1.3rem;
+    a {
+      text-decoration: none;
+      font-size: 1.5rem;
+      color: var(--white-color);
+    }
+  }
+  @media screen and (max-width: 912px) {
+    margin: 3rem 1rem 1rem;
+    & > div:not(:last-child) {
+      border-right: none;
+    }
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "socials articles-1"
+      "newsletter articles-2";
+  }
+}
+.footer__links {
+  & > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    color: var(--white-color);
+
+    h1 {
+      text-align: center;
+      span{
+        color:var(--green-color);
+      }
+    }
+  }
+}

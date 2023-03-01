@@ -6,7 +6,7 @@ const AboutContent = () => {
     {
       id: 1,
       content:
-        "We believe that everyone deserves access to healthy andsustainable food, regardless of their economiccircumstances.",
+        "We believe that everyone deserves access to healthy and sustainable food, regardless of their economic circumstances.",
     },
     {
       id: 2,
