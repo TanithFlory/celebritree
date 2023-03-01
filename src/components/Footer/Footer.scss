@@ -1,17 +1,59 @@
+* {
+  --fs-xl: 2rem;
+  --fs-l: 1.5rem;
+  --fs-xxl: 2.5rem;
+  --fs-s: 1rem;
+}
 .footer {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
     url("./EarthFooter.gif");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
+
+  @media screen and (max-width: 912px) {
+    * {
+      --fs-xl: 1.7rem;
+      --fs-l: 1.3rem;
+    }
+    .footer__links-wrapper {
+      margin: 0;
+      & > div:not(:last-child) {
+        border-right: none;
+      }
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        "socials articles-1"
+        "newsletter articles-2";
+    }
+  }
+  @media screen and (max-width: 450px) {
+    * {
+      --fs-xl: 1.2rem;
+      --fs-l: 1rem;
+    }
+    .footer__links-wrapper {
+      gap: 1rem;
+      margin: 0;
+      & > div:not(:last-child) {
+        border-right: none;
+      }
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "socials"
+        " articles-1"
+        "articles-2"
+        "newsletter";
+    }
+  }
 }
 
 .footer__heading {
   h1 {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: var(--fs-xl);
     color: var(--white-color);
-    padding-top: 2rem;
+    padding: 2rem;
     margin: 0;
   }
   span {
@@ -55,19 +97,12 @@
     gap: 1.3rem;
     a {
       text-decoration: none;
-      font-size: 1.5rem;
+      font-size: var(--fs-l);
       color: var(--white-color);
+      &:hover{
+        transform: scale(1.03);
+      }
     }
-  }
-  @media screen and (max-width: 912px) {
-    margin: 3rem 1rem 1rem;
-    & > div:not(:last-child) {
-      border-right: none;
-    }
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-      "socials articles-1"
-      "newsletter articles-2";
   }
 }
 .footer__links {
@@ -75,13 +110,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 1.5rem;
+    padding: 1rem;
     color: var(--white-color);
 
     h1 {
+      font-size: var(--fs-xl);
       text-align: center;
-      span{
-        color:var(--green-color);
+      margin: 0;
+      span {
+        color: var(--green-color);
       }
     }
   }

@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;700&display=swap");
 
-*{
-  font-family:  'Signika Negative', sans-serif;
+* {
+  font-family: "Signika Negative", sans-serif;
 }
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 body {
   margin: 0;
@@ -13,7 +14,7 @@ body {
 }
 
 :root {
-  --primary-color: #022B3A;
+  --primary-color: #022b3a;
   --secondary-color: #227b9b;
   --green-color: #53c24d;
   --black-color: #030303;
@@ -22,4 +23,3 @@ body {
   --brown-color: #46364a;
   --white-color: #ffffff;
 }
-

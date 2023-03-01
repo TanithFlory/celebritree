@@ -27,7 +27,6 @@ const Footer = () => {
             <a href="">World Environment Day</a>
           </div>
           <div id="articles-2">
-            {" "}
             <a href="">Celebritree</a>
             <a href="">Our Mission</a>
             <a href="">About AQI</a>
