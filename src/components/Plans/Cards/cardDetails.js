@@ -3,7 +3,7 @@ const cardDetails = [
         id:1,
         title: "Fruit Trees",
         price: "₹120",
-        desc: "Grow a Fruit Tree, the edibles will be donated to the needy", 
+        desc: "Grow a Fruit Tree, the edibles will be donated to the needy.", 
         img:"https://images.pexels.com/photos/3541364/pexels-photo-3541364.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {   id:2,
@@ -20,7 +20,27 @@ const cardDetails = [
         img:"https://images.pexels.com/photos/975416/pexels-photo-975416.jpeg?auto=compress&cs=tinysrgb&w=600",
 
     },
-    
+    {   id:4,
+        title: "Anti-Smog Trees",
+        price: "₹150",
+        desc: "Take a step towards saving the nature! Lets grow some anti smog trees.", 
+        img:"https://images.pexels.com/photos/975416/pexels-photo-975416.jpeg?auto=compress&cs=tinysrgb&w=600",
+
+    },
+    {   id:5,
+        title: "Anti-Smog Trees",
+        price: "₹150",
+        desc: "Take a step towards saving the nature! Lets grow some anti smog trees.", 
+        img:"https://images.pexels.com/photos/975416/pexels-photo-975416.jpeg?auto=compress&cs=tinysrgb&w=600",
+
+    },
+    {   id:6,
+        title: "Anti-Smog Trees",
+        price: "₹150",
+        desc: "Take a step towards saving the nature! Lets grow some anti smog trees.", 
+        img:"https://images.pexels.com/photos/975416/pexels-photo-975416.jpeg?auto=compress&cs=tinysrgb&w=600",
+
+    },
 ]
 
 export default cardDetails;

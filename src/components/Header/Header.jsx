@@ -1,6 +1,6 @@
 import React from "react";
 import CustomButton from "../UI/Button/CustomButton";
-import MotionWrapper from "../UI/MotionWrapper/MotionWrapper";
+import MotionWrapper from "../UI/Wrapper/MotionWrapper";
 import AirQualityIndex from "../AirQualityIndex/AirQualityIndex";
 import images from "../../constants/images";
 import "./Header.scss";

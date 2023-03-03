@@ -13,11 +13,11 @@ const Home = () => {
     <>
       <Navbar bgColor={visible} />
       <div className="Home">
-      <Header id="header"/>
-      <div id="body" ref={ref}>
+      <Header/>
+      <div ref={ref}>
         <Body />
       </div>
-      <Footer id="footer"/>
+      <Footer/>
       </div>
     </>
   );
