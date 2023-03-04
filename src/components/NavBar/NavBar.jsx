@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import images from "../../constants/images";
-import MobileNavigation from "./MobileNavigation";
+import MobileNavigation from "./MobileNavigation/MobileNavigation";
 import LoginModal from "../LoginModal/LoginModal";
 import NewUserBtn from "../UI/Button/NewUserBtn";
 import {
@@ -14,15 +14,15 @@ import { motion } from "framer-motion";
 import "./Navbar.scss";
 
 const Navbar = (props) => {
-  const [login,setLogin] = useState(false);
-    const body = document.querySelector("body");
-    login===true? body.classList.add("overflow") : body.classList.remove("overflow");;
+  const [login, setLogin] = useState(false);
+  const body = document.querySelector("body");
+  login === true
+    ? body.classList.add("overflow")
+    : body.classList.remove("overflow");
   return (
     <>
-      {login&&<LoginModal/>}
-      <nav
-        className={`app__navbar ${props.bgColor && "on__scroll-active"}`}
-      >
+      {login && <LoginModal />}
+      <nav className={`app__navbar ${props.bgColor && "on__scroll-active"}`}>
         <div className="app__navbar-logo">
           <Link to={"/home"}>
             <img src={images.logo} alt="logo" className="app__navbar-logo" />
@@ -52,7 +52,7 @@ const Navbar = (props) => {
             </NewUserBtn>
           </Link>
 
-          <NewUserBtn onClick={()=>setLogin(true)}>
+          <NewUserBtn onClick={() => setLogin(true)}>
             <MdOutlineLogin />
             &nbsp;Login
           </NewUserBtn>

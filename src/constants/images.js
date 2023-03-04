@@ -11,6 +11,14 @@ import Arrow from "../assets/Arrow.png";
 import EarthRotate from "../assets/EarthRotate.svg";
 import CheckMark from "../assets/CheckMark.gif";
 import Information from "../assets/Information.gif"
+import Home from "../assets/Home.png"
+import Contact from "../assets/Contact.png"
+import Mission from "../assets/Mission.png"
+import About from "../assets/About.png"
+import SignupMob from "../assets/SignupMob.png"
+import LoginMob from "../assets/LoginMob.png"
+import ShoppingCartMob from "../assets/ShoppingCartMob.png"
+import UserMob from "../assets/UserMob.png"
 const images = {
   logo,
   contribute,
@@ -25,6 +33,14 @@ const images = {
   EarthRotate,
   CheckMark,
   Information,
+  About,
+  Home,
+  Contact,
+  Mission,
+  SignupMob,
+  LoginMob,
+  UserMob,
+  ShoppingCartMob,
 };
 
 export default images;
