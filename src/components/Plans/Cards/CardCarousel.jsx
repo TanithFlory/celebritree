@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./CardCarousel.scss";
-const CardCarousel = ({children}) => {
+const CardCarousel = ({ children }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -28,9 +28,8 @@ const CardCarousel = ({children}) => {
       itemClass="image-item"
       responsive={responsive}
       infinite={true}
-      showDots={true}
     >
-    {children}
+      {children}
     </Carousel>
   );
 };

@@ -1,6 +1,6 @@
 import "./LoginModal.scss";
 import CustomButton from "../UI/Button/CustomButton";
-import MotionWrapper from "../UI/Wrapper/MotionWrapper";
+import {MotionWrapper} from "../UI/Wrapper/MotionWrappers";
 import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
 import images from "../../constants/images";
 const LoginModal = () => {

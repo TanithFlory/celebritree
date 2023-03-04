@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../Navbar/Navbar";
 import CustomButton from "../UI/Button/CustomButton";
 import Footer from "../Footer/Footer";
-import MotionWrapper from "../UI/Wrapper/MotionWrapper";
+import {MotionWrapper} from "../UI/Wrapper/MotionWrappers";
 import images from "../../constants/images";
 import axios from "axios";
 import { Link } from "react-router-dom";

@@ -9,7 +9,8 @@ import Twitter from "../assets/Twitter.svg";
 import Instagram from "../assets/Instagram.svg";
 import Arrow from "../assets/Arrow.png";
 import EarthRotate from "../assets/EarthRotate.svg";
-
+import CheckMark from "../assets/CheckMark.gif";
+import Information from "../assets/Information.gif"
 const images = {
   logo,
   contribute,
@@ -22,6 +23,8 @@ const images = {
   Instagram,
   Arrow,
   EarthRotate,
+  CheckMark,
+  Information,
 };
 
 export default images;

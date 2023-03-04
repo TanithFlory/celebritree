@@ -1,7 +1,7 @@
 import React from "react";
 import "./Footer.scss";
 import images from "../../constants/images";
-import CustomButton from "../UI/Button/CustomButton";
+import NewsLetter from "./NewsLetter";
 const Footer = () => {
   return (
     <footer className="footer">
@@ -33,13 +33,7 @@ const Footer = () => {
             <a href="">Anti Smog Trees</a>
           </div>
           <div id="newsletter">
-            <input type="text" placeholder="Enter your email" required></input>
-            <CustomButton
-              backgroundColor="var(--white-color)"
-              textColor="var(--black-color)"
-            >
-              Subscribe
-            </CustomButton>
+            <NewsLetter />
           </div>
         </div>
         <div>
