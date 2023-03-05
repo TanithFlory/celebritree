@@ -1,6 +1,6 @@
 import React from "react";
-import CustomButton from "../UI/Button/CustomButton";
-import {MotionWrapper} from "../UI/Wrapper/MotionWrappers";
+import { PrimaryButton } from "../UI/Button/StyledButtons";
+import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
 import AirQualityIndex from "../AirQualityIndex/AirQualityIndex";
 import images from "../../constants/images";
 import "./Header.scss";
@@ -25,18 +25,18 @@ const Header = () => {
                 pressing global issues: starvation and climate change."
               </p>
               <div>
-                <CustomButton
+                <PrimaryButton
                   textColor="var(--white-color)"
                   backgroundColor="var(--green-color)"
                 >
                   About
-                </CustomButton>
-                <CustomButton
+                </PrimaryButton>
+                <PrimaryButton
                   textColor="var(--white-color)"
                   backgroundColor="var(--green-color)"
                 >
                   Join Us
-                </CustomButton>
+                </PrimaryButton>
               </div>
               <AirQualityIndex />
             </div>

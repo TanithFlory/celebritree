@@ -1,5 +1,5 @@
 import "./LoginModal.scss";
-import CustomButton from "../UI/Button/CustomButton";
+import {PrimaryButton} from "../UI/Button/StyledButtons";
 import {MotionWrapper} from "../UI/Wrapper/MotionWrappers";
 import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
 import images from "../../constants/images";
@@ -18,12 +18,12 @@ const LoginModal = () => {
             <RiLockPasswordFill /> <input type="password"></input>
           </div>
           <a href="/signup">Forgot Password?</a>
-          <CustomButton
+          <PrimaryButton
             backgroundColor="var(--green-color)"
             textColor="var(--black-color)"
           >
             Login
-          </CustomButton>
+          </PrimaryButton>
           <div className="border__or">
             <h1>OR</h1>
           </div>

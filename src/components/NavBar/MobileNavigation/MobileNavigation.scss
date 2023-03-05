@@ -4,7 +4,7 @@
   right: 0;
   bottom: 0;
   width: 300px;
-  z-index: 999;
+  z-index: 9999;
   .background {
     position: absolute;
     top: 0;
@@ -61,7 +61,7 @@
   .app__navbar-phone-icon{
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 5px;
     flex: 40px 0;
     margin-right: 20px;
     img{
@@ -75,7 +75,7 @@
   .app__navbar-phone-text {
     border-radius: 5px;
     width: 200px;
-    height: 20px;
+    height: 30px;
     flex: 1;
     color: var(--black-color);
     font-weight: 700;

@@ -48,8 +48,9 @@ const api = {
   //for aqi
   getLocation,
   getAqi,
-  subscribe,
+
   //for newsletter
+  subscribe,
 };
 
 export default api;

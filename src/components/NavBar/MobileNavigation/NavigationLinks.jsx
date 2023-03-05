@@ -37,7 +37,7 @@ const NavigationLinks = () => (
           variants={variants}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          key={`link-${data}`}
+          key={`link-${data.title}`}
         >
           <div className="app__navbar-phone-icon" style={style}>
             <img src={data.icon} alt={data.title} />

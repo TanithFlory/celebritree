@@ -1,9 +1,9 @@
 import React from "react";
 import cardDetails from "./cardDetails";
-import CustomButton from "../../UI/Button/CustomButton";
-import CardWrapper from "../../UI/Wrapper/CardWraps/CardWrapper";
-import CardImg from "../../UI/Wrapper/CardWraps/CardImg";
-import CardDetails from "../../UI/Wrapper/CardWraps/CardDetails";
+import { PrimaryButton } from "../../../components/UI/Button/StyledButtons";
+import CardWrapper from "./CardWraps/CardWrapper";
+import CardImg from "./CardWraps/CardImg";
+import CardDetails from "./CardWraps/CardDetails";
 import CardCarousel from "./CardCarousel";
 
 const Cards = () => {
@@ -20,18 +20,18 @@ const Cards = () => {
                 <h1>{data.title}</h1>
                 <p>{data.desc}</p>
                 <div>
-                  <CustomButton
+                  <PrimaryButton
                     backgroundColor="var(--green-color)"
                     textColor="var(--black-color)"
                   >
                     Read More
-                  </CustomButton>
-                  <CustomButton
+                  </PrimaryButton>
+                  <PrimaryButton
                     backgroundColor="var(--black-color)"
                     textColor="var(--white-color)"
                   >
                     Contribute
-                  </CustomButton>
+                  </PrimaryButton>
                 </div>
               </CardDetails>
             </CardWrapper>

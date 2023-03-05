@@ -14,8 +14,9 @@ const NewsLetterDesign = styled.div`
     background-color: var(--black-color);
     width: clamp(150px, 100%, 250px);
     margin: 1rem 1rem 0;
-    border:1px solid var(--white-color);
-
+    border:3px solid var(--green-color);
+    border-radius:12px;
+    overflow:hidden;
     & > div {
       background-color: var(--black-color);
     }
@@ -89,7 +90,7 @@ const NewsLetter = () => {
         setTimeout(() => {
           setStatusCode(null);
         }, 5000 + (start - end));
-      });
+      }).catch((err)=>console.log(err));
     } else {
       setStatusCode(true);
     }

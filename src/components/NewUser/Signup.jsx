@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
-import CustomButton from "../UI/Button/CustomButton";
+import { PrimaryButton } from "../UI/Button/StyledButtons";
 import Footer from "../Footer/Footer";
-import {MotionWrapper} from "../UI/Wrapper/MotionWrappers";
+import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
 import images from "../../constants/images";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -22,9 +22,11 @@ const Signup = () => {
       method: "POST",
       url: "http://localhost:3001/api/signup",
       data: formData,
-    }).then(() => {
-      alert("done");
-    });
+    })
+      .then(() => {
+        alert("done");
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <>
@@ -112,13 +114,13 @@ const Signup = () => {
               </div>
             </div>
             <Link to="/home">Need help?</Link>
-            <CustomButton
+            <PrimaryButton
               onClick={() => handleSubmit}
               backgroundColor="var(--black-color)"
               textColor="var(--white-color)"
             >
               Register
-            </CustomButton>
+            </PrimaryButton>
             <div className="signup__oldUser">
               Already an user? <a href="/home">Sign in.</a>
             </div>
@@ -128,7 +130,7 @@ const Signup = () => {
           </div>
         </div>
       </MotionWrapper>
-      <Footer/>
+      <Footer />
     </>
   );
 };

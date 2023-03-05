@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import images from "../../constants/images";
 import MobileNavigation from "./MobileNavigation/MobileNavigation";
 import LoginModal from "../LoginModal/LoginModal";
-import NewUserBtn from "../UI/Button/NewUserBtn";
+import {NewUserButton} from "../UI/Button/StyledButtons";
 import {
   MdAccountCircle,
   MdShoppingCart,
@@ -46,16 +46,16 @@ const Navbar = (props) => {
           <MdAccountCircle />
           <MdShoppingCart />
           <Link to="/signup">
-            <NewUserBtn>
+            <NewUserButton>
               <AiOutlineUserAdd />
               Sign Up
-            </NewUserBtn>
+            </NewUserButton>
           </Link>
 
-          <NewUserBtn onClick={() => setLogin(true)}>
+          <NewUserButton onClick={() => setLogin(true)}>
             <MdOutlineLogin />
             &nbsp;Login
-          </NewUserBtn>
+          </NewUserButton>
         </div>
       </nav>
       <MobileNavigation />

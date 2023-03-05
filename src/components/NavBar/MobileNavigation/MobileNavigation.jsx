@@ -11,16 +11,14 @@ const MobileNavigation = () => {
       transition: {
         type: "spring",
         stiffness: 20,
-        restDelta: 2,
       },
     }),
     closed: {
       clipPath: "circle(25px at 260px 40px)",
       transition: {
-        delay: 0.5,
         type: "spring",
         stiffness: 400,
-        damping: 40,
+        damping: 60,
       },
     },
   };
@@ -30,8 +28,8 @@ const MobileNavigation = () => {
   return (
     <motion.nav
       className="app__navbar-mobile"
-      initial={false}
       animate={isOpen ? "open" : "closed"}
+      initial={false}
     >
       <motion.div className="background" variants={sidebar} />
       <NavigationLinks />

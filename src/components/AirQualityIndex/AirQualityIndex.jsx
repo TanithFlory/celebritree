@@ -13,22 +13,27 @@ const AirQualityIndex = () => {
     city: "",
   });
   useEffect(() => {
-    fetchLocation().then((res) => {
-      setUserLocation({
-        location: res[0],
-        flag: res[1].toString().toLowerCase(),
-        city: res[2],
-      });
-    });
+    fetchLocation()
+      .then((res) => {
+        setUserLocation({
+          location: res[0],
+          flag: res[1].toString().toLowerCase(),
+          city: res[2],
+        });
+      })
+      .catch((err) => console.log(err));
 
     (async () => {
       const city = await fetchLocation().then((res) => res[2]);
-      api.getAqi(city).then((res) => {
-        setUserLocation((prevState) => ({
-          ...prevState,
-          aqi: res,
-        }));
-      });
+      api
+        .getAqi(city)
+        .then((res) => {
+          setUserLocation((prevState) => ({
+            ...prevState,
+            aqi: res,
+          }));
+        })
+        .catch((err) => console.log(err));
     })();
   }, []);
 
