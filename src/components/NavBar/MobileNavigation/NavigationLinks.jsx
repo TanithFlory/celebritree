@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import images from "../../../constants/images";
 const colors = ["#53C24D", "#534DC2", "#022B3A", "#E39735", "#4400FF","#44009B","#7E3C9B","#009735"];
@@ -19,20 +19,21 @@ const variants = {
   },
 };
 
-const NavigationLinks = () => (
+const NavigationLinks = (props) => (
   <motion.ul>
     {[
-      { title: "Home", icon: images.Home },
-      { title: "About", icon: images.About },
-      { title: "Mission", icon: images.Mission },
-      { title: "Contact", icon: images.Contact },
-      { title: "Account", icon: images.UserMob },
-      { title: "Login", icon: images.LoginMob },
-      { title: "Signup", icon: images.SignupMob },
-      { title: "Cart", icon: images.ShoppingCartMob },
+      { title: "home", icon: images.Home },
+      { title: "about", icon: images.About },
+      { title: "mission", icon: images.Mission },
+      { title: "contact", icon: images.Contact },
+      { title: "account", icon: images.UserMob },
+      { title: "login", icon: images.LoginMob },
+      { title: "signup", icon: images.SignupMob },
+      { title: "cart", icon: images.ShoppingCartMob },
     ].map((data, index) => {
       const style = { border: `2px solid ${colors[index]}` };
       return (
+        <Link to={`/${data.title}`} onClick={()=>props.onClick()}>
         <motion.li
           variants={variants}
           whileHover={{ scale: 1.1 }}
@@ -46,6 +47,7 @@ const NavigationLinks = () => (
             {data.title}
           </div>
         </motion.li>
+        </Link>
       );
     })}
   </motion.ul>

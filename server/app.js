@@ -1,52 +1,35 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors"); 
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import limiter from "./middleware/rateLimiter.js";
 
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
+import userController from "./controllers/authController.js";
 
-const mongoose = require("mongoose");
+import resendOtp from "./helpers/resendOtp.js";
 
-const app = express();
 const port = 3001;
+const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const mongoConn = async () => {
-  const conn = await mongoose
-    .connect("mongodb://127.0.0.1:27017/celebritree", {
-      useNewUrlParser: true,
-    })
-    .then(() => console.log("DB connected"))
-    .catch((err) => console.log(err));
-};
-
-const usersSchema = new mongoose.Schema({
-  fName: String,
-  sName: String,
-  email: String,
-  password: String,
+app.post("/api/signup", limiter, (req, res) => {
+  userController.signup(req, res);
 });
 
-const User = mongoose.model("User", usersSchema);
-
-app.post("/api/signup", (req, res) => {
-  mongoConn();
-  bcrypt.hash(req.body.password, saltRounds).then(function (hash) {
-    const user = new User({
-      fName: req.body.fName,
-      sName: req.body.sName,
-      email: req.body.email,
-      password: hash,
-    });
-    user.save();
-  });
+app.post("/api/login", (req, res) => {
+  userController.login(req, res);
 });
 
+app.post("/api/verify-otp", (req, res) => {
+  userController.verifyOtp(req, res);
+});
 
+app.post("/api/resend-otp", limiter, (req, res) => {
+  resendOtp(req.body.email).then(()=>res.json({message:"OTP sent! check your mailbox! "}));
+});
 
 app.listen(port, () => {
-  console.log("listening to 3001");
+  console.log(`listening to ${port}`);
 });

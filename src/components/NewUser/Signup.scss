@@ -17,6 +17,7 @@ $headingFontSize: 1.5rem;
       display: none;
     }
     .signup__form {
+      grid-template-columns: 1fr;
       width: auto;
       form {
         width: auto;
@@ -24,20 +25,16 @@ $headingFontSize: 1.5rem;
     }
   }
   @media screen and (max-width: 349px) {
-    $formFontSize: 1rem;
-    $validateFontSize: 0.6rem;
-    $headingFontSize: 1rem;
-
     .signup__img {
       display: none;
     }
     .signup__form {
-      width: 250px;
+      grid-template-columns: 1fr;
       form {
         width: auto;
-        max-width: 250px;
-
-        input,input:focus{
+        margin: 1rem;
+        input,
+        input:focus {
           width: 230px;
         }
       }
@@ -46,11 +43,21 @@ $headingFontSize: 1.5rem;
 }
 
 .signup__form {
-  display: flex;
+  display: grid;
+  grid-template-columns: 40% 1fr;
   background-color: white;
   border-radius: 12px;
   height: auto;
-  width: 900px;
+  width: 1000px;
+  min-height: 570px;
+  transform: scale(0.9);
+  h5 {
+    margin: 5px 0 0 0;
+    color: red;
+    text-align: center;
+    font-size: $validateFontSize;
+    max-width: 323px;
+  }
   svg {
     height: 50px;
     width: 50px;
@@ -59,9 +66,11 @@ $headingFontSize: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 1rem;
+    margin: 3rem 1rem;
     gap: 0.5rem;
-
+    label {
+      text-align: center;
+    }
     input,
     input:focus {
       border: none;
@@ -81,7 +90,6 @@ $headingFontSize: 1.5rem;
       }
     }
   }
-
 }
 
 .sign__form-userInfo {
@@ -90,14 +98,6 @@ $headingFontSize: 1.5rem;
   align-items: center;
   gap: 1.5rem;
   padding-inline: 1.5rem;
-
-  h5 {
-    margin: 5px 0 0 0;
-    color: red;
-    text-align: start;
-    font-size: $validateFontSize;
-    max-width: 323px;
-  }
 }
 .signup__oldUser {
   height: 30px;
@@ -111,5 +111,14 @@ $headingFontSize: 1.5rem;
   img {
     height: 100%;
     width: 100%;
+  }
+}
+
+.otpVerification {
+  gap: 1rem!important;
+
+  input {
+    width: auto!important;
+    text-align: center;
   }
 }

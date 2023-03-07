@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
 export const PrimaryButton = styled.button`
-  background-color: ${(props) => props.backgroundColor};
+  background-color: var(--${(props) => props.backgroundColor}-color);
   width: 220px;
   height: 50px;
-  border-radius: 7px;
   font-size: 1rem;
   font-weight: bold;
-  color: ${(props) => props.textColor};
+  color: var(--${(props) => props.textColor}-color);
   cursor: pointer;
+  border-radius: 7px;
+  border:2px solid var(--${(props) => props.textColor}-color);
   transition: 0.5s ease-in-out;
   transition: transform 0.3s;
   &:hover {
-    border: 2px solid var(--white-color);
+    border: 2px solid var(--${(props) => props.textColor}-color);
     transform: scale(1.05);
   }
 `;

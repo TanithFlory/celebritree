@@ -6,10 +6,10 @@ import images from "../../constants/images";
 import "./Header.scss";
 const Header = () => {
   const scrollHandler = () => {
-    const cardWrapper = document.getElementById("card-wrapper");
-    if (cardWrapper) {
-      cardWrapper.scrollIntoView({ behavior: "smooth" });
-    }
+    // const cardWrapper = document.getElementById("card-wrapper");
+    // if (cardWrapper) {
+    //   cardWrapper.scrollIntoView({ behavior: "smooth" });
+    // }
   };
 
   return (
@@ -26,14 +26,14 @@ const Header = () => {
               </p>
               <div>
                 <PrimaryButton
-                  textColor="var(--white-color)"
-                  backgroundColor="var(--green-color)"
+                  textColor="white"
+                  backgroundColor="green"
                 >
                   About
                 </PrimaryButton>
                 <PrimaryButton
-                  textColor="var(--white-color)"
-                  backgroundColor="var(--green-color)"
+                  textColor="white"
+                  backgroundColor="green"
                 >
                   Join Us
                 </PrimaryButton>

@@ -4,6 +4,7 @@ import fetchLocation from "./fetchLocation";
 import api from "../../ApiService/api";
 import { ImLocation2 } from "react-icons/im";
 import { FaBiohazard } from "react-icons/fa";
+import { useCallback } from "react";
 
 const AirQualityIndex = () => {
   const [userLocation, setUserLocation] = useState({
@@ -12,19 +13,20 @@ const AirQualityIndex = () => {
     aqi: "",
     city: "",
   });
-  useEffect(() => {
-    fetchLocation()
-      .then((res) => {
-        setUserLocation({
-          location: res[0],
-          flag: res[1].toString().toLowerCase(),
-          city: res[2],
-        });
-      })
-      .catch((err) => console.log(err));
+  const getLocation = useCallback(async () => {
+    try {
+      const res = await fetchLocation();
+      setUserLocation({
+        location: res[0],
+        flag: res[1].toString().toLowerCase(),
+        city: res[2],
+      });
+    } catch (err) {
+      console.log(err);
+    }
 
     (async () => {
-      const city = await fetchLocation().then((res) => res[2]);
+      const city = userLocation.city;
       api
         .getAqi(city)
         .then((res) => {
@@ -35,7 +37,10 @@ const AirQualityIndex = () => {
         })
         .catch((err) => console.log(err));
     })();
-  }, []);
+  },[]);
+  useEffect(() => {
+    getLocation();
+  },[]);
 
   return (
     <>
@@ -73,7 +78,9 @@ const AirQualityIndex = () => {
               }}
             />
             Air Quality Index :{" "}
-            {userLocation.aqi === "" ? " Cannot determine" : userLocation.aqi}
+            {userLocation.aqi === undefined
+              ? "Cannot determine"
+              : userLocation.aqi}
           </h3>
         </div>
       </div>

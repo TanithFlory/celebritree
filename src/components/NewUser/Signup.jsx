@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { PrimaryButton } from "../UI/Button/StyledButtons";
 import Footer from "../Footer/Footer";
+import OtpVerification from "./OtpVerification";
 import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
 import images from "../../constants/images";
 import axios from "axios";
@@ -11,6 +12,9 @@ import { RiAccountPinCircleLine } from "react-icons/ri";
 import "./Signup.scss";
 
 const Signup = () => {
+  const [onSuccess, setOnSuccess] = useState(false);
+  const [onFailureMessage, setOnFailureMessage] = useState("");
+  const [email, setEmail] = useState();
   const {
     register,
     handleSubmit,
@@ -18,113 +22,128 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (formData) => {
+    setEmail(formData.email);
     axios({
       method: "POST",
       url: "http://localhost:3001/api/signup",
       data: formData,
     })
       .then(() => {
-        alert("done");
+        setOnSuccess(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setOnFailureMessage(err.response.data.response);
+      });
   };
+
   return (
     <>
       <Navbar />
       <MotionWrapper className="signup">
         <div className="signup__form">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <RiAccountPinCircleLine />
-            <h1>Let's get started! </h1>
-            <div className="sign__form-userInfo">
-              <div>
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  {...register("fName", {
-                    required: true,
-                    maxLength: 12,
-                    minLength: 3,
-                    pattern: /(^[a-zA-Z]+$)/,
-                  })}
-                />
-                {errors.fName && (
-                  <h5>
-                    Enter a valid name, without white spaces, numbers or symbols
-                  </h5>
-                )}
+          {!onSuccess && (
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <RiAccountPinCircleLine />
+              <h1>Let's get started! </h1>
+              <div className="sign__form-userInfo">
+                <div>
+                  <input
+                    value="Tanith"
+                    type="text"
+                    placeholder="First Name"
+                    {...register("fName", {
+                      required: true,
+                      maxLength: 12,
+                      minLength: 3,
+                      pattern: /(^[a-zA-Z]+$)/,
+                    })}
+                  />
+                  {errors.fName && (
+                    <h5>
+                      Enter a valid name, without white spaces, numbers or
+                      symbols
+                    </h5>
+                  )}
+                </div>
+                <div>
+                  <input
+                    value="Flory"
+                    type="text"
+                    placeholder="Second Name"
+                    {...register("sName", {
+                      required: true,
+                      maxLength: 12,
+                      pattern: /(^[a-zA-Z]+$)/,
+                    })}
+                  />
+                  {errors.sName && (
+                    <h5>
+                      Enter a valid name, without white spaces, numbers or
+                      symbols.
+                    </h5>
+                  )}
+                </div>
+                <div>
+                  <input
+                    value="thegrumpywizard123@gmail.com"
+                    type="text"
+                    placeholder="Email"
+                    {...register("email", {
+                      required: true,
+                      maxLength: 30,
+                      pattern: /^[\w-._]+@([\w-]{3,}\.)+[\w-]{2,4}$/,
+                    })}
+                    onChange={() => setOnFailureMessage("")}
+                  />
+                  {errors.email && <h5>Please enter a valid E-mail.</h5>}
+                  <h5>{onFailureMessage}</h5>
+                </div>
+                <div>
+                  <input
+                    value="123123!Aa"
+                    type="password"
+                    placeholder="Password"
+                    minLength={6}
+                    {...register("password", {
+                      required: true,
+                      maxLength: 16,
+                      pattern:
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\w\W]{6,}$/,
+                    })}
+                  />
+                  {errors.password && (
+                    <h5>Password must contain one symbol and an uppercase.</h5>
+                  )}
+                </div>
+                <div>
+                  <input
+                    value="123123!Aa"
+                    type="password"
+                    placeholder="Confirm Password"
+                    {...register("confirmPassword", {
+                      required: true,
+                      maxLength: 16,
+                    })}
+                  />
+                  {watch("confirmPassword") !== watch("password") && (
+                    <h5>Password doesn't match</h5>
+                  )}
+                </div>
               </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Second Name"
-                  {...register("sName", {
-                    required: true,
-                    maxLength: 12,
-                    pattern: /(^[a-zA-Z]+$)/,
-                  })}
-                />
-                {errors.sName && (
-                  <h5>
-                    Enter a valid name, without white spaces, numbers or
-                    symbols.
-                  </h5>
-                )}
+              <Link to="/home">Need help?</Link>
+              <PrimaryButton
+                onClick={() => handleSubmit}
+                backgroundColor="black"
+                textColor="white"
+              >
+                Register
+              </PrimaryButton>
+              <div className="signup__oldUser">
+                Already an user? <a href="/home">Sign in.</a>
               </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Email"
-                  {...register("email", {
-                    required: true,
-                    maxLength: 30,
-                    pattern: /^[\w-._]+@([\w-]{3,}\.)+[\w-]{2,4}$/,
-                  })}
-                />
-                {errors.email && <h5>Please enter a valid E-mail.</h5>}
-              </div>
-              <div>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  minLength={6}
-                  {...register("password", {
-                    required: true,
-                    maxLength: 16,
-                    pattern:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\w\W]{6,}$/,
-                  })}
-                />
-                {errors.password && (
-                  <h5>Password must contain one symbol and an uppercase.</h5>
-                )}
-              </div>
-              <div>
-                <input
-                  type="password"
-                  placeholder="Confirm Password"
-                  {...register("confirmPassword", {
-                    required: true,
-                    maxLength: 16,
-                  })}
-                />
-                {watch("confirmPassword") !== watch("password") && (
-                  <h5>Password doesn't match</h5>
-                )}
-              </div>
-            </div>
-            <Link to="/home">Need help?</Link>
-            <PrimaryButton
-              onClick={() => handleSubmit}
-              backgroundColor="var(--black-color)"
-              textColor="var(--white-color)"
-            >
-              Register
-            </PrimaryButton>
-            <div className="signup__oldUser">
-              Already an user? <a href="/home">Sign in.</a>
-            </div>
-          </form>
+            </form>
+          )}
+          {onSuccess && <OtpVerification email={email} />}
           <div className="signup__img">
             <img src={images.signupImg} alt="welcome" />
           </div>
