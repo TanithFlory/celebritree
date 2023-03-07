@@ -21,14 +21,14 @@ const Cards = () => {
                 <p>{data.desc}</p>
                 <div>
                   <PrimaryButton
-                    backgroundColor="var(--green-color)"
-                    textColor="var(--black-color)"
+                    backgroundColor="green"
+                    textColor="black"
                   >
                     Read More
                   </PrimaryButton>
                   <PrimaryButton
-                    backgroundColor="var(--black-color)"
-                    textColor="var(--white-color)"
+                    backgroundColor="black"
+                    textColor="green"
                   >
                     Contribute
                   </PrimaryButton>

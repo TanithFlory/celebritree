@@ -1,27 +1,63 @@
+import { useState } from "react";
 import "./LoginModal.scss";
-import {PrimaryButton} from "../UI/Button/StyledButtons";
-import {MotionWrapper} from "../UI/Wrapper/MotionWrappers";
+import axios from "axios";
+import { PrimaryButton } from "../UI/Button/StyledButtons";
+import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
 import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
 import images from "../../constants/images";
 const LoginModal = () => {
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setLogin((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    axios({
+      method: "POST",
+      url: "http://localhost:3001/api/login",
+      data: login,
+    }).then((res) => {
+    });
+  };
+
   return (
     <MotionWrapper delay="0.1" className="login__modal-backdrop">
       <div className="login__modal">
-        <form>
+        <form onSubmit={submitHandler}>
           <h2>Sign In</h2>
           <label>Email ID</label>
           <div className="login__inputs">
-            <RiAccountCircleFill /> <input type="text"></input>
+            <RiAccountCircleFill />{" "}
+            <input
+              type="text"
+              onChange={changeHandler}
+              name="email"
+              value={login.email}
+            ></input>
           </div>
           <label>Password</label>
           <div className="login__inputs">
-            <RiLockPasswordFill /> <input type="password"></input>
+            <RiLockPasswordFill />{" "}
+            <input
+              type="password"
+              onChange={changeHandler}
+              name="password"
+              value={login.password}
+            ></input>
           </div>
           <a href="/signup">Forgot Password?</a>
-          <PrimaryButton
-            backgroundColor="var(--green-color)"
-            textColor="var(--black-color)"
-          >
+          <PrimaryButton backgroundColor="green" textColor="black">
             Login
           </PrimaryButton>
           <div className="border__or">

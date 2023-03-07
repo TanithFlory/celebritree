@@ -32,7 +32,7 @@ const MobileNavigation = () => {
       initial={false}
     >
       <motion.div className="background" variants={sidebar} />
-      <NavigationLinks />
+      <NavigationLinks onClick = {toggleOpen}/>
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.nav>
   );

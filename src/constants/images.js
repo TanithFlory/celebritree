@@ -19,6 +19,7 @@ import SignupMob from "../assets/SignupMob.png"
 import LoginMob from "../assets/LoginMob.png"
 import ShoppingCartMob from "../assets/ShoppingCartMob.png"
 import UserMob from "../assets/UserMob.png"
+import EmailVerify from "../assets/EmailVerify.png";
 const images = {
   logo,
   contribute,
@@ -41,6 +42,7 @@ const images = {
   LoginMob,
   UserMob,
   ShoppingCartMob,
+  EmailVerify,
 };
 
 export default images;

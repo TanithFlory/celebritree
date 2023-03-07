@@ -14,9 +14,9 @@ const NewsLetterDesign = styled.div`
     background-color: var(--black-color);
     width: clamp(150px, 100%, 250px);
     margin: 1rem 1rem 0;
-    border:3px solid var(--green-color);
-    border-radius:12px;
-    overflow:hidden;
+    border: 3px solid var(--green-color);
+    border-radius: 12px;
+    overflow: hidden;
     & > div {
       background-color: var(--black-color);
     }
@@ -35,7 +35,7 @@ const NewsLetterDesign = styled.div`
     height: 100%;
     width: 100%;
     color: var(--black-color);
-    box-sizing:border-box;
+    box-sizing: border-box;
     padding: 5px;
     &::placeholder {
       color: var(--black-color);
@@ -44,13 +44,13 @@ const NewsLetterDesign = styled.div`
   form,
   input,
   input:focus {
-    border:none;
+    border: none;
     background-color: var(--white-color);
   }
 
   button {
     width: 50px;
-    border:none;
+    border: none;
     background-color: var(--white-color);
     &:hover {
       background-color: var(--black-color);
@@ -82,15 +82,20 @@ const NewsLetter = () => {
     e.preventDefault();
     const data = emailID.current.value;
     emailID.current.value = "";
+
     if (data.match(/^[\w-._]+@([\w-]{3,}\.)+[\w-]{2,4}$/)) {
       const start = Date.now();
-      api.subscribe(data).then((res) => {
-        setStatusCode(res.request.status);
-        const end = Date.now();
-        setTimeout(() => {
-          setStatusCode(null);
-        }, 5000 + (start - end));
-      }).catch((err)=>console.log(err));
+      api
+        .subscribe(data)
+
+        .then((res) => {
+          setStatusCode(res.request.status);
+          const end = Date.now();
+          setTimeout(() => {
+            setStatusCode(null);
+          }, 5000 + (start - end));
+        })
+        .catch((err) => console.log(err));
     } else {
       setStatusCode(true);
     }
@@ -120,18 +125,18 @@ const NewsLetter = () => {
         {statusCode === 200 ? (
           <>
             <h3>Already a subscriber! </h3>
-            <img src={images.CheckMark} />
+            <img src={images.CheckMark} alt="Checkmark" />
           </>
         ) : statusCode === 201 ? (
           <>
             <h3>Subscribed </h3>
-            <img src={images.CheckMark} />
+            <img src={images.CheckMark} alt="Checkmark" />
           </>
         ) : (
           statusCode && (
             <>
               <p>Error, enter a valid E-mail ID. </p>
-              <img src={images.Information} />
+              <img src={images.Information} alt="Crossmark" />
             </>
           )
         )}
