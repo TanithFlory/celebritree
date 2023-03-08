@@ -7,7 +7,6 @@ export const MotionWrapper = (props) => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{
           duration: 0.8,
-          delay: props.delay === undefined ? 0.5 : props.delay,
           ease: [0, 0.71, 0.2, 1.01],
         }}
         onClick={props.onClick}

@@ -43,7 +43,7 @@ const Navbar = (props) => {
           })}
         </ul>
         <div className="app__navbar-user-options">
-          <MdAccountCircle />
+          <Link to="/account/settings">  <MdAccountCircle /></Link>
           <MdShoppingCart />
           <Link to="/signup">
             <NewUserButton>

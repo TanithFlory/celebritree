@@ -1,10 +1,19 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
+
 import Home from "./components/Home/Home";
+import Navbar from "./components/Navbar/Navbar";
 import LoginModal from "./components/LoginModal/LoginModal";
 import MobileNavigation from "./components/Navbar/MobileNavigation/MobileNavigation";
 import Signup from "./components/NewUser/Signup";
-import AccountsDashboard from "./components/AccountsDashboard/AccountsDashboard";
+
+import AccountSettingsWrapper from "./components/AccountsDashboard/AccountSettingsWrapper";
+import Navigation from "./components/AccountsDashboard/Navigation";
+import Settings from "./components/AccountsDashboard/AccountManagement/Settings";
+import Faq from "./components/AccountsDashboard/AccountManagement/Faq";
+import Contributions from "./components/AccountsDashboard/AccountManagement/Contributions";
+import Security from "./components/AccountsDashboard/AccountManagement/Security";
+import HelpCentre from "./components/AccountsDashboard/AccountManagement/HelpCentre";
 function App() {
   return (
     <>
@@ -21,7 +30,24 @@ function App() {
             </>
           }
         />
-        <Route path="/account" element={<AccountsDashboard/>}/>
+        <Route
+          path="/account"
+          element={
+            <>
+            <Navbar/>
+            <AccountSettingsWrapper>
+              <Navigation/>
+              <Outlet/>
+            </AccountSettingsWrapper>
+            </>
+          }
+        >
+          <Route path="/account/settings" element={<Settings/>} />
+          <Route path="/account/security" element={<Security />} />
+          <Route path="/account/contributions" element={<Contributions/>} />
+          <Route path="/account/help-centre" element={<HelpCentre/>} />
+          <Route path="/account/faq" element={<Faq/>} />
+        </Route>
       </Routes>
     </>
   );
