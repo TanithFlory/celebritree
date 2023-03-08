@@ -16,31 +16,22 @@ const AirQualityIndex = () => {
   const getLocation = useCallback(async () => {
     try {
       const res = await fetchLocation();
+      const city = res[2];
+      const aqi = await api.getAqi(city);
       setUserLocation({
         location: res[0],
         flag: res[1].toString().toLowerCase(),
-        city: res[2],
+        city,
+        aqi
       });
     } catch (err) {
       console.log(err);
     }
+  }, []);
 
-    (async () => {
-      const city = userLocation.city;
-      api
-        .getAqi(city)
-        .then((res) => {
-          setUserLocation((prevState) => ({
-            ...prevState,
-            aqi: res,
-          }));
-        })
-        .catch((err) => console.log(err));
-    })();
-  },[]);
   useEffect(() => {
     getLocation();
-  },[]);
+  }, []);
 
   return (
     <>
@@ -78,7 +69,7 @@ const AirQualityIndex = () => {
               }}
             />
             Air Quality Index :{" "}
-            {userLocation.aqi === undefined
+            {userLocation.aqi === ""
               ? "Cannot determine"
               : userLocation.aqi}
           </h3>

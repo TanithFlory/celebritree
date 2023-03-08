@@ -7,9 +7,9 @@ const getLocation = (lat, lng) => {
     resolve(
       axios.get(url).then((response) => {
         return [
-          response.data.results[5].formatted_address,
-          response.data.results[0].address_components[5].short_name,
-          response.data.results[0].address_components[1].long_name,
+          response.data.results[5]?.formatted_address,
+          response.data.results[0]?.address_components[5].short_name,
+          response.data.results[0]?.address_components[1].long_name,
         ];
       })
     );
@@ -26,7 +26,7 @@ const getAqi = (city) => {
         if (response.data.data.aqi) {
           resolve(response.data.data.aqi);
         } else {
-          reject("Unable to retrieve AQI data");
+          reject("Unable to retrieve AQI data (Location disabled)");
         }
       })
       .catch((error) => {

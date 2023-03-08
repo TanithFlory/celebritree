@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import LoginModal from "./components/LoginModal/LoginModal";
 import MobileNavigation from "./components/Navbar/MobileNavigation/MobileNavigation";
 import Signup from "./components/NewUser/Signup";
+import AccountsDashboard from "./components/AccountsDashboard/AccountsDashboard";
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
             </>
           }
         />
+        <Route path="/account" element={<AccountsDashboard/>}/>
       </Routes>
     </>
   );

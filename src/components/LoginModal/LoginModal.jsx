@@ -5,7 +5,7 @@ import { PrimaryButton } from "../UI/Button/StyledButtons";
 import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
 import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
 import images from "../../constants/images";
-const LoginModal = () => {
+const LoginModal = (props) => {
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -27,12 +27,17 @@ const LoginModal = () => {
       method: "POST",
       url: "http://localhost:3001/api/login",
       data: login,
-    }).then((res) => {
-    });
+    }).then((res) => {});
   };
 
   return (
-    <MotionWrapper delay="0.1" className="login__modal-backdrop">
+    <MotionWrapper
+      delay="0.1"
+      className="login__modal-backdrop"
+      onClick={(e) =>
+        e.target.className === "login__modal-backdrop" && props.toggle()
+      }
+    >
       <div className="login__modal">
         <form onSubmit={submitHandler}>
           <h2>Sign In</h2>
