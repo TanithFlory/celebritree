@@ -14,14 +14,14 @@ import { motion } from "framer-motion";
 import "./Navbar.scss";
 
 const Navbar = (props) => {
-  const [login, setLogin] = useState(false);
+  const [isOpen,setIsOpen] = useState(false);
   const body = document.querySelector("body");
-  login === true
+  isOpen === true
     ? body.classList.add("overflow")
     : body.classList.remove("overflow");
   return (
     <>
-      {login && <LoginModal />}
+      {isOpen && <LoginModal toggle={setIsOpen}/>}
       <nav className={`app__navbar ${props.bgColor && "on__scroll-active"}`}>
         <div className="app__navbar-logo">
           <Link to={"/home"}>
@@ -52,7 +52,7 @@ const Navbar = (props) => {
             </NewUserButton>
           </Link>
 
-          <NewUserButton onClick={() => setLogin(true)}>
+          <NewUserButton onClick={()=>setIsOpen(true)}>
             <MdOutlineLogin />
             &nbsp;Login
           </NewUserButton>

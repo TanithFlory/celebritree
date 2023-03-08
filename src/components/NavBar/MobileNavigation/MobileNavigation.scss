@@ -28,13 +28,18 @@
     height: 50px;
     border-radius: 50%;
     background: var(--green-color);
-    svg{
+    svg {
       top: 4px;
       position: relative;
       left: 1px;
     }
   }
-
+  a {
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+  }
   ul,
   li {
     margin: 0;
@@ -44,30 +49,24 @@
   ul {
     padding: 25px;
     position: absolute;
-    top: 50px;
+    top: 100px;
     left: 10px;
     width: 230px;
-    a{
-      text-decoration: none;
-    }
     li {
       list-style: none;
       margin-bottom: 20px;
       display: flex;
       align-items: center;
-      cursor: pointer;
     }
   }
 
-
-
-  .app__navbar-phone-icon{
+  .app__navbar-phone-icon {
     width: 40px;
     height: 40px;
     border-radius: 5px;
     flex: 40px 0;
     margin-right: 20px;
-    img{
+    img {
       position: relative;
       left: 3px;
       height: 35px;
@@ -87,7 +86,23 @@
     text-align: center;
   }
 
-  @media screen and (min-width:913px) {
-    display:none;
+  @media screen and (min-width: 913px) {
+    display: none;
+  }
+}
+
+.app__navbar-account_settings {
+  position: static !important;
+  padding: 0 !important;
+  li {
+    flex-direction: column;
+  }
+  a {
+    transform: scale(0.9);
+    & > div {
+      display: flex;
+      width: 100%;
+      margin: 0.5rem 0;
+    }
   }
 }
