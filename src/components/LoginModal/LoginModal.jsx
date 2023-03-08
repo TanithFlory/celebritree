@@ -32,7 +32,6 @@ const LoginModal = (props) => {
 
   return (
     <MotionWrapper
-      delay="0.1"
       className="login__modal-backdrop"
       onClick={(e) =>
         e.target.className === "login__modal-backdrop" && props.toggle()

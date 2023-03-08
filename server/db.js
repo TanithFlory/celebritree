@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const mongoConnection = async () => {
   const conn = await mongoose
-    .connect("mongodb://127.0.0.1:27017/celebritree", {
+    .connect(process.env.REACT_APP_MONGODB_URI, {
       useNewUrlParser: true,
     })
     .then(() => console.log("DB connected"))
