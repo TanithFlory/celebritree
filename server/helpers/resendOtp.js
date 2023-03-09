@@ -1,4 +1,4 @@
-import { UserOtpVerify } from "../models/user.js";
+import { User } from "../models/user.js";
 import { encryptData } from "../services/encryption.js";
 import emailOtp from "../services/emailService.js";
 import mongoConnection from "../db.js";
@@ -8,11 +8,11 @@ const resendOtp = async (email) => {
   emailOtp(otp, email);
   const hashedOtp = await encryptData(otp);
   await mongoConnection();
-  await UserOtpVerify.updateOne(
+  await User.updateOne(
     { email },
     {
       $set: {
-        expiry: Date.now() + 600000,
+        otpExpiry: Date.now() + 600000,
         otp: hashedOtp,
       },
     }

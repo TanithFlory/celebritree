@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import limiter from "./middleware/rateLimiter.js";
+import * as dotenv from "dotenv";
 
 import userController from "./controllers/authController.js";
 
@@ -10,6 +11,7 @@ import resendOtp from "./helpers/resendOtp.js";
 const port = 3001;
 const app = express();
 
+dotenv.config({ path: "../.env" });
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,7 +29,9 @@ app.post("/api/verify-otp", (req, res) => {
 });
 
 app.post("/api/resend-otp", limiter, (req, res) => {
-  resendOtp(req.body.email).then(()=>res.json({message:"OTP sent! check your mailbox! "}));
+  resendOtp(req.body.email).then(() =>
+    res.json({ message: "OTP sent! check your mailbox! " })
+  );
 });
 
 app.listen(port, () => {
