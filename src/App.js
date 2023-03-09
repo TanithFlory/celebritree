@@ -9,11 +9,11 @@ import Signup from "./components/NewUser/Signup";
 
 import AccountSettingsWrapper from "./components/AccountsDashboard/AccountSettingsWrapper";
 import Navigation from "./components/AccountsDashboard/Navigation";
-import Settings from "./components/AccountsDashboard/AccountManagement/Settings";
-import Faq from "./components/AccountsDashboard/AccountManagement/Faq";
-import Contributions from "./components/AccountsDashboard/AccountManagement/Contributions";
+import Settings from "./components/AccountsDashboard/AccountManagement/Settings/Settings";
+import Faq from "./components/AccountsDashboard/Help/Faq";
+import Contributions from "./components/AccountsDashboard/Contributions/Contributions";
 import Security from "./components/AccountsDashboard/AccountManagement/Security";
-import HelpCentre from "./components/AccountsDashboard/AccountManagement/HelpCentre";
+import HelpCentre from "./components/AccountsDashboard/Help/HelpCentre";
 function App() {
   return (
     <>

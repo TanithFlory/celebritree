@@ -1,23 +1,92 @@
 import React from "react";
-
+import { useState } from "react";
+import styled from "styled-components";
+import { PrimaryButton } from "../../UI/Button/StyledButtons";
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    input,
+    input:focus {
+      background-color: #fafafa;
+      cursor: not-allowed;
+      padding: 16px;
+      width: 230px;
+      outline: none;
+      border: 1px solid var(--gray-color);
+      border-radius: 3px;
+    }
+    .input__enabled,
+    .input__enabled:focus {
+      background-color: var(--white-color);
+      cursor: pointer;
+    }
+  }
+  button {
+    width: 180px;
+    aspect-ratio: 1/1;
+  }
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem;
+    & > div {
+      margin: 1rem 0;
+      width: 262px;
+      & > span {
+        font-size: var(--fs-l);
+        padding-right: 1rem;
+      }
+      & > span:nth-child(2) {
+        font-size: var(--fs-xs);
+        color: var(--blue-color);
+        cursor: pointer;
+      }
+    }
+  }
+`;
 const Security = () => {
+  const toggler = () => {
+    setDisable((prevState) => !prevState);
+  };
+  const [disable, setDisable] = useState(true);
   return (
-    <div style={{ background: "gray" }}>
-      Where does it come from? Contrary to popular belief, Lorem Ipsum is not
-      simply random text. It has roots in a piece of classical Latin literature
-      from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
-      professor at Hampden-Sydney College in Virginia, looked up one of the more
-      obscure Latin words, consectetur, from a Lorem Ipsum passage, and going
-      through the cites of the word in classical literature, discovered the
-      undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of
-      "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
-      written in 45 BC. This book is a treatise on the theory of ethics, very
-      popular during the Renaissance. The first line of Lorem Ipsum, "Lorem
-      ipsum dolor sit amet..", comes from a line in section 1.10.32. The
-      standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
-      those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
-      Malorum" by Cicero are also reproduced
-    </div>
+    <MainWrapper>
+      <div>
+        <div>
+          <span>Change Password</span>{" "}
+          <span onClick={toggler}>{disable ? "Edit" : "Cancel"}</span>
+        </div>
+        <form>
+          <input
+            className={!disable ? "input__enabled" : undefined}
+            type="password"
+            placeholder="Current Password"
+            disabled={disable}
+          ></input>
+          <input
+            className={!disable ? "input__enabled" : undefined}
+            type="password"
+            placeholder="New Password"
+            disabled={disable}
+          ></input>
+          <input
+            className={!disable ? "input__enabled" : undefined}
+            type="password"
+            placeholder="Confirm Password"
+            disabled={disable}
+          ></input>
+          <PrimaryButton backgroundColor="blue" textColor="white">
+            Save
+          </PrimaryButton>
+        </form>
+      </div>
+    </MainWrapper>
   );
 };
 

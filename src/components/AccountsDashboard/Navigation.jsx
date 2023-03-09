@@ -7,8 +7,7 @@ const NavigationPanel = styled.div`
   grid-template-rows: 10% 1fr;
   gap: 1rem;
 
-  & > div:nth-child(2),
-  & > div:nth-child(1) {
+  & > div {
     background-color: var(--white-color);
     display: flex;
     align-items: center;
@@ -42,6 +41,8 @@ const NavigationPanel = styled.div`
         h4 {
           font-size: var(--fs-m);
           margin: 0;
+          flex: 1;
+          text-align: center;
         }
       }
     }
@@ -52,8 +53,8 @@ const Navigation = () => {
   const navLinks = [
     {
       title: "Account Management",
-      label1: "Account Settings",
-      label2: "Account Security",
+      label1: "Settings",
+      label2: "Security",
       link1: "settings",
       link2: "security",
     },
