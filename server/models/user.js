@@ -1,22 +1,35 @@
 import mongoose from "mongoose";
 
 const usersSchema = new mongoose.Schema({
-  fName: String,
-  sName: String,
-  email: String,
-  password: String,
-  verified: Boolean,
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  emailVerified: {
+    type: Boolean,
+    default: false,
+  },
+  otp: {
+    type: String,
+    default: null,
+  },
+  otpExpiry: {
+    type: Number,
+    default: null,
+  },
 });
 
 export const User = mongoose.model("User", usersSchema);
-
-const userOtpVerifySchema = new mongoose.Schema({
-  email: String,
-  otp: String,
-  expiry: Number,
-});
-
-export const UserOtpVerify = mongoose.model(
-  "userOtpVerify",
-  userOtpVerifySchema
-);

@@ -8,11 +8,9 @@ export const encryptData = async (data) => {
 export const decryptData = async (data, hash) => {
   return new Promise((resolve, reject) => {
     bcrypt.compare(data, hash, (err, result) => {
-      if(result)
-      {
-        resolve(true);
-      }
-      reject(new Error("Data doesn't match! "));
-    })
+      if (result) {
+        return resolve(true);
+      } else return resolve(false);
+    });
   });
 };

@@ -1,6 +1,3 @@
-import * as dotenv from "dotenv";
-dotenv.config();
-
 import nodemailer from "nodemailer";
 import { google } from "googleapis";
 
@@ -11,7 +8,6 @@ const createTransport = async () => {
   const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
   const clientID = process.env.REACT_APP_CLIENT_ID;
   const refreshToken = process.env.REACT_APP_REFRESH_TKN;
-
   const client = new OAuth2(
     clientID,
     clientSecret,
