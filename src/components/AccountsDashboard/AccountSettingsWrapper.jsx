@@ -9,11 +9,29 @@ const AccountSettingsWrapper = styled.div`
     height: 795px;
   }
   & > div:not(:first-child) {
-    background-color: #f1f3f6;
+    background-color: var(--white-color);
     border-radius: 6px;
     padding: 3rem;
     overflow-y: scroll;
     max-height: 698px;
+  }
+  @media screen and (max-width: 912px) {
+    grid-template-columns:1fr;
+    margin: 3rem 1rem;
+    & > div:first-child {
+      display:none;
+    }
+    &>div:nth-child(2){
+      align-items:center;
+      padding: 30px 5px;
+      form{
+        justify-content:center;
+        flex-wrap:wrap;
+        input{
+          width:auto;
+        }
+      }
+    }
   }
 `;
 

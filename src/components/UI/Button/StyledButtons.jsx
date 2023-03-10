@@ -18,8 +18,8 @@ export const PrimaryButton = styled.button`
   }
 `;
 
-export const NewUserButton = styled.button`
-  background-color: transparent;
+export const SecondaryButton = styled.button`
+  background-color: ${props=>props.backgroundColor||"transparent"};
   border: 2px solid green;
   color: var(--white-color);
   width: 100px;

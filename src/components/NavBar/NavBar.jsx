@@ -3,25 +3,24 @@ import { Link } from "react-router-dom";
 import images from "../../constants/images";
 import MobileNavigation from "./MobileNavigation/MobileNavigation";
 import LoginModal from "../LoginModal/LoginModal";
-import {NewUserButton} from "../UI/Button/StyledButtons";
+import { SecondaryButton } from "../UI/Button/StyledButtons";
 import {
   MdAccountCircle,
-  MdShoppingCart,
   MdOutlineLogin,
+  MdSettings,
+  MdLogout,
 } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useCycle } from "framer-motion";
 import "./Navbar.scss";
-
+import { FadeInWrapper } from "../UI/Wrapper/MotionWrappers";
 const Navbar = (props) => {
-  const [isOpen,setIsOpen] = useState(false);
-  const body = document.querySelector("body");
-  isOpen === true
-    ? body.classList.add("overflow")
-    : body.classList.remove("overflow");
+  const [loginModal, setLoginModal] = useState(false);
+  const [extraOptions, setExtraOptions] = useCycle(false, true);
+
   return (
     <>
-      {isOpen && <LoginModal toggle={setIsOpen}/>}
+      {loginModal && <LoginModal toggle={setLoginModal} />}
       <nav className={`app__navbar ${props.bgColor && "on__scroll-active"}`}>
         <div className="app__navbar-logo">
           <Link to={"/home"}>
@@ -43,19 +42,42 @@ const Navbar = (props) => {
           })}
         </ul>
         <div className="app__navbar-user-options">
-          <Link to="/account/settings">  <MdAccountCircle /></Link>
-          <MdShoppingCart />
+          <div
+            onMouseEnter={() => setExtraOptions()}
+            onMouseLeave={() => setExtraOptions()}
+          >
+            <SecondaryButton>
+              <MdAccountCircle />
+              Account
+            </SecondaryButton>
+            <AnimatePresence>
+              {extraOptions && (
+                <FadeInWrapper>
+                  <Link to="/account/settings">
+                    <SecondaryButton backgroundColor="var(--green-color)">
+                      <MdSettings />
+                      Settings
+                    </SecondaryButton>
+                  </Link>
+                  <SecondaryButton backgroundColor="var(--green-color)">
+                    <MdLogout />
+                    Sign Out
+                  </SecondaryButton>
+                </FadeInWrapper>
+              )}
+            </AnimatePresence>
+          </div>
           <Link to="/signup">
-            <NewUserButton>
+            <SecondaryButton>
               <AiOutlineUserAdd />
               Sign Up
-            </NewUserButton>
+            </SecondaryButton>
           </Link>
 
-          <NewUserButton onClick={()=>setIsOpen(true)}>
+          <SecondaryButton onClick={() => setLoginModal(true)}>
             <MdOutlineLogin />
-            &nbsp;Login
-          </NewUserButton>
+            Login
+          </SecondaryButton>
         </div>
       </nav>
       <MobileNavigation />

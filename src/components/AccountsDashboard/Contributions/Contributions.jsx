@@ -1,26 +1,31 @@
 import React from "react";
 import Data from "./ContributionDummy";
 import styled from "styled-components";
-
+import images from "../../../constants/images";
 const OrderCard = styled.div`
   border: 3px solid black;
   padding: 6px;
-  h1 {
+  h1,
+  h2 {
     text-align: center;
-    margin-top: 0;
+    margin: 0;
+    padding-inline:10px;
     span {
       color: var(--green-color);
     }
   }
-  img {
-    width: 150px;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-  }
-  h2 {
-    margin: 0;
-  }
+
   & > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:1rem;
+    img{
+      width:80px;
+      aspect-ratio:1/1;
+    }
+  }
+  & > div:not(:first-child) {
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
     padding: 15px;
@@ -38,6 +43,11 @@ const OrderCard = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      img {
+        width: 150px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+      }
     }
   }
   span {
@@ -48,9 +58,13 @@ const OrderCard = styled.div`
 const Contributions = () => {
   return (
     <OrderCard>
-      <h1>
-        Your <span>Contributions</span>
-      </h1>
+      <div>
+        <img src={images.Confetti} alt="Confetti" />
+        <h1>
+          Your <span>Contributions</span>
+        </h1>
+        <img src={images.ContributionTree} alt="Confetti" />
+      </div>
       {Data.map((data, index) => {
         return (
           <div key={`order-${index}`}>

@@ -13,6 +13,8 @@ import CheckMark from "../assets/CheckMark.gif";
 import Information from "../assets/Information.gif";
 import EmailVerify from "../assets/EmailVerify.png";
 import PageBreak from "../assets/FlowerBreak.png";
+import Confetti from "../assets/Confetti.png";
+import ContributionTree from "../assets/ContributionTree.gif";
 
 import HomeMob from "../assets/HomeMob.png";
 import ContactMob from "../assets/ContactMob.png";
@@ -26,6 +28,13 @@ import ContributionsMob from "../assets/ContributionsMob.png";
 import SettingsMob from "../assets/SettingsMob.png";
 import HelpCentreMob from "../assets/HelpCentreMob.png";
 import ResetPassMob from "../assets/PasswordResetMob.png";
+
+import Settings from "../assets/Settings.png";
+import Contributions from "../assets/Contribution.png";
+import FAQ from "../assets/FAQ.png";
+import Help from "../assets/Help.png";
+import Security from "../assets/Security.png";
+
 const images = {
   logo,
   contribute,
@@ -41,6 +50,13 @@ const images = {
   CheckMark,
   Information,
   PageBreak,
+  Confetti,
+  ContributionTree,
+  Settings,
+  Security,
+  Contributions,
+  FAQ,
+  Help,
   //navbarIcons (need attribution => icons8)
   AboutMob,
   HomeMob,

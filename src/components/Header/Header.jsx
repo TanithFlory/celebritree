@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <>
-      <div>
+      <header>
         <MotionWrapper className="header">
           <div className="header__content">
             <div className="header__content-main">
@@ -51,7 +51,7 @@ const Header = () => {
             <img src={images.TreeReveal} alt="" />
           </div>
         </MotionWrapper>
-      </div>
+      </header>
     </>
   );
 };

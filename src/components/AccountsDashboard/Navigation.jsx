@@ -34,15 +34,17 @@ const NavigationPanel = styled.div`
         margin-bottom: 1rem;
         border: 1px solid var(--green-color);
         border-radius: 6px;
+        padding:3px 12px;
         img {
           width: 45px;
           aspect-ratio: 1/1;
         }
         h4 {
-          font-size: var(--fs-m);
+          font-size: var(--fs-s);
           margin: 0;
           flex: 1;
           text-align: center;
+          color:var(--black-color);
         }
       }
     }
@@ -55,20 +57,20 @@ const Navigation = () => {
       title: "Account Management",
       label1: "Settings",
       label2: "Security",
-      link1: "settings",
-      link2: "security",
+      icon1: images.Settings,
+      icon2: images.Security
     },
     {
       title: "Contributions",
       label1: "My Contributions",
-      link1: "contributions",
+      icon1: images.Contributions
     },
     {
       title: "Help",
-      label1: "Help Centre",
-      link1: "help-centre",
+      label1: "Help-Centre",
       label2: "FAQ",
-      link2: "FAQ",
+      icon1: images.Help,
+      icon2: images.FAQ
     },
   ];
   return (
@@ -84,16 +86,22 @@ const Navigation = () => {
                 <div key={`nav-${index}`}>
                   <h3>{data.title}</h3>
                   <li>
-                    <Link to={`/account/${data.link1}`}>
+                    <Link
+                      to={`/account/${
+                        index === 1
+                          ? data.title.toLowerCase()
+                          : data.label1.toLowerCase()
+                      }`}
+                    >
                       <div>
-                        <img src={images.SettingsMob} />
-                        <h4>{data.label1}</h4>
+                        <img src={data.icon1} alt="icon"/>
+                        <h4>{(data.label1).replace(/[-]+/g, " ")}</h4>
                       </div>
                     </Link>
                     {data.label2 && (
-                      <Link to={`/account/${data.link2}`}>
+                      <Link to={`/account/${data.label2.toLowerCase()}`}>
                         <div>
-                          <img src={images.SettingsMob} />
+                          <img src={data.icon2} alt="icon"/>
                           <h4>{data.label2}</h4>
                         </div>
                       </Link>

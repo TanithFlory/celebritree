@@ -14,9 +14,9 @@ const Home = () => {
       <Navbar bgColor={visible} />
       <div className="Home">
       <Header/>
-      <div ref={ref}>
+      <main ref={ref}>
         <Body />
-      </div>
+      </main>
       <Footer/>
       </div>
     </>

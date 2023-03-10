@@ -37,7 +37,10 @@ const MainWrapper = styled.div`
     margin: 3rem;
     & > div {
       margin: 1rem 0;
-      width: 262px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       & > span {
         font-size: var(--fs-l);
         padding-right: 1rem;
