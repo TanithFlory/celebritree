@@ -68,9 +68,9 @@ const Navigation = () => {
     {
       title: "Help",
       label1: "Help-Centre",
-      label2: "FAQ",
+      // label2: "FAQ",
       icon1: images.Help,
-      icon2: images.FAQ
+      // icon2: images.FAQ
     },
   ];
   return (

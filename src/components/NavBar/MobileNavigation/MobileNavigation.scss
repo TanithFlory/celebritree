@@ -3,7 +3,6 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: 300px;
   z-index: 9999;
   .background {
     position: absolute;
@@ -60,35 +59,41 @@
     }
   }
 
-  .app__navbar-phone-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    flex: 40px 0;
-    margin-right: 20px;
-    img {
-      position: relative;
-      left: 3px;
-      height: 35px;
-      width: 35px;
-    }
-  }
-
-  .app__navbar-phone-text {
-    border-radius: 5px;
-    width: 200px;
-    height: 30px;
-    flex: 1;
-    color: var(--black-color);
-    font-weight: 700;
-    padding: 5px;
-    text-transform: uppercase;
-    text-align: center;
-  }
-
   @media screen and (min-width: 913px) {
     display: none;
   }
+}
+.expanded {
+  /* added expanded class to the navbar, 
+  since navbar has 9999 z-index and 300px, 
+  it overlaps other components. Width updates upon click.*/
+  width: 300px;
+}
+
+.app__navbar-phone-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  flex: 40px 0;
+  margin-right: 20px;
+  img {
+    position: relative;
+    left: 3px;
+    height: 35px;
+    width: 35px;
+  }
+}
+
+.app__navbar-phone-text {
+  border-radius: 5px;
+  width: 200px;
+  height: 30px;
+  flex: 1;
+  color: var(--black-color);
+  font-weight: 700;
+  padding: 5px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .app__navbar-account_settings {

@@ -23,7 +23,7 @@ const AccountSettingsWrapper = styled.div`
     }
     &>div:nth-child(2){
       align-items:center;
-      padding: 30px 5px;
+      padding: 30px 8px;
       form{
         justify-content:center;
         flex-wrap:wrap;
