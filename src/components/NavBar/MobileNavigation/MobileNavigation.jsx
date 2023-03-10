@@ -27,7 +27,7 @@ const MobileNavigation = () => {
 
   return (
     <motion.nav
-      className={isOpen ? "app__navbar-mobile .expanded" : "app__navbar-mobile"}
+      className={isOpen ? "app__navbar-mobile expanded" : "app__navbar-mobile"}
       animate={isOpen ? "open" : "closed"}
       initial={false}
     >
