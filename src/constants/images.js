@@ -12,6 +12,7 @@ import EarthRotate from "../assets/EarthRotate.svg";
 import CheckMark from "../assets/CheckMark.gif";
 import Information from "../assets/Information.gif";
 import EmailVerify from "../assets/EmailVerify.png";
+import PageBreak from "../assets/FlowerBreak.png";
 
 import HomeMob from "../assets/HomeMob.png";
 import ContactMob from "../assets/ContactMob.png";
@@ -39,7 +40,7 @@ const images = {
   EarthRotate,
   CheckMark,
   Information,
-
+  PageBreak,
   //navbarIcons (need attribution => icons8)
   AboutMob,
   HomeMob,
