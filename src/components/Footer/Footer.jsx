@@ -22,15 +22,36 @@ const Footer = () => {
             </div>
           </div>
           <div id="articles-1">
-            <a href="">Deforestation</a>
-            <a href="">Climate Change</a>
-            <a href="">World Environment Day</a>
+            {["Deforestation", "Climate Change", "World Environment Day"].map(
+              (data, index) => {
+                return (
+                  <a
+                    href={`#article1-${data
+                      .replace(/[\s]/g, "-")
+                      .toLowerCase()}`}
+                    key={`article-1-${index}`}
+                  >
+                    {data}
+                  </a>
+                );
+              }
+            )}
           </div>
           <div id="articles-2">
-            <a href="">Celebritree</a>
-            <a href="">Our Mission</a>
-            <a href="">About AQI</a>
-            <a href="">Anti Smog Trees</a>
+            {["Celebritree", "Our Mission", "About AQI", "Anti Smog Trees"].map(
+              (data, index) => {
+                return (
+                  <a
+                    href={`article2-${data
+                      .replace(/[\s]+/g, "-")
+                      .toLowerCase()}`}
+                    key={`article-2-${index}`}
+                  >
+                    {data}
+                  </a>
+                );
+              }
+            )}
           </div>
           <div id="newsletter">
             <NewsLetter />

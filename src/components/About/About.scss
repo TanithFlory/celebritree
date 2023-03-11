@@ -4,7 +4,10 @@
     url("../../assets/EarthBG.gif");
   background-repeat: no-repeat;
   background-position: center 0;
-  background-size: contain;
+  background-size: cover;
+  &>div:last-child{
+    padding-bottom: 100px;
+  }
   & > div {
     display: flex;
     justify-content: center;

@@ -9,20 +9,27 @@ import styled from "styled-components";
 
 const StyledH1 = styled.h1`
   text-align: center;
-  margin: ${(props) => props.margin};
-  color: var(--white-color);
+  margin: auto;
+  color: var(--black-color);
   font-size: ${(props) => `var(--fs-${props.fontSize})`};
   max-width: 750px;
+  padding: ${(props)=>props.padding};
   & > span {
     color: var(--green-color);
   }
 `;
 
+const StyledDiv = styled.div`
+  background-color:var(--secondary-color);
+`;
 const Cards = () => {
   return (
-    <>
-      <StyledH1 fontSize="xxl" margin="1rem auto 0">
-        <span>Growing a Greener World: <br/></span> Our Tree Carousel
+    <StyledDiv>
+      <StyledH1 fontSize="xxl" padding="2rem 0 0">
+        <span>
+          Growing a Greener World: <br />
+        </span>{" "}
+        Our Tree Carousel
       </StyledH1>
       <CardCarousel>
         {cardDetails.map((data) => {
@@ -49,12 +56,12 @@ const Cards = () => {
           );
         })}
       </CardCarousel>
-      <StyledH1 fontSize="l" margin="auto auto 1rem">
+      <StyledH1 fontSize="l" margin="auto" padding="0 0 2rem">
         We invite you to explore our carousel and learn more about the different
-        types of trees we plan to plant.{" "}<br/>
+        types of trees we plan to plant. <br />
         <span>Together, we can grow a greener world!</span>
       </StyledH1>
-    </>
+    </StyledDiv>
   );
 };
 

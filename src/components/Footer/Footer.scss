@@ -7,7 +7,7 @@
 }
 .footer {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
-    url("./EarthFooter.gif");
+    url("../../assets/EarthFooter.gif");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -69,6 +69,12 @@
   grid-template-areas: "socials articles-1 articles-2 newsletter";
   #socials {
     grid-area: socials;
+    &>div{
+      padding-top:20px;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
   }
   #articles-1 {
     grid-area: articles-1;
@@ -85,10 +91,11 @@
     text-align: center;
     padding-inline: 1rem;
     & > img {
-      width: 250px;
-      height: 250px;
+      width: 200px;
+      height: 200px;
     }
   }
+
   & > div:not(:last-child) {
     border-right: 3px solid white;
   }

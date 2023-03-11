@@ -12,7 +12,6 @@ import EarthRotate from "../assets/EarthRotate.svg";
 import CheckMark from "../assets/CheckMark.gif";
 import Information from "../assets/Information.gif";
 import EmailVerify from "../assets/EmailVerify.png";
-import PageBreak from "../assets/FlowerBreak.png";
 import Confetti from "../assets/Confetti.png";
 import ContributionTree from "../assets/ContributionTree.gif";
 
@@ -49,7 +48,6 @@ const images = {
   EarthRotate,
   CheckMark,
   Information,
-  PageBreak,
   Confetti,
   ContributionTree,
   Settings,
