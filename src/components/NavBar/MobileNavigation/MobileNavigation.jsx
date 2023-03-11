@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import MenuToggle from "./MenuToggle";
 import NavigationLinks from "./NavigationLinks";
@@ -24,10 +24,26 @@ const MobileNavigation = () => {
   };
 
   const [isOpen, toggleOpen] = useCycle(false, true);
-
+  const navRef = useRef();
+  const [enableBtn, setEnableBtn] = useCycle(false, true);
+  /*Animation requires certain time to close, setTimeout was causing issues. Hence the following code. */
+  const toggler = () => {
+    if (isOpen) {
+      toggleOpen();
+      setEnableBtn();
+      setTimeout(() => {
+        navRef.current.classList.remove("expanded");
+        setEnableBtn();
+      }, 600);
+    } else {
+      toggleOpen();
+      navRef.current.classList.add("expanded");
+    }
+  };
   return (
     <motion.nav
-      className={isOpen ? "app__navbar-mobile expanded" : "app__navbar-mobile"}
+      ref={navRef}
+      className="app__navbar-mobile"
       animate={isOpen ? "open" : "closed"}
       initial={false}
     >
@@ -35,7 +51,7 @@ const MobileNavigation = () => {
         <motion.div className="background" variants={sidebar} />
         <NavigationLinks onClick={toggleOpen} />
       </>
-      <MenuToggle toggle={() => toggleOpen()} />
+      <MenuToggle toggle={toggler} disabled={enableBtn} />
     </motion.nav>
   );
 };
