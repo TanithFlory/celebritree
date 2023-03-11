@@ -34,9 +34,10 @@
   align-items: center;
 
   img {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    aspect-ratio: 1/1;
     margin: 0 1rem;
+    padding: 10px 0;
   }
 }
 
