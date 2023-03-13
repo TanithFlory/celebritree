@@ -23,7 +23,8 @@ const CardCarousel = ({ children }) => {
 
   return (
     <Carousel
-      ssr
+      ssr={true}
+      draggable={false}
       partialVisible
       itemClass="image-item"
       responsive={responsive}

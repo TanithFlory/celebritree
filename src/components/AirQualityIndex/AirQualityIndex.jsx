@@ -22,7 +22,7 @@ const AirQualityIndex = () => {
         location: res[0],
         flag: res[1].toString().toLowerCase(),
         city,
-        aqi
+        aqi,
       });
     } catch (err) {
       console.log(err);
@@ -35,8 +35,8 @@ const AirQualityIndex = () => {
 
   return (
     <>
-      <div className="header__air-insights">
-        <div className="header__location">
+      <div className="air__insights">
+        <div>
           <ImLocation2 />
           {userLocation.flag && (
             <img
@@ -50,7 +50,7 @@ const AirQualityIndex = () => {
               : userLocation.location}
           </h3>
         </div>
-        <div className="header__aqi">
+        <div>
           <h3>
             <FaBiohazard
               style={{
@@ -69,9 +69,7 @@ const AirQualityIndex = () => {
               }}
             />
             Air Quality Index :{" "}
-            {userLocation.aqi === ""
-              ? "Cannot determine"
-              : userLocation.aqi}
+            {userLocation.aqi === "" ? "Cannot determine" : userLocation.aqi}
           </h3>
         </div>
       </div>

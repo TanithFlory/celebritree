@@ -17,7 +17,7 @@ const useOnScroll = (ref,options) => {
           observer.unobserve(ref.current);
         }
       };
-    }, [ref,options]);
+    }, [ref.current,options.threshold]);
   
     return visible;
   };

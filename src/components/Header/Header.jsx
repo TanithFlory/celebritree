@@ -15,31 +15,23 @@ const Header = () => {
   return (
     <>
       <header>
-        <MotionWrapper className="header">
+        <div className="header">
           <div className="header__content">
-            <div className="header__content-main">
-              <h2>Making world a</h2>
-              <h1>Better place to Live!</h1>
-              <p>
-                "We believe in creating a better world by addressing two
-                pressing global issues: starvation and climate change."
-              </p>
-              <div>
-                <PrimaryButton
-                  textColor="white"
-                  backgroundColor="green"
-                >
-                  About
-                </PrimaryButton>
-                <PrimaryButton
-                  textColor="white"
-                  backgroundColor="green"
-                >
-                  Join Us
-                </PrimaryButton>
-              </div>
-              <AirQualityIndex />
+            <h2>Making world a</h2>
+            <h1>Better place to Live!</h1>
+            <p>
+              "We believe in creating a better world by addressing two pressing
+              global issues: starvation and climate change."
+            </p>
+            <div>
+              <PrimaryButton textColor="white" backgroundColor="green">
+                About
+              </PrimaryButton>
+              <PrimaryButton textColor="white" backgroundColor="green">
+                Join Us
+              </PrimaryButton>
             </div>
+            <AirQualityIndex />
           </div>
           <img
             alt="contribute"
@@ -50,7 +42,7 @@ const Header = () => {
           <div className="header__svg">
             <img src={images.TreeReveal} alt="" />
           </div>
-        </MotionWrapper>
+        </div>
       </header>
     </>
   );

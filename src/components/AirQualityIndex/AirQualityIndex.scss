@@ -1,8 +1,8 @@
-.header__air-insights {
+.air__insights {
   flex-direction: column;
   margin-top: 2rem;
   padding: 3px;
-  .header__location {
+  & > div:first-child {
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -21,7 +21,7 @@
       transform: scale(1.8);
     }
   }
-  .header__aqi {
+  & > div:nth-child(2) {
     h3 {
       margin: 0;
       font-size: 1rem;
@@ -33,6 +33,5 @@
       right: 12px;
       top: 3px;
     }
-
   }
 }
