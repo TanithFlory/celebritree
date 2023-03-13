@@ -34,6 +34,7 @@ userController.signup = async (req, res) => {
       });
 
       await user.save();
+
       emailOtp(otp, email);
 
       return res.status(200).json({
@@ -83,7 +84,8 @@ userController.verifyOtp = async (req, res) => {
 userController.login = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+    console.log(req.body);
+    return;
     await mongoConnection();
 
     const response = await User.findOne({ email });
