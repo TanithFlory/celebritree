@@ -14,12 +14,11 @@ userController.signup = async (req, res) => {
     await mongoConnection();
 
     const response = await User.findOne({ email });
-    if (response && response.verified === true) {
+    if (response && response.emailVerified === true) {
       return res.status(409).json({ response: "User already exists! " });
     }
     if (!response) {
       //completely a new user
-
       const hashedPass = await encryptData(password);
       const otp = (Math.floor(Math.random() * 600000) + 100000).toString();
       const hashedOtp = await encryptData(otp);
@@ -32,7 +31,6 @@ userController.signup = async (req, res) => {
         otp: hashedOtp,
         otpExpiry: Date.now() + 600000,
       });
-
       await user.save();
 
       emailOtp(otp, email);
@@ -49,6 +47,37 @@ userController.signup = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+  }
+};
+
+userController.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    await mongoConnection();
+    const response = await User.findOne({ email });
+    if (!response) {
+      return res.json({ message: "User doesn't exist! " });
+    }
+    if (!response.emailVerified) {
+      return res.json({ message: "Email not verified, complete the signup process again. " });
+    }
+    const hashedPass = response.password;
+    const verifyPass = await decryptData(password, hashedPass);
+   
+    if (!verifyPass) {
+      return res.json({ message: "Invalid Password" });
+    }
+    const token = jwt.sign(
+      { userId: response._id },
+      process.env.REACT_APP_JWT_SECRET,
+      {
+        expiresIn: "365d",
+      }
+    );
+    return res.json({ token });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error!" });
   }
 };
 
@@ -75,36 +104,6 @@ userController.verifyOtp = async (req, res) => {
       { $set: { emailVerified: true }, $unset: { otp: "", otpExpiry: "" } }
     );
     res.status(200).json({ message: "VERIFIED! " });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Internal Server Error!" });
-  }
-};
-
-userController.login = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    console.log(req.body);
-    return;
-    await mongoConnection();
-
-    const response = await User.findOne({ email });
-    if (!response) {
-      return res.json({ message: "User doesn't exist! " });
-    }
-    const hashedPass = response.password;
-    const verifyPass = await decryptData(password, hashedPass);
-    if (!verifyPass) {
-      return res.json({ message: "Invalid Password" });
-    }
-    const token = jwt.sign(
-      { userId: response._id },
-      process.env.REACT_APP_JWT_SECRET,
-      {
-        expiresIn: "365d",
-      }
-    );
-    return res.json({ token });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Internal Server Error!" });

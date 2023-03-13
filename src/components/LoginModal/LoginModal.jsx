@@ -1,35 +1,42 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import "./LoginModal.scss";
-import axios from "axios";
+import postLogin from "../../store/features/auth/authActions";
 import { PrimaryButton } from "../UI/Button/StyledButtons";
 import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
 import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
 import images from "../../constants/images";
 const LoginModal = (props) => {
-  const [login, setLogin] = useState({
+  const loginStatus = useSelector((state) => state.login.isLogged);
+  const dispatch = useDispatch();
+  const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
-
+  const [error, setError] = useState(true);
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    setLogin((prevState) => {
+    setLoginData((prevState) => {
       return {
         ...prevState,
         [name]: value,
       };
     });
+    setError(false);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    axios({
-      method: "POST",
-      url: "http://localhost:3001/api/login",
-      data: login,
-    }).then((res) => {});
+    dispatch(postLogin(loginData));
+    setError(true);
   };
 
+  useEffect(() => {
+    if (loginStatus) {
+      redirect("/home");
+    }
+  }, [loginStatus]);
   return (
     <MotionWrapper
       className="login__modal-backdrop"
@@ -47,7 +54,7 @@ const LoginModal = (props) => {
               type="text"
               onChange={changeHandler}
               name="email"
-              value={login.email}
+              value={loginData.email}
             ></input>
           </div>
           <label>Password</label>
@@ -57,9 +64,10 @@ const LoginModal = (props) => {
               type="password"
               onChange={changeHandler}
               name="password"
-              value={login.password}
+              value={loginData.password}
             ></input>
           </div>
+          {error && <p> {props.loginStatus.statusMessage}</p>}
           <a href="/signup">Forgot Password?</a>
           <PrimaryButton backgroundColor="green" textColor="black">
             Login

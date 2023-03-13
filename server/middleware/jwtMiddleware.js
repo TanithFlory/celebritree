@@ -1,17 +1,17 @@
 import jwt from "jsonwebtoken";
 
-const jwtMidddleware = (re,q, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
-  if (!token) {
-    return res.json({ success: false, message: "No token provided" });
-  }
+const verifyJwt = (req, res, next) => {
   try {
-    const decoded = jwt.verify(token, jwtSecret);
-    req.user = decoded;
+    const token = req.headers.authorization;
+    if (!token) {
+      return res.json({ success: false, message: "No token provided" });
+    }
+    const decoded = jwt.verify(token, process.env.REACT_APP_JWT_SECRET);
+    const userId = decoded.userid;
     next();
   } catch (err) {
     return res.status(401).json({ success: false, message: "Invalid token" });
   }
 };
 
-export default jwtMidddleware;
+export default verifyJwt;
