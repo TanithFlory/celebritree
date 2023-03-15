@@ -8,12 +8,20 @@ const router = express.Router();
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
+router.get("/authenticated", (req, res) => {
+  userController.authenticated(req, res);
+});
+
 router.post("/signup", rateLimiter(15, 60), (req, res) => {
   userController.signup(req, res);
 });
 
 router.post("/login", (req, res) => {
   userController.login(req, res);
+});
+
+router.post("/logout", (req, res) => {
+  userController.logout(req, res);
 });
 
 router.post("/verify-otp", (req, res) => {

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./LoginModal.scss";
-import postLogin from "../../store/features/auth/authActions";
+import { postLogin } from "../../store/features/auth/authActions";
 import { PrimaryButton } from "../UI/Button/StyledButtons";
 import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
 import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
 import images from "../../constants/images";
 const LoginModal = (props) => {
-  const loginStatus = useSelector((state) => state.login.isLogged);
+  const loginStatus = useSelector((state) => state.auth.isLogged);
   const dispatch = useDispatch();
   const [loginData, setLoginData] = useState({
     email: "",
@@ -32,11 +32,6 @@ const LoginModal = (props) => {
     setError(true);
   };
 
-  useEffect(() => {
-    if (loginStatus) {
-      redirect("/home");
-    }
-  }, [loginStatus]);
   return (
     <MotionWrapper
       className="login__modal-backdrop"

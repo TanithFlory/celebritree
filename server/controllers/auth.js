@@ -1,10 +1,12 @@
 import mongoConnection from "../db.js";
 import { encryptData, decryptData } from "../services/encryption.js";
-import jwt from "jsonwebtoken";
 import emailOtp from "../services/emailService.js";
 import { User } from "../models/user.js";
 import resendOtp from "../helpers/resendOtp.js";
-
+import { getAccessToken, getRefreshToken } from "../helpers/jwtToken.js";
+import storeCookie from "../helpers/storeCookie.js";
+import jwt from "jsonwebtoken";
+import cookie from "cookie";
 const userController = {};
 
 userController.signup = async (req, res) => {
@@ -59,22 +61,24 @@ userController.login = async (req, res) => {
       return res.json({ message: "User doesn't exist! " });
     }
     if (!response.emailVerified) {
-      return res.json({ message: "Email not verified, complete the signup process again. " });
+      return res.json({
+        message: "Email not verified, complete the signup process again. ",
+      });
     }
     const hashedPass = response.password;
     const verifyPass = await decryptData(password, hashedPass);
-   
+
     if (!verifyPass) {
       return res.json({ message: "Invalid Password" });
     }
-    const token = jwt.sign(
-      { userId: response._id },
-      process.env.REACT_APP_JWT_SECRET,
-      {
-        expiresIn: "365d",
-      }
-    );
-    return res.json({ token });
+
+    const accessToken = getAccessToken({
+      userId: response._id,
+      firstName: response.firstName,
+    });
+    storeCookie("accessToken", accessToken, res);
+
+    return res.json({ accessToken });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Internal Server Error!" });
@@ -108,6 +112,30 @@ userController.verifyOtp = async (req, res) => {
     console.log(err);
     res.status(500).json({ message: "Internal Server Error!" });
   }
+};
+
+userController.authenticated = async (req, res) => {
+  try {
+    const { accessToken } = req.cookies;
+    const decoded = await jwt.verify(
+      accessToken,
+      process.env.REACT_APP_JWT_ACCESS_SECRET
+    );
+    const { userId, firstName } = decoded;
+    res.status(200).json({ message: "OK", firstName, userId });
+  } catch (err) {
+    console.log("JWT verification failed ");
+    res.status(403).json({ message: "Unauthorized" });
+  }
+};
+
+userController.logout = (req, res) => {
+  res.setHeader(
+    "Set-Cookie",
+    cookie.serialize("accessToken", " ", {
+      expires: new Date(-1),
+    })
+  );
 };
 
 export default userController;

@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
-
 import Home from "./components/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import LoginModal from "./components/LoginModal/LoginModal";
@@ -14,7 +13,16 @@ import Faq from "./components/AccountsDashboard/Help/Faq";
 import Contributions from "./components/AccountsDashboard/Contributions/Contributions";
 import Security from "./components/AccountsDashboard/AccountManagement/Security";
 import HelpCentre from "./components/AccountsDashboard/Help/HelpCentre";
+
+import { useDispatch } from "react-redux";
+import { authorization } from "./store/features/auth/authActions";
+
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(authorization());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>
@@ -34,19 +42,19 @@ function App() {
           path="/account"
           element={
             <>
-            <Navbar/>
-            <AccountSettingsWrapper>
-              <Navigation/>
-              <Outlet/>
-            </AccountSettingsWrapper>
+              <Navbar />
+              <AccountSettingsWrapper>
+                <Navigation />
+                <Outlet />
+              </AccountSettingsWrapper>
             </>
           }
         >
-          <Route path="/account/settings" element={<Settings/>} />
+          <Route path="/account/settings" element={<Settings />} />
           <Route path="/account/security" element={<Security />} />
-          <Route path="/account/contributions" element={<Contributions/>} />
-          <Route path="/account/help-centre" element={<HelpCentre/>} />
-          <Route path="/account/faq" element={<Faq/>} />
+          <Route path="/account/contributions" element={<Contributions />} />
+          <Route path="/account/help-centre" element={<HelpCentre />} />
+          <Route path="/account/faq" element={<Faq />} />
         </Route>
       </Routes>
     </>

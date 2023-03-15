@@ -8,7 +8,7 @@ import "./Navbar.scss";
 import AuthOptions from "./AuthOptions";
 import { useSelector } from "react-redux";
 const Navbar = (props) => {
-  const loginStatus = useSelector((state) => state.login);
+  const loginStatus = useSelector((state) => state.auth);
   const [loginModal, setLoginModal] = useState(false);
   return (
     <>
@@ -37,7 +37,7 @@ const Navbar = (props) => {
         </ul>
         <AuthOptions
           setLoginModal={setLoginModal}
-          loginStatus={loginStatus.isLogged}
+          loginStatus={loginStatus}
         />
       </nav>
       <MobileNavigation />

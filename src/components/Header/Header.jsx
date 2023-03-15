@@ -1,10 +1,10 @@
 import React from "react";
-import { PrimaryButton } from "../UI/Button/StyledButtons";
-import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
-import AirQualityIndex from "../AirQualityIndex/AirQualityIndex";
+import { motion } from "framer-motion";
 import images from "../../constants/images";
 import "./Header.scss";
+import AnimatedHeader from "./AnimatedHeader";
 const Header = () => {
+
   const scrollHandler = () => {
     // const cardWrapper = document.getElementById("card-wrapper");
     // if (cardWrapper) {
@@ -15,34 +15,23 @@ const Header = () => {
   return (
     <>
       <header>
-        <div className="header">
-          <div className="header__content">
-            <h2>Making world a</h2>
-            <h1>Better place to Live!</h1>
-            <p>
-              "We believe in creating a better world by addressing two pressing
-              global issues: starvation and climate change."
-            </p>
-            <div>
-              <PrimaryButton textColor="white" backgroundColor="green">
-                About
-              </PrimaryButton>
-              <PrimaryButton textColor="white" backgroundColor="green">
-                Join Us
-              </PrimaryButton>
-            </div>
-            <AirQualityIndex />
-          </div>
-          <img
-            alt="contribute"
-            src={images.contribute}
-            className="header__main-button"
-            onClick={scrollHandler}
-          />
-          <div className="header__svg">
-            <img src={images.TreeReveal} alt="" />
-          </div>
-        </div>
+        <motion.div initial="initial" animate="animate" className="header">
+          <AnimatedHeader />
+          <motion.div
+            initial={{ x: 1000, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="header__svg"
+          >
+            <img
+              alt="contribute"
+              src={images.contribute}
+              className="header__main-button"
+              onClick={scrollHandler}
+            />
+            <img src={images.mainTree} alt="" />
+          </motion.div>
+        </motion.div>
       </header>
     </>
   );
