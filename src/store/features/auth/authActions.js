@@ -12,7 +12,6 @@ export const postLogin = (login) => {
       })
         .then((response) => {
           dispatch(authActions.login(response.data));
-          resolve(true);
         })
         .catch((err) => {
           reject(err.response.data.message);

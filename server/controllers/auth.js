@@ -56,13 +56,11 @@ userController.login = async (req, res) => {
     const { email, password } = req.body;
     await mongoConnection();
     const response = await User.findOne({ email });
-
     if (!response) {
-      return res.json({ message: "User doesn't exist! " });
+      return res.status(404).json({ message: "User doesn't exist! " });
     }
-
     if (!response.emailVerified) {
-      return res.json({
+      return res.status(401).json({
         message: "Email not verified, complete the signup process again. ",
       });
     }
