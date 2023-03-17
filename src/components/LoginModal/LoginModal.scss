@@ -88,9 +88,13 @@
 }
 .login__auths {
   display: flex;
-  align-items: center;
-  margin-top: 10px;
+  justify-content: center;
+  margin-top: 20px;
   gap: 5px;
+  button{
+    background-color: transparent;
+    border: none;
+  }
   img {
     height: 35px;
     width: 35px;

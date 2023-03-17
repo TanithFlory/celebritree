@@ -12,6 +12,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import { FadeInWrapper } from "../UI/Wrapper/MotionWrappers";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/features/auth/authActions";
+
 const AuthOptions = (props) => {
   const dispatch = useDispatch();
   const [extraOptions, setExtraOptions] = useCycle(false, true);
@@ -29,7 +30,7 @@ const AuthOptions = (props) => {
           </SecondaryButton>
         )}
         <AnimatePresence>
-          {extraOptions && (
+          {extraOptions && props.loginStatus.isLogged && (
             <FadeInWrapper>
               <Link to="/account/settings">
                 <SecondaryButton backgroundColor="var(--green-color)">

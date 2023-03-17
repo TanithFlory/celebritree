@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 import "./LoginModal.scss";
 import { postLogin } from "../../store/features/auth/authActions";
 import { PrimaryButton } from "../UI/Button/StyledButtons";
@@ -8,14 +8,17 @@ import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
 import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
 import images from "../../constants/images";
 const LoginModal = (props) => {
-  const loginStatus = useSelector((state) => state.auth.isLogged);
   const dispatch = useDispatch();
+
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
-  const [error, setError] = useState(true);
+
+  const [error, setError] = useState("");
+
   const changeHandler = (e) => {
+    setError("");
     const { name, value } = e.target;
     setLoginData((prevState) => {
       return {
@@ -23,13 +26,32 @@ const LoginModal = (props) => {
         [name]: value,
       };
     });
-    setError(false);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(postLogin(loginData));
-    setError(true);
+    setError("");
+    dispatch(postLogin(loginData))
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((err) => {
+        setError(err);
+      });
+  };
+
+  const googleAuth = () => {
+    axios({
+      method: "GET",
+      url: "http://localhost:3001/auth/google/login",
+    })
+      .then((res) => {
+        var left = window.screen.width / 2 - (500 / 2 + 10);
+        var top = window.screen.height / 2 - (600 / 2 + 50);
+        const options = `width=${500},height=${600},resizable=yes,scrollbars=yes,top=${top},left=${left}`;
+        window.open(res.data, "Google Sign-In", options);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -62,7 +84,7 @@ const LoginModal = (props) => {
               value={loginData.password}
             ></input>
           </div>
-          {error && <p> {props.loginStatus.statusMessage}</p>}
+          <p> {error}</p>
           <a href="/signup">Forgot Password?</a>
           <PrimaryButton backgroundColor="green" textColor="black">
             Login
@@ -70,11 +92,15 @@ const LoginModal = (props) => {
           <div className="border__or">
             <h1>OR</h1>
           </div>
-          <div className="login__auths">
-            <img src={images.Google} alt="Google" />
-            <img src={images.Facebook} alt="fb" />
-          </div>
         </form>
+        <div className="login__auths">
+          <button onClick={googleAuth}>
+            <img src={images.Google} alt="Google" />
+          </button>
+          <button>
+            <img src={images.Facebook} alt="fb" />
+          </button>
+        </div>
       </div>
     </MotionWrapper>
   );

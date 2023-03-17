@@ -3,10 +3,9 @@ import { encryptData, decryptData } from "../services/encryption.js";
 import emailOtp from "../services/emailService.js";
 import { User } from "../models/user.js";
 import resendOtp from "../helpers/resendOtp.js";
-import { getAccessToken, getRefreshToken } from "../helpers/jwtToken.js";
-import storeCookie from "../helpers/storeCookie.js";
+import { getAccessToken } from "../helpers/jwtToken.js";
+import { storeCookie } from "../helpers/storeCookie.js";
 import jwt from "jsonwebtoken";
-import cookie from "cookie";
 const userController = {};
 
 userController.signup = async (req, res) => {
@@ -57,28 +56,29 @@ userController.login = async (req, res) => {
     const { email, password } = req.body;
     await mongoConnection();
     const response = await User.findOne({ email });
+
     if (!response) {
       return res.json({ message: "User doesn't exist! " });
     }
+
     if (!response.emailVerified) {
       return res.json({
         message: "Email not verified, complete the signup process again. ",
       });
     }
+
     const hashedPass = response.password;
     const verifyPass = await decryptData(password, hashedPass);
 
     if (!verifyPass) {
-      return res.json({ message: "Invalid Password" });
+      return res.status(401).json({ message: "Invalid Password" });
     }
-
     const accessToken = getAccessToken({
       userId: response._id,
       firstName: response.firstName,
     });
     storeCookie("accessToken", accessToken, res);
-
-    return res.json({ accessToken });
+    res.status(200).json(response.firstName);
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Internal Server Error!" });
@@ -92,6 +92,7 @@ userController.verifyOtp = async (req, res) => {
     const response = await User.findOne({ email });
     const hashedOtp = response.otp;
     const otpExpiry = response.otpExpiry;
+
     if (Date.now() > otpExpiry) {
       return res.status(401).json({
         message: "The otp has expired, please resend another one. ",
@@ -130,12 +131,8 @@ userController.authenticated = async (req, res) => {
 };
 
 userController.logout = (req, res) => {
-  res.setHeader(
-    "Set-Cookie",
-    cookie.serialize("accessToken", " ", {
-      expires: new Date(-1),
-    })
-  );
+  res.clearCookie("accessToken");
+  return res.send(200);
 };
 
 export default userController;

@@ -14,15 +14,14 @@ import Contributions from "./components/AccountsDashboard/Contributions/Contribu
 import Security from "./components/AccountsDashboard/AccountManagement/Security";
 import HelpCentre from "./components/AccountsDashboard/Help/HelpCentre";
 
-import { useDispatch } from "react-redux";
-import { authorization } from "./store/features/auth/authActions";
+// import { useDispatch } from "react-redux";
+// import { authorization } from "./store/features/auth/authActions";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(authorization());
-  }, [dispatch]);
-
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(authorization());
+  // }, [dispatch]);
   return (
     <>
       <Routes>

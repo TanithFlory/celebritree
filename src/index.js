@@ -4,9 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import store from "./store";
+import { getInitialState } from "./store/features/auth/authSlice";
 import { Provider } from "react-redux";
 // import reportWebVitals from './reportWebVitals';
-
+store.dispatch(getInitialState());
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

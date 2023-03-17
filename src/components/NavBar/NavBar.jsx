@@ -24,21 +24,19 @@ const Navbar = (props) => {
         <ul className="app__navbar-bullets">
           {["home", "about", "mission", "contact"].map((data) => {
             return (
-              <motion.li
-                key={`link-${data}`}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link to={`/${data}`}>{data}</Link>
-                <div />
-              </motion.li>
+              <Link to={`/${data}`} key={`link-${data}`}>
+                <motion.li
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {data}
+                  <div />
+                </motion.li>
+              </Link>
             );
           })}
         </ul>
-        <AuthOptions
-          setLoginModal={setLoginModal}
-          loginStatus={loginStatus}
-        />
+        <AuthOptions setLoginModal={setLoginModal} loginStatus={loginStatus} />
       </nav>
       <MobileNavigation />
     </>
