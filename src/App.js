@@ -32,7 +32,7 @@ function App() {
           path="/login"
           element={
             <>
-              <MobileNavigation />
+              <Navbar />
               <LoginModal />
             </>
           }

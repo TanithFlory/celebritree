@@ -28,45 +28,62 @@ router.get("/google/login", (req, res) => {
   return res.json(url);
 });
 
-router.get("/google/callback", async (req, res) => {
-  try {
-    const { code } = req.query;
-    const { tokens } = await OAuth2Client.getToken(code);
-    OAuth2Client.setCredentials(tokens);
-    if (tokens) {
-      const { access_token } = tokens;
-      const response = await axios({
-        method: "GET",
-        url: `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${access_token}`,
-      });
-      const { email, verified_email, given_name, family_name } = response.data;
-
-      await mongoConnection();
-
-      const foundUser = await User.findOne({ email });
-
-      if (!foundUser) {
-        const user = new User({
-          firstName: given_name,
-          lastName: family_name,
-          email: email,
-          emailVerified: verified_email,
+router.get(
+  "/google/callback",
+  async (req, res, next) => {
+    try {
+      const { code } = req.query;
+      const { tokens } = await OAuth2Client.getToken(code);
+      OAuth2Client.setCredentials(tokens);
+      if (tokens) {
+        const { access_token } = tokens;
+        const response = await axios({
+          method: "GET",
+          url: `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${access_token}`,
         });
-        await user.save();
+        const { email, verified_email, given_name, family_name } =
+          response.data;
 
-        const userDetails = await User.findOne({ email });
-        const accessToken = getAccessToken({
-          userId: userDetails._id,
-          firstName: given_name,
-        });
-        storeCookie("accessToken", accessToken, res);
+        await mongoConnection();
+
+        const foundUser = await User.findOne({ email });
+        
+        if (!foundUser) {
+          const user = new User({
+            firstName: given_name,
+            lastName: family_name,
+            email: email,
+            emailVerified: verified_email,
+          });
+          await user.save();
+
+          const userDetails = await User.findOne({ email });
+          const accessToken = getAccessToken({
+            userId: userDetails._id,
+            firstName: given_name,
+          });
+          storeCookie("accessToken", accessToken, res);
+          res.send("<script>window.close();</script>");
+        }
+
+        req.userId = foundUser._id;
+        req.firstName = foundUser.firstName;
+        next();
       }
-
-      res.send("<script>window.close();</script>");
+    } catch (err) {
+      console.log(err);
     }
-  } catch (err) {
-    console.log(err);
+  },
+  (req, res) => {
+    const userId = req.userId;
+    const firstName = req.firstName;
+    const accessToken = getAccessToken({
+      userId: userId,
+      firstName: firstName,
+    });
+    storeCookie("accessToken", accessToken, res);
+    res.send("<script>window.close();</script>");
   }
-});
+);
 
 export default router;

@@ -9,6 +9,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { RiAccountPinCircleLine } from "react-icons/ri";
+import GoogleLogin from "../LoginModal/GoogleLogin";
 import "./Signup.scss";
 
 const Signup = () => {
@@ -139,8 +140,9 @@ const Signup = () => {
                 Register
               </PrimaryButton>
               <div className="signup__oldUser">
-                Already an user? <a href="/home">Sign in.</a>
+                Already an user? <Link to="/login">Sign in.</Link>
               </div>
+              <GoogleLogin text="up" />
             </form>
           )}
           {onSuccess && <OtpVerification email={email} />}

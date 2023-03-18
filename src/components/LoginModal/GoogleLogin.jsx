@@ -7,34 +7,34 @@ const AuthDiv = styled.div`
   justify-content: center;
   margin-top: 20px;
   gap: 5px;
-  &>div {
+  & > div {
     display: grid;
     grid-auto-flow: column;
     background-color: transparent;
     border: 1px solid #4285f4;
-    border-radius:2px;
-    cursor:pointer;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
-    &:hover{
-      box-shadow: 0 0 3px 3px rgba(66,133,244,.3);
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    &:hover {
+      box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
     }
     div {
       background-color: #4285f4;
       color: var(--white-color);
-      display:flex;
+      display: flex;
       align-items: center;
       padding-inline: 15px;
     }
   }
   img {
     height: 25px;
-    aspect-ratio:1/1;
+    aspect-ratio: 1/1;
     cursor: pointer;
     padding: 10px;
   }
 `;
 
-const GoogleLogin = () => {
+const GoogleLogin = (props) => {
   const googleAuth = () => {
     axios({
       method: "GET",
@@ -52,7 +52,7 @@ const GoogleLogin = () => {
     <AuthDiv>
       <div onClick={googleAuth}>
         <img src={images.Google} alt="Google" />
-        <div>Sign in with Google</div>
+        <div>Sign {props.text || "in"} with Google</div>
       </div>
     </AuthDiv>
   );
