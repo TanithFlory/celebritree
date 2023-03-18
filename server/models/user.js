@@ -16,6 +16,7 @@ const usersSchema = new mongoose.Schema({
   },
   password: {
     type: String,
+    default: null,
   },
   emailVerified: {
     type: Boolean,
@@ -23,11 +24,9 @@ const usersSchema = new mongoose.Schema({
   },
   otp: {
     type: String,
-    default: null,
   },
   otpExpiry: {
     type: Number,
-    default: null,
   },
 });
 

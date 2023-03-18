@@ -5,7 +5,7 @@ export const getAccessToken = (payload) => {
     payload,
     process.env.REACT_APP_JWT_ACCESS_SECRET,
     {
-      expiresIn: "59m",
+      expiresIn: "1h",
     }
   );
   return accessToken;

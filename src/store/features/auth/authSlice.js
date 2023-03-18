@@ -1,30 +1,26 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 
 const initialState = {
   isLogged: false,
   firstName: "",
   statusMessage: "",
 };
-export const getInitialState = createAsyncThunk("/", async () => {
-  try {
-    const response = await axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:3001/api/authenticated",
-    });
-    return {
-      isLogged: true,
-      firstName: response.data.firstName,
-      statusMessage: "",
-    };
-  } catch (err) {
+export const getInitialState = createAsyncThunk("/", () => {
+  const accessToken = localStorage.getItem("accessToken");
+  const decoded = JSON.parse(atob(accessToken.split(".")[1]));
+  const { firstName, exp } = decoded;
+  if (Date.now() > exp*1000) {
     return {
       isLogged: false,
       firstName: "",
       statusMessage: "",
     };
   }
+  return {
+    isLogged: true,
+    firstName,
+    statusMessage: "",
+  };
 });
 
 const authSlice = createSlice({

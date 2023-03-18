@@ -11,25 +11,13 @@ export const postLogin = (login) => {
         withCredentials: true,
       })
         .then((response) => {
-          dispatch(authActions.login(response.data));
+          localStorage.setItem("accessToken", response.data);
+          dispatch(authActions.login());
+          window.location.reload();
         })
         .catch((err) => {
           reject(err.response.data.message);
         });
     });
-  };
-};
-
-export const logout = () => {
-  return (dispatch) => {
-    axios({
-      method: "POST",
-      withCredentials: true,
-      url: "http://localhost:3001/api/logout",
-    })
-      .then(() => {
-        dispatch(authActions.logout());
-      })
-      .catch((err) => console.log(err));
   };
 };

@@ -47,7 +47,7 @@ router.get(
         await mongoConnection();
 
         const foundUser = await User.findOne({ email });
-        
+
         if (!foundUser) {
           const user = new User({
             firstName: given_name,
@@ -62,10 +62,10 @@ router.get(
             userId: userDetails._id,
             firstName: given_name,
           });
-          storeCookie("accessToken", accessToken, res);
-          res.send("<script>window.close();</script>");
+          return res.send(
+            `<script>window.opener.postMessage("${accessToken}", 'http://localhost:3000');window.close();</script>`
+          );
         }
-
         req.userId = foundUser._id;
         req.firstName = foundUser.firstName;
         next();
@@ -81,8 +81,12 @@ router.get(
       userId: userId,
       firstName: firstName,
     });
-    storeCookie("accessToken", accessToken, res);
-    res.send("<script>window.close();</script>");
+    return res.send(
+      `<script>window.opener.postMessage("${accessToken}", 'http://localhost:3000');window.close();</script>`
+    );
+    // return res.send(
+    //   `<script>localStorage.setItem("accessToken", "${accessToken}");window.close();</script>`
+    // );
   }
 );
 

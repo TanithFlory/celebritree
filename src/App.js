@@ -3,7 +3,6 @@ import { Outlet, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import LoginModal from "./components/LoginModal/LoginModal";
-import MobileNavigation from "./components/Navbar/MobileNavigation/MobileNavigation";
 import Signup from "./components/NewUser/Signup";
 
 import AccountSettingsWrapper from "./components/AccountsDashboard/AccountSettingsWrapper";

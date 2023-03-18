@@ -30,13 +30,9 @@ const LoginModal = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     setError("");
-    dispatch(postLogin(loginData))
-      .then(() => {
-        window.location.reload();
-      })
-      .catch((err) => {
-        setError(err);
-      });
+    dispatch(postLogin(loginData)).catch((err) => {
+      setError(err);
+    });
   };
 
   return (

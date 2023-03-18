@@ -1,7 +1,7 @@
 import axios from "axios";
 import images from "../../constants/images";
 import styled from "styled-components";
-
+import { redirect } from "react-router-dom";
 const AuthDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -45,6 +45,12 @@ const GoogleLogin = (props) => {
         var top = window.screen.height / 2 - (600 / 2 + 50);
         const options = `width=${500},height=${600},resizable=yes,scrollbars=yes,top=${top},left=${left}`;
         window.open(res.data, "Google Sign-In", options);
+        const tokenHandler = (event) => {
+          localStorage.setItem("accessToken", event.data);
+          window.removeEventListener("message", tokenHandler);
+          window.location.replace("/");
+        };
+        window.addEventListener("message", tokenHandler);
       })
       .catch((err) => console.log(err));
   };

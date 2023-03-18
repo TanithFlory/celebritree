@@ -11,12 +11,19 @@ import {
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { FadeInWrapper } from "../UI/Wrapper/MotionWrappers";
 import { useDispatch } from "react-redux";
-import { logout } from "../../store/features/auth/authActions";
+import { authActions } from "../../store/features/auth/authSlice";
 
 const AuthOptions = (props) => {
   const dispatch = useDispatch();
   const [extraOptions, setExtraOptions] = useCycle(false, true);
   const currentTime = new Date().getHours();
+
+  const logoutHandler = () => {
+    localStorage.removeItem("accessToken");
+    dispatch(authActions.logout());
+    window.location.reload();
+  };
+
   return (
     <div className="app__navbar-user-options">
       <div
@@ -40,7 +47,7 @@ const AuthOptions = (props) => {
               </Link>
               <SecondaryButton
                 backgroundColor="var(--green-color)"
-                onClick={() => dispatch(logout())}
+                onClick={logoutHandler}
               >
                 <MdLogout />
                 Sign Out

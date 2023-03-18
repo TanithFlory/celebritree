@@ -75,8 +75,7 @@ userController.login = async (req, res) => {
       userId: response._id,
       firstName: response.firstName,
     });
-    storeCookie("accessToken", accessToken, res);
-    res.status(200).json(response.firstName);
+    res.status(200).json(accessToken);
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Internal Server Error!" });
@@ -129,7 +128,6 @@ userController.authenticated = async (req, res) => {
 };
 
 userController.logout = (req, res) => {
-  res.clearCookie("accessToken");
   return res.send(200);
 };
 
