@@ -12,7 +12,7 @@ const About = () => {
           </h1>
         </div>
         <div>
-          <Socials />
+          <Socials text="Follow for updates!"/>
           <div className="about__content">
             <h1>
               Welcome to <span>Celebritree</span>, a non-profit organization

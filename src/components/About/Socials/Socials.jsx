@@ -1,7 +1,7 @@
 import React from "react";
 import images from "../../../constants/images";
 import "./Socials.scss";
-const Socials = () => {
+const Socials = (props) => {
   return (
     <div className="about__socials">
       <img src={images.logo} alt="logo" />
@@ -15,7 +15,7 @@ const Socials = () => {
         <div>
           <img src={images.Arrow} alt="arrow"></img>
           <h2>
-            Follow for updates! <div></div>
+            {props.text} <div></div>
           </h2>
         </div>
       </div>

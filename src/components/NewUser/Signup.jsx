@@ -58,7 +58,6 @@ const Signup = () => {
               <div className="sign__form-userInfo">
                 <div>
                   <input
-                    value="Tanith"
                     type="text"
                     placeholder="First Name"
                     {...register("fName", {
@@ -77,7 +76,6 @@ const Signup = () => {
                 </div>
                 <div>
                   <input
-                    value="Flory"
                     type="text"
                     placeholder="Second Name"
                     {...register("sName", {
@@ -95,7 +93,6 @@ const Signup = () => {
                 </div>
                 <div>
                   <input
-                    value="thegrumpywizard123@gmail.com"
                     type="text"
                     placeholder="Email"
                     {...register("email", {
@@ -108,7 +105,6 @@ const Signup = () => {
                 </div>
                 <div>
                   <input
-                    value="123123!Aa"
                     type="password"
                     placeholder="Password"
                     minLength={6}
@@ -125,7 +121,6 @@ const Signup = () => {
                 </div>
                 <div>
                   <input
-                    value="123123!Aa"
                     type="password"
                     placeholder="Confirm Password"
                     {...register("confirmPassword", {
@@ -139,7 +134,11 @@ const Signup = () => {
                 </div>
               </div>
               <Link to="/home">Need help?</Link>
-              {loading ? <Loading type="Loading" width="30px"/> : <h5>{onFailureMessage}</h5>}
+              {loading ? (
+                <Loading type="Loading" width="30px" />
+              ) : (
+                <h5>{onFailureMessage}</h5>
+              )}
               <PrimaryButton
                 onClick={() => handleSubmit}
                 backgroundColor="black"
