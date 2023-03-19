@@ -10,10 +10,12 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { RiAccountPinCircleLine } from "react-icons/ri";
 import GoogleLogin from "../LoginModal/GoogleLogin";
+import Loading from "../UI/Status/Loading";
 import "./Signup.scss";
 
 const Signup = () => {
-  const [onSuccess, setOnSuccess] = useState(false);
+  const [onSuccess, setOnSuccess] = useState();
+  const [loading, setLoading] = useState(false);
   const [onFailureMessage, setOnFailureMessage] = useState("");
   const [email, setEmail] = useState();
   const {
@@ -22,19 +24,26 @@ const Signup = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (formData) => {
+  const onSubmit = async (formData) => {
+    setOnFailureMessage("");
     setEmail(formData.email);
-    axios({
-      method: "POST",
-      url: "http://localhost:3001/api/signup",
-      data: formData,
-    })
-      .then(() => {
-        setOnSuccess(true);
-      })
-      .catch((err) => {
-        setOnFailureMessage(err.response.data.response);
+    setLoading(true);
+    try {
+      await axios({
+        method: "POST",
+        url: "http://localhost:3001/api/signup",
+        data: formData,
       });
+      setLoading(false);
+      setOnSuccess(true);
+    } catch (err) {
+      setLoading(false);
+      if (err.message === "Network Error") {
+        setOnFailureMessage(err.message);
+      } else {
+        setOnFailureMessage(err.response.data.message);
+      }
+    }
   };
 
   return (
@@ -94,10 +103,8 @@ const Signup = () => {
                       maxLength: 30,
                       pattern: /^[\w-._]+@([\w-]{3,}\.)+[\w-]{2,4}$/,
                     })}
-                    onChange={() => setOnFailureMessage("")}
                   />
                   {errors.email && <h5>Please enter a valid E-mail.</h5>}
-                  <h5>{onFailureMessage}</h5>
                 </div>
                 <div>
                   <input
@@ -132,6 +139,7 @@ const Signup = () => {
                 </div>
               </div>
               <Link to="/home">Need help?</Link>
+              {loading ? <Loading type="Loading" width="30px"/> : <h5>{onFailureMessage}</h5>}
               <PrimaryButton
                 onClick={() => handleSubmit}
                 backgroundColor="black"
@@ -145,7 +153,9 @@ const Signup = () => {
               <GoogleLogin text="up" />
             </form>
           )}
-          {onSuccess && <OtpVerification email={email} />}
+          {onSuccess && (
+            <OtpVerification email={email} setOnSuccess={setOnSuccess} />
+          )}
           <div className="signup__img">
             <img src={images.signupImg} alt="welcome" />
           </div>

@@ -115,10 +115,16 @@ $headingFontSize: 1.5rem;
 }
 
 .otpVerification {
-  gap: 1rem!important;
+  gap: 1rem !important;
 
   input {
-    width: auto!important;
+    width: auto !important;
     text-align: center;
+  }
+  :first-child {
+    width: 50px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
   }
 }

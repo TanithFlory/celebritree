@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import images from "../../constants/images";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const NavigationPanel = styled.div`
   display: grid;
   grid-template-rows: 10% 1fr;
@@ -13,6 +14,17 @@ const NavigationPanel = styled.div`
     align-items: center;
     flex-direction: column;
     border-radius: 6px;
+    h2 {
+      text-align: center;
+      margin: 0;
+      padding: 10px;
+      span {
+        text-align: center;
+        color: var(--white-color);
+        text-shadow: 0 0 3px var(--blue-color), 0 0 3px var(--blue-color),
+          0 0 3px var(--blue-color), 0 0 3px var(--blue-color);
+      }
+    }
   }
   ul {
     padding: 1rem;
@@ -34,7 +46,7 @@ const NavigationPanel = styled.div`
         margin-bottom: 1rem;
         border: 1px solid var(--green-color);
         border-radius: 6px;
-        padding:3px 12px;
+        padding: 3px 12px;
         img {
           width: 45px;
           aspect-ratio: 1/1;
@@ -44,7 +56,7 @@ const NavigationPanel = styled.div`
           margin: 0;
           flex: 1;
           text-align: center;
-          color:var(--black-color);
+          color: var(--black-color);
         }
       }
     }
@@ -52,18 +64,19 @@ const NavigationPanel = styled.div`
 `;
 
 const Navigation = () => {
+  const userName = useSelector((state) => state.auth.firstName);
   const navLinks = [
     {
       title: "Account Management",
       label1: "Settings",
       label2: "Security",
       icon1: images.Settings,
-      icon2: images.Security
+      icon2: images.Security,
     },
     {
       title: "Contributions",
       label1: "My Contributions",
-      icon1: images.Contributions
+      icon1: images.Contributions,
     },
     {
       title: "Help",
@@ -77,7 +90,9 @@ const Navigation = () => {
     <>
       <NavigationPanel>
         <div>
-          <h2>Hello _______</h2>
+          <h2>
+            Hello <br /> <span>{userName}</span>
+          </h2>
         </div>
         <div>
           <ul>
@@ -94,14 +109,14 @@ const Navigation = () => {
                       }`}
                     >
                       <div>
-                        <img src={data.icon1} alt="icon"/>
-                        <h4>{(data.label1).replace(/[-]+/g, " ")}</h4>
+                        <img src={data.icon1} alt="icon" />
+                        <h4>{data.label1.replace(/[-]+/g, " ")}</h4>
                       </div>
                     </Link>
                     {data.label2 && (
                       <Link to={`/account/${data.label2.toLowerCase()}`}>
                         <div>
-                          <img src={data.icon2} alt="icon"/>
+                          <img src={data.icon2} alt="icon" />
                           <h4>{data.label2}</h4>
                         </div>
                       </Link>

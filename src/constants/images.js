@@ -33,6 +33,8 @@ import FAQ from "../assets/FAQ.png";
 import Help from "../assets/Help.png";
 import Security from "../assets/Security.png";
 
+import Loading from "../assets/Loading.gif";
+import Success from "../assets/Success.gif";
 const images = {
   logo,
   contribute,
@@ -67,6 +69,8 @@ const images = {
   SettingsMob,
   HelpCentreMob,
   ResetPassMob,
+  Loading,
+  Success,
 };
 
 export default images;

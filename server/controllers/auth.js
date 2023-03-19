@@ -4,7 +4,6 @@ import emailOtp from "../services/emailService.js";
 import { User } from "../models/user.js";
 import resendOtp from "../helpers/resendOtp.js";
 import { getAccessToken } from "../helpers/jwtToken.js";
-import { storeCookie } from "../helpers/storeCookie.js";
 import jwt from "jsonwebtoken";
 const userController = {};
 
@@ -16,7 +15,7 @@ userController.signup = async (req, res) => {
 
     const response = await User.findOne({ email });
     if (response && response.emailVerified === true) {
-      return res.status(409).json({ response: "User already exists! " });
+      return res.status(409).json({ message: "User already exists! " });
     }
     if (!response) {
       //completely a new user
@@ -36,18 +35,13 @@ userController.signup = async (req, res) => {
 
       emailOtp(otp, email);
 
-      return res.status(200).json({
-        message: "Success, Proceed to verify OTP!",
-      });
+      return res.status(200).json({ message: "OK" });
     }
     //new user but cancelled signup after otp was sent.
     resendOtp(email);
-
-    res.status(200).json({
-      message: "Success, Proceed to verify OTP!",
-    });
+    return res.status(200).json({ message: "OK" });
   } catch (err) {
-    console.log(err);
+    res.status(500).json({ message: "Internal Server Error! " });
   }
 };
 
@@ -105,7 +99,12 @@ userController.verifyOtp = async (req, res) => {
       { email },
       { $set: { emailVerified: true }, $unset: { otp: "", otpExpiry: "" } }
     );
-    res.status(200).json({ message: "VERIFIED! " });
+
+    const accessToken = getAccessToken({
+      userId: response._id,
+      firstName: response.firstName,
+    });
+    return res.status(200).json(accessToken);
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Internal Server Error!" });
