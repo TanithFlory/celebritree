@@ -12,11 +12,17 @@ const StyledForm = styled.form`
   input text:focus {
     height: 35px;
     width: 260px;
+    padding-left:5px;
     border-radius: 5px;
     outline: none;
     border: solid var(--blue-color);
     border-width: 1px 1px thick;
     font-size: 1rem;
+    background-color:var(--primary-color);
+    color:var(--white-color);
+    &::placeholder{
+      color:var(--white-color);
+    }
   }
   textarea {
     height: 60px;

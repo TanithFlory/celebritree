@@ -52,7 +52,7 @@ const StyledDiv = styled.div`
       height: 60px;
       padding-left: 10px;
       outline: none;
-      border: none;
+      border: 2px solid var(--blue-color);
       border-radius: 30px;
       white-space: pre-line;
     }
