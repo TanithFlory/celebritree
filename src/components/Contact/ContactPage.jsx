@@ -3,7 +3,7 @@ import Socials from "../About/Socials/Socials";
 import ContactForm from "./ContactForm";
 const StyledDiv = styled.div`
   margin: 4rem 0 0 auto;
-  color: white;
+  color: var(--white-color);
   display: flex;
   align-items: center;
   flex-direction: column;

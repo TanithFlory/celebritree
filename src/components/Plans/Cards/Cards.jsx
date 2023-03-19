@@ -6,6 +6,7 @@ import CardImg from "./CardWraps/CardImg";
 import CardDetails from "./CardWraps/CardDetails";
 import CardCarousel from "./CardCarousel";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledH1 = styled.h1`
   text-align: center;
@@ -13,14 +14,14 @@ const StyledH1 = styled.h1`
   color: var(--black-color);
   font-size: ${(props) => `var(--fs-${props.fontSize})`};
   max-width: 750px;
-  padding: ${(props)=>props.padding};
+  padding: ${(props) => props.padding};
   & > span {
     color: var(--green-color);
   }
 `;
 
 const StyledDiv = styled.div`
-  background-color:var(--secondary-color);
+  background-color: var(--secondary-color);
 `;
 const Cards = () => {
   return (
@@ -47,9 +48,11 @@ const Cards = () => {
                   <PrimaryButton backgroundColor="green" textColor="black">
                     Read More
                   </PrimaryButton>
-                  <PrimaryButton backgroundColor="black" textColor="green">
-                    Contribute
-                  </PrimaryButton>
+                  <Link to="/coming-soon">
+                    <PrimaryButton backgroundColor="black" textColor="green">
+                      Contribute
+                    </PrimaryButton>
+                  </Link>
                 </div>
               </CardDetails>
             </CardWrapper>

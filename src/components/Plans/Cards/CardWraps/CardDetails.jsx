@@ -39,7 +39,8 @@ const CardDetails = styled.div`
     align-items: flex-end;
     gap: 1rem;
     padding: 5px;
-    & > button {
+
+    button {
       width: 100px;
       aspect-ratio: 1/1;
     }

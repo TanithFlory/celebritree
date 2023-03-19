@@ -13,18 +13,18 @@ import Contributions from "./components/AccountsDashboard/Contributions/Contribu
 import Security from "./components/AccountsDashboard/AccountManagement/Security";
 import HelpCentre from "./components/AccountsDashboard/Help/HelpCentre";
 import Contact from "./components/Contact/ContactPage";
-
+import ComingSoon from "./components/ComingSoon/ComingSoon";
 
 function App() {
-
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/coming-soon" element={<ComingSoon />} />
         <Route
           path="/login"
           element={
