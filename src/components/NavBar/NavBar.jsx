@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import images from "../../constants/images";
 import MobileNavigation from "./MobileNavigation/MobileNavigation";
 import LoginModal from "../LoginModal/LoginModal";
@@ -24,15 +24,21 @@ const Navbar = (props) => {
         <ul className="app__navbar-bullets">
           {["home", "about", "mission", "contact"].map((data) => {
             return (
-              <Link to={`/${data}`} key={`link-${data}`}>
-                <motion.li
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
+              <motion.li
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                key={`link-${data}`}
+              >
+                <NavLink
+                  to={`/${data}`}
+                  className={({ isActive }) =>
+                    isActive ? "active" : undefined
+                  }
                 >
                   {data}
                   <div />
-                </motion.li>
-              </Link>
+                </NavLink>
+              </motion.li>
             );
           })}
         </ul>

@@ -6,7 +6,7 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import verifyJwt from "./middleware/jwtMiddleware.js";
 import cookieParser from "cookie-parser";
-
+import userContact from "./controllers/userContact.js";
 dotenv.config({ path: "../.env" });
 
 const port = 3001;
@@ -16,7 +16,6 @@ app.use(
   cors({
     credentials: true,
     origin: "http://localhost:3000",
-    exposedHeaders: ["set-cookie"],
   })
 );
 app.use(express.json());
@@ -27,6 +26,10 @@ app.use("/api", authRoutes);
 app.use("/user", verifyJwt, userRoutes);
 
 app.use("/auth", googleAuth);
+
+app.post("/contact", (req, res) => {
+  userContact(req, res);
+});
 
 app.disable("x-powered-by");
 

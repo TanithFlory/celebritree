@@ -2,50 +2,57 @@ import styled from "styled-components";
 import Socials from "../About/Socials/Socials";
 import ContactForm from "./ContactForm";
 const StyledDiv = styled.div`
-  margin: 4rem 0 0 auto;
-  color: var(--white-color);
+  margin: 4rem auto;
+  color: var(--black-color);
+  background-color: var(--white-color);
   display: flex;
   align-items: center;
   flex-direction: column;
   transform: scale(0.8);
+  border-radius: 12px;
+  border: 3px solid var(--white-color);
+  padding: 50px;
+  max-width: 950px;
+  h1 {
+    text-align: center;
+    margin: 0 0 10px;
+  }
   & > div:first-child {
-    h1 {
-      text-align: center;
-      margin: 0;
-    }
+    width: 100%;
+    margin-bottom: 25px;
   }
   .contact__form {
-    display: flex;
+    display: grid;
     align-items: center;
+    grid-template-columns: 2fr 1fr;
     margin-top: 1rem;
-    & > div:first-child {
-      transform: scale(0.9);
-      padding: 120px 135px;
-      border-radius: 50%;
-      background: hsla(195, 96%, 9%, 1);
-
-      background: linear-gradient(
-        90deg,
-        hsla(195, 96%, 9%, 1) 2%,
-        hsla(196, 100%, 38%, 1) 100%
-      );
-
-      background: -moz-linear-gradient(
-        90deg,
-        hsla(195, 96%, 9%, 1) 2%,
-        hsla(196, 100%, 38%, 1) 100%
-      );
-
-      background: -webkit-linear-gradient(
-        90deg,
-        hsla(195, 96%, 9%, 1) 2%,
-        hsla(196, 100%, 38%, 1) 100%
-      );
-
-      filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#01212C", endColorstr="#0090C4", GradientType=1 );
+    width: 100%;
+    gap: 1rem;
+    & > div {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
     }
+
     .about__socials {
+      padding: 15px 30px;
+      max-width: 320px;
+      margin: 0;
       bottom: 20px;
+      border-radius: 0 30%;
+      box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2),
+        0 20px 20px 0 rgba(0, 0, 0, 0.19);
+      background-color: var(--primary-color);
+      div {
+        h2 {
+          color: var(--white-color);
+        }
+        img {
+          margin: 0;
+        }
+      }
     }
   }
   @media screen and (max-width: 912px) {
@@ -54,8 +61,12 @@ const StyledDiv = styled.div`
       margin: 0;
     }
     .contact__form {
-      flex-wrap: wrap;
+      grid-template-columns: 1fr;
+      align-items: center;
       justify-content: center;
+    }
+    & > div:first-child{
+      margin:0;
     }
   }
 `;
@@ -64,15 +75,18 @@ const Contact = () => {
   return (
     <StyledDiv>
       <div>
-        <h1>
-          We want to hear from you. <br /> Let us know how we can help.
-        </h1>
+        <h1>We're happy to hear from you, feel free to message us!</h1>
       </div>
       <div className="contact__form">
         <div>
+          <h1>
+            <span>•</span> Contact Us
+          </h1>
           <ContactForm />
         </div>
-        <Socials text="Message us here!" />
+        <div>
+          <Socials text="Message us here!" color="white" />
+        </div>
       </div>
     </StyledDiv>
   );
