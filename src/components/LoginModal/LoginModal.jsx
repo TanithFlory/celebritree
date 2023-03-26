@@ -5,7 +5,7 @@ import { postLogin } from "../../store/features/auth/authActions";
 import { PrimaryButton } from "../UI/Button/StyledButtons";
 import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
 import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
-import GoogleLogin from "./GoogleLogin";
+import GoogleLogin from "./GoogleLogin/GoogleLogin";
 const LoginModal = (props) => {
   const dispatch = useDispatch();
 

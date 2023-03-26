@@ -1,6 +1,7 @@
 import express from "express";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/userDetails.js";
+import articleRoute from "./routes/articles.js";
 import googleAuth from "./routes/googleAuth.js";
 import cors from "cors";
 import * as dotenv from "dotenv";
@@ -15,7 +16,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "http://localhost:5173"],
   })
 );
 app.use(express.json());
@@ -23,9 +24,11 @@ app.use(cookieParser());
 
 app.use("/api", authRoutes);
 
-app.use("/user", verifyJwt, userRoutes);
-
 app.use("/auth", googleAuth);
+
+app.use("/posts", articleRoute);
+
+app.use("/user", verifyJwt, userRoutes);
 
 app.post("/contact", (req, res) => {
   userContact(req, res);

@@ -9,7 +9,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { RiAccountPinCircleLine } from "react-icons/ri";
-import GoogleLogin from "../LoginModal/GoogleLogin";
+import GoogleLogin from "../LoginModal/GoogleLogin/GoogleLogin";
 import Loading from "../UI/Status/Loading";
 import "./Signup.scss";
 

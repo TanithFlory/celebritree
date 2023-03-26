@@ -15,12 +15,27 @@ body {
 
 :root {
   --primary-color: #022b3a;
-  --secondary-color: #A2DE9F;
+  --secondary-color: #a2de9f;
   --green-color: #53c24d;
   --black-color: #030303;
   --lightGray-color: #e4e4e4;
   --gray-color: #6b7688;
   --brown-color: #46364a;
   --white-color: #ffffff;
-  --blue-color:rgb(0, 132, 255);
+  --blue-color: rgb(0, 132, 255);
+  --gradient-color: linear-gradient(
+    to right,
+    #f4ff00,
+    #c2fd44,
+    #94f869,
+    #67f088,
+    #3be6a2,
+    #2ee3a3,
+    #1ee0a5,
+    #00dda6,
+    #00e191,
+    #00e476,
+    #00e654,
+    #00e71e
+  );
 }

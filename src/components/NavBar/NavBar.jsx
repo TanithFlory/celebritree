@@ -7,15 +7,22 @@ import { motion } from "framer-motion";
 import "./Navbar.scss";
 import AuthOptions from "./AuthOptions";
 import { useSelector } from "react-redux";
-const Navbar = (props) => {
+const Navbar = () => {
   const loginStatus = useSelector((state) => state.auth);
+  const scrollStatus = useSelector((state) => state.scroll);
   const [loginModal, setLoginModal] = useState(false);
   return (
     <>
       {loginModal && (
         <LoginModal toggle={setLoginModal} loginStatus={loginStatus} />
       )}
-      <nav className={`app__navbar ${props.bgColor && "on__scroll-active"}`}>
+      <nav
+        className={`app__navbar ${
+          scrollStatus.partialVisible && "on__scroll-partial"
+        } ${
+          scrollStatus.fullyVisible && "on__scroll-full"
+        }`}
+      >
         <div className="app__navbar-logo">
           <Link to={"/home"}>
             <img src={images.logo} alt="logo" className="app__navbar-logo" />
