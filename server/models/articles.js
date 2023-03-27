@@ -9,6 +9,7 @@ const articleSchema = new mongoose.Schema({
       date: String,
       description: String,
       content: String,
+      highlights: [String],
     },
   ],
 });

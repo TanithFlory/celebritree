@@ -7,7 +7,6 @@ const mongoConnection = async () => {
     })
     .then(() => console.log("DB connected"))
     .catch((err) => console.log(err));
-  return mongoose;
 };
 
 export default mongoConnection;
