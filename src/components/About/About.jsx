@@ -1,30 +1,12 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./About.scss";
 import Socials from "./Socials/Socials";
 import AboutContent from "./AboutContent";
-import useOnScroll from "../../CustomHooks/useOnScroll";
-import { scrollActions } from "../../store/features/scroll/scrollSlice";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-const About = () => {
-  const dispatch = useDispatch();
-  const ref = useRef();
-  const options = {
-    threshold: 0.90,
-  };
 
-  const fullyVisible = useOnScroll(ref, options);
-  useEffect(() => {
-    if (fullyVisible) {
-      dispatch(scrollActions.fullyVisible());
-    }
-    return () => {
-      dispatch(scrollActions.partialVisible());
-    };
-  }, [fullyVisible]);
+const About = () => {
   return (
     <>
-      <div className="about" ref={ref}>
+      <div className="about">
         <div>
           <h1>
             About <span>Celebritree</span>

@@ -11,39 +11,17 @@
     text-decoration: none;
   }
   &:hover {
-    background-image: var(--gradient-color);
+    background-color: var(--secondary-color);
     * {
       --white-color: #022b3a;
-    }
-    .active {
-      color: var(--primary-color);
-      div {
-        background-color: var(--primary-color);
-      }
+      --secondary-color: #022b3a;
     }
   }
   @media screen and (max-width: 912px) {
     display: none;
   }
 }
-.on__scroll-partial {
-  background-image: var(--gradient-color);
-  * {
-    --white-color: #022b3a;
-  }
-  .active {
-    color: var(--primary-color) !important;
-    div {
-      background-color: var(--primary-color) !important;
-    }
-  }
-}
-.on__scroll-full {
-  opacity: 0.1;
-  &:hover {
-    opacity: 1;
-  }
-}
+
 .app__navbar-logo {
   display: flex;
   justify-content: flex-start;
@@ -105,7 +83,7 @@
   gap: 1rem;
   h3 {
     text-align: center;
-    color: var(--white-color);
+    color: white;
     text-shadow: 0 0 3px var(--blue-color), 0 0 3px var(--blue-color),
       0 0 3px var(--blue-color), 0 0 3px var(--blue-color);
   }
@@ -130,5 +108,16 @@
       margin-top: 1rem;
       position: absolute;
     }
+  }
+}
+.on__scroll {
+  background-image: var(--gradient-color);
+  opacity: 90%;
+  * {
+    --white-color: #022b3a;
+    --secondary-color: #022b3a;
+  }
+  &:hover {
+    opacity: 100%;
   }
 }

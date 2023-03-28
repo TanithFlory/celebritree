@@ -23,19 +23,20 @@ body {
   --brown-color: #46364a;
   --white-color: #ffffff;
   --blue-color: rgb(0, 132, 255);
+  --lightgreen-color: #00e46e;
   --gradient-color: linear-gradient(
     to right,
-    #f4ff00,
-    #c2fd44,
-    #94f869,
-    #67f088,
-    #3be6a2,
-    #2ee3a3,
-    #1ee0a5,
-    #00dda6,
-    #00e191,
-    #00e476,
-    #00e654,
-    #00e71e
+    rgb(244, 255, 0),
+    rgb(194, 253, 68),
+    rgb(148, 248, 105),
+    rgb(103, 240, 136),
+    rgb(59, 230, 162),
+    rgb(46, 227, 163),
+    rgb(30, 224, 165),
+    rgb(0, 221, 166),
+    rgb(0, 225, 145),
+    rgb(0, 228, 118),
+    rgb(0, 230, 84),
+    rgb(0, 231, 30)
   );
 }

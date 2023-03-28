@@ -31,7 +31,7 @@ const AuthOptions = (props) => {
         onMouseLeave={() => setExtraOptions()}
       >
         {props.loginStatus.isLogged && (
-          <SecondaryButton>
+          <SecondaryButton backgroundColor="transparent">
             <MdAccountCircle />
             Account
           </SecondaryButton>
@@ -40,14 +40,14 @@ const AuthOptions = (props) => {
           {extraOptions && props.loginStatus.isLogged && (
             <FadeInWrapper>
               <Link to="/account/settings">
-                <SecondaryButton backgroundColor="var(--green-color)">
+                <SecondaryButton backgroundColor="var(--lightgreen-color)">
                   <MdSettings />
                   Settings
                 </SecondaryButton>
               </Link>
               <SecondaryButton
-                backgroundColor="var(--green-color)"
                 onClick={logoutHandler}
+                backgroundColor="var(--lightgreen-color)"
               >
                 <MdLogout />
                 Sign Out
@@ -74,12 +74,15 @@ const AuthOptions = (props) => {
       {!props.loginStatus.isLogged && (
         <>
           <Link to="/signup">
-            <SecondaryButton>
+            <SecondaryButton backgroundColor="transparent">
               <AiOutlineUserAdd />
               Sign Up
             </SecondaryButton>
           </Link>
-          <SecondaryButton onClick={() => props.setLoginModal(true)}>
+          <SecondaryButton
+            backgroundColor="transparent"
+            onClick={() => props.setLoginModal(true)}
+          >
             <MdOutlineLogin />
             Login
           </SecondaryButton>

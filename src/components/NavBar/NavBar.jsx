@@ -4,7 +4,7 @@ import images from "../../constants/images";
 import MobileNavigation from "./MobileNavigation/MobileNavigation";
 import LoginModal from "../LoginModal/LoginModal";
 import { motion } from "framer-motion";
-import "./Navbar.scss";
+import "./NavBar.scss";
 import AuthOptions from "./AuthOptions";
 import { useSelector } from "react-redux";
 const Navbar = () => {
@@ -18,9 +18,7 @@ const Navbar = () => {
       )}
       <nav
         className={`app__navbar ${
-          scrollStatus.partialVisible && "on__scroll-partial"
-        } ${
-          scrollStatus.fullyVisible && "on__scroll-full"
+          scrollStatus.partialVisible && "on__scroll"
         }`}
       >
         <div className="app__navbar-logo">
@@ -29,7 +27,7 @@ const Navbar = () => {
           </Link>
         </div>
         <ul className="app__navbar-bullets">
-          {["home", "about", "mission", "contact"].map((data) => {
+          {["home", "about", "contact", "blog"].map((data) => {
             return (
               <motion.li
                 whileHover={{ scale: 1.1 }}

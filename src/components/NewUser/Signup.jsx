@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../Navbar/Navbar";
 import { PrimaryButton } from "../UI/Button/StyledButtons";
 import Footer from "../Footer/Footer";
 import OtpVerification from "./OtpVerification";
@@ -48,7 +47,6 @@ const Signup = () => {
 
   return (
     <>
-      <Navbar />
       <MotionWrapper className="signup">
         <div className="signup__form">
           {!onSuccess && (

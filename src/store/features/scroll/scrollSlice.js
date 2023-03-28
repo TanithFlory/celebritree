@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   partialVisible: false,
-  fullyVisible: false,
 };
 
 const scrollSlice = createSlice({
@@ -11,15 +10,9 @@ const scrollSlice = createSlice({
   reducers: {
     partialVisible(state) {
       state.partialVisible = true;
-      state.fullyVisible = false;
-    },
-    fullyVisible(state) {
-      state.partialVisible = false;
-      state.fullyVisible = true;
     },
     notVisible(state) {
       state.partialVisible = false;
-      state.fullyVisible = false;
     },
   },
 });

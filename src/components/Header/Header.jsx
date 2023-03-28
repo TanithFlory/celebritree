@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import images from "../../constants/images";
 import "./Header.scss";
 import AnimatedHeader from "./AnimatedHeader";
+import useOnScroll from "../../CustomHooks/useOnScroll";
 const Header = () => {
-
   const scrollHandler = () => {
     // const cardWrapper = document.getElementById("card-wrapper");
     // if (cardWrapper) {
     //   cardWrapper.scrollIntoView({ behavior: "smooth" });
     // }
   };
-
+  const [ref, setRef] = useState();
+  const options = {
+    threshold: 0.85,
+  };
+  useOnScroll(ref, options);
   return (
     <>
-      <header>
+      <header ref={setRef}>
         <motion.div initial="initial" animate="animate" className="header">
           <AnimatedHeader />
           <motion.div

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import { scrollActions } from "../store/features/scroll/scrollSlice";
+import { useDispatch } from "react-redux";
 
 const useOnScroll = (ref, options) => {
+  const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -8,16 +11,26 @@ const useOnScroll = (ref, options) => {
       setVisible(entry.isIntersecting);
     }, options);
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (ref) {
+      observer.observe(ref);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (ref) {
+        observer.unobserve(ref);
       }
     };
   }, [ref, options]);
+
+  useEffect(() => {
+    if (!visible) {
+      dispatch(scrollActions.partialVisible());
+    }
+
+    return () => {
+      dispatch(scrollActions.notVisible());
+    };
+  }, [dispatch, visible]);
 
   return visible;
 };

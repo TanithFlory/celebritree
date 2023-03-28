@@ -1,27 +1,10 @@
-import { useEffect, useRef } from "react";
 import "./Footer.scss";
 import images from "../../constants/images";
 import NewsLetter from "./NewsLetter";
-import { scrollActions } from "../../store/features/scroll/scrollSlice";
-import useOnScroll from "../../CustomHooks/useOnScroll";
-import { useDispatch } from "react-redux";
+
 const Footer = () => {
-  const dispatch = useDispatch();
-  const ref = useRef();
-  const options = {
-    threshold: 0.95,
-  };
-  const fullyVisible = useOnScroll(ref, options);
-  useEffect(() => {
-    if (fullyVisible) {
-      dispatch(scrollActions.fullyVisible());
-    }
-    return () => {
-      dispatch(scrollActions.partialVisible());
-    };
-  }, [fullyVisible]);
   return (
-    <footer className="footer" ref={ref}>
+    <footer className="footer">
       <div className="footer__heading">
         <h1>
           When we plant trees,

@@ -9,7 +9,7 @@ export const PrimaryButton = styled.button`
   color: var(--${(props) => props.textColor}-color);
   cursor: pointer;
   border-radius: 7px;
-  border:2px solid var(--${(props) => props.textColor}-color);
+  border: 2px solid var(--${(props) => props.textColor}-color);
   transition: 0.5s ease-in-out;
   transition: transform 0.3s;
   &:hover {
@@ -19,7 +19,7 @@ export const PrimaryButton = styled.button`
 `;
 
 export const SecondaryButton = styled.button`
-  background-color: ${props=>props.backgroundColor||"transparent"};
+  background-color: ${(props) => props.backgroundColor};
   border: 2px solid green;
   color: var(--white-color);
   width: 100px;
@@ -40,6 +40,3 @@ export const SecondaryButton = styled.button`
     }
   }
 `;
-
-
-
