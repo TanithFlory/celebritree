@@ -57,17 +57,18 @@ router.get(
           });
           await user.save();
 
-          const userDetails = await User.findOne({ email });
+          const userDetails = await User.findOne({ email }, { password: 0 });
           const accessToken = getAccessToken({
             userId: userDetails._id,
             firstName: given_name,
+            lastName: family_name,
+            email,
           });
           return res.send(
             `<script>window.opener.postMessage("${accessToken}", 'http://localhost:3000');window.close();</script>`
           );
         }
-        req.userId = foundUser._id;
-        req.firstName = foundUser.firstName;
+        req.data = { ...foundUser };
         next();
       }
     } catch (err) {
@@ -75,11 +76,12 @@ router.get(
     }
   },
   (req, res) => {
-    const userId = req.userId;
-    const firstName = req.firstName;
+    const { firstName, lastName, email, _id } = req.data._doc;
     const accessToken = getAccessToken({
-      userId: userId,
-      firstName: firstName,
+      userId: _id,
+      firstName,
+      lastName,
+      email,
     });
     return res.send(
       `<script>window.opener.postMessage("${accessToken}", 'http://localhost:3000');window.close();</script>`

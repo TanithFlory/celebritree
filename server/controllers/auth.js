@@ -18,7 +18,6 @@ userController.signup = async (req, res) => {
       return res.status(409).json({ message: "User already exists! " });
     }
     if (!response) {
-      //completely a new user
       const hashedPass = await encryptData(password);
       const otp = (Math.floor(Math.random() * 600000) + 100000).toString();
       const hashedOtp = await encryptData(otp);
@@ -37,7 +36,6 @@ userController.signup = async (req, res) => {
 
       return res.status(200).json({ message: "OK" });
     }
-    //new user but cancelled signup after otp was sent.
     resendOtp(email);
     return res.status(200).json({ message: "OK" });
   } catch (err) {
@@ -68,6 +66,8 @@ userController.login = async (req, res) => {
     const accessToken = getAccessToken({
       userId: response._id,
       firstName: response.firstName,
+      lastName: response.lastName,
+      email: response.email,
     });
     res.status(200).json(accessToken);
   } catch (err) {
@@ -103,6 +103,8 @@ userController.verifyOtp = async (req, res) => {
     const accessToken = getAccessToken({
       userId: response._id,
       firstName: response.firstName,
+      lastName: response.lastName,
+      email: response.email,
     });
     return res.status(200).json(accessToken);
   } catch (err) {

@@ -7,19 +7,30 @@ import { motion } from "framer-motion";
 import "./NavBar.scss";
 import AuthOptions from "./AuthOptions";
 import { useSelector } from "react-redux";
+import scrollTop from "../Utils/scrollTop";
 const Navbar = () => {
   const loginStatus = useSelector((state) => state.auth);
   const scrollStatus = useSelector((state) => state.scroll);
   const [loginModal, setLoginModal] = useState(false);
+  const scrollHandler = (type) => {
+    if (type === "about") {
+      const aboutUs = document.getElementsByClassName("about__socials")[0];
+      aboutUs.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }
+    if (type === "home") {
+      scrollTop();
+    }
+  };
   return (
     <>
       {loginModal && (
         <LoginModal toggle={setLoginModal} loginStatus={loginStatus} />
       )}
       <nav
-        className={`app__navbar ${
-          scrollStatus.partialVisible && "on__scroll"
-        }`}
+        className={`app__navbar ${scrollStatus.partialVisible && "on__scroll"}`}
       >
         <div className="app__navbar-logo">
           <Link to={"/home"}>
@@ -33,6 +44,13 @@ const Navbar = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 key={`link-${data}`}
+                onClick={() =>
+                  data === "about"
+                    ? scrollHandler("about")
+                    : "home"
+                    ? scrollHandler("home")
+                    : null
+                }
               >
                 <NavLink
                   to={`/${data}`}

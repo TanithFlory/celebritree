@@ -6,14 +6,16 @@ import AnimatedHeader from "./AnimatedHeader";
 import useOnScroll from "../../CustomHooks/useOnScroll";
 const Header = () => {
   const scrollHandler = () => {
-    // const cardWrapper = document.getElementById("card-wrapper");
-    // if (cardWrapper) {
-    //   cardWrapper.scrollIntoView({ behavior: "smooth" });
-    // }
+    const cardWrapper = document.getElementsByClassName(
+      "react-multi-carousel-list"
+    )[0];
+    if (cardWrapper) {
+      cardWrapper.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
   };
   const [ref, setRef] = useState();
   const options = {
-    threshold: 0.85,
+    threshold: 0.9,
   };
   useOnScroll(ref, options);
   return (

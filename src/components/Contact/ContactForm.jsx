@@ -3,8 +3,7 @@ import { useForm } from "react-hook-form";
 import { PrimaryButton } from "../UI/Button/StyledButtons";
 import Loading from "../UI/Status/Loading";
 import { useState } from "react";
-import StyledForm from "./StyledForm";
-
+import SContactForm from "./ContactForm.styles";
 const ContactForm = () => {
   const [status, setStatus] = useState({
     success: false,
@@ -40,7 +39,7 @@ const ContactForm = () => {
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit(onSubmit)}>
+    <SContactForm onSubmit={handleSubmit(onSubmit)}>
       <div>
         <div>
           <label>
@@ -100,17 +99,19 @@ const ContactForm = () => {
           {...register("message", {
             required: true,
             maxLength: 200,
-            pattern: /^([\w\s\.\,]+)$/,
+            pattern: /^([\w\s.,]+)$/,
           })}
         />
-        {errors.message && <h5>Message cannot have special characters.</h5>}
+        {errors.message && (
+          <h5>Message cannot have special characters. (. , are allowed) </h5>
+        )}
       </div>
       <PrimaryButton type="submit" backgroundColor="black" textColor="blue">
         Submit
       </PrimaryButton>
       {status.loading && <Loading type="Loading" />}
       {status.success && <Loading />}
-    </StyledForm>
+    </SContactForm>
   );
 };
 

@@ -3,22 +3,25 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLogged: false,
   firstName: "",
+  lastName: "",
+  email: "",
   statusMessage: "",
 };
 export const getInitialState = createAsyncThunk("/", () => {
   const accessToken = localStorage.getItem("accessToken");
-  const decoded = JSON.parse(atob(accessToken.split(".")[1]));
-  const { firstName, exp } = decoded;
-  if (Date.now() > exp*1000) {
+  const decoded = JSON.parse(window.atob(accessToken.split(".")[1]));
+  console.log(decoded);
+  const { firstName, lastName, email, exp } = decoded;
+  if (Date.now() > exp * 1000) {
     return {
       isLogged: false,
-      firstName: "",
-      statusMessage: "",
     };
   }
   return {
     isLogged: true,
     firstName,
+    lastName,
+    email,
     statusMessage: "",
   };
 });

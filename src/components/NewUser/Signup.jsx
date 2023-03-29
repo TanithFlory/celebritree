@@ -60,7 +60,7 @@ const Signup = () => {
                     placeholder="First Name"
                     {...register("fName", {
                       required: true,
-                      maxLength: 12,
+                      maxLength: 18,
                       minLength: 3,
                       pattern: /(^[a-zA-Z]+$)/,
                     })}
@@ -78,7 +78,7 @@ const Signup = () => {
                     placeholder="Second Name"
                     {...register("sName", {
                       required: true,
-                      maxLength: 12,
+                      maxLength: 18,
                       pattern: /(^[a-zA-Z]+$)/,
                     })}
                   />

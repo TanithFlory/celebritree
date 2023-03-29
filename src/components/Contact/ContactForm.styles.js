@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledForm = styled.form`
+const SContactForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,4 +53,4 @@ const StyledForm = styled.form`
   }
 `;
 
-export default StyledForm;
+export default SContactForm;

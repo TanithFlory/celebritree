@@ -21,7 +21,7 @@ const SSecurity = styled.div`
     .input__enabled,
     .input__enabled:focus {
       background-color: var(--white-color);
-      cursor: pointer;
+      cursor: text;
     }
   }
   button {

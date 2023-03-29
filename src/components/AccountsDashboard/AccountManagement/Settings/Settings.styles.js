@@ -5,12 +5,17 @@ const SSettings = styled.div`
   form {
     display: flex;
     gap: 1rem;
+    div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
     input,
     input:focus {
       background-color: #fafafa;
       cursor: not-allowed;
       padding: 16px;
-      width: 230px;
+      width: 180px;
       outline: none;
       border: 1px solid var(--gray-color);
       border-radius: 3px;
@@ -18,7 +23,12 @@ const SSettings = styled.div`
     .input__enabled,
     .input__enabled:focus {
       background-color: var(--white-color);
-      cursor: pointer;
+      cursor: text;
+    }
+    h5 {
+      color: red;
+      margin: 10px 0 0;
+      max-width: 160px;
     }
   }
   button {
