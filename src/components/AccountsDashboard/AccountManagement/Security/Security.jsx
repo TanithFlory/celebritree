@@ -1,7 +1,6 @@
-import React from "react";
-import { useState } from "react";
-import SSecurity from "./SSecurity";
-import { PrimaryButton } from "../../../UI/Button/StyledButtons";
+import React, { useState } from "react";
+import PasswordForm from "./PasswordForm";
+import SSecurity from "./Security.styles";
 
 const Security = () => {
   const toggler = () => {
@@ -15,29 +14,7 @@ const Security = () => {
           <span>Change Password</span>{" "}
           <span onClick={toggler}>{disable ? "Edit" : "Cancel"}</span>
         </div>
-        <form>
-          <input
-            className={!disable ? "input__enabled" : undefined}
-            type="password"
-            placeholder="Current Password"
-            disabled={disable}
-          ></input>
-          <input
-            className={!disable ? "input__enabled" : undefined}
-            type="password"
-            placeholder="New Password"
-            disabled={disable}
-          ></input>
-          <input
-            className={!disable ? "input__enabled" : undefined}
-            type="password"
-            placeholder="Confirm Password"
-            disabled={disable}
-          ></input>
-          <PrimaryButton backgroundColor="blue" textColor="white">
-            Save
-          </PrimaryButton>
-        </form>
+        <PasswordForm toggle={disable} />
       </div>
     </SSecurity>
   );

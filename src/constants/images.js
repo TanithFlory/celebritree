@@ -35,7 +35,7 @@ import Security from "../assets/Security.png";
 
 import Loading from "../assets/Loading.gif";
 import Success from "../assets/Success.gif";
-import ComingSoonBG from "../assets/comingsoonbg.jpeg"
+import ComingSoonBG from "../assets/comingsoonbg.jpeg";
 const images = {
   logo,
   contribute,

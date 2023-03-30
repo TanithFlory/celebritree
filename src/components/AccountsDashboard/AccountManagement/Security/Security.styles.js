@@ -23,6 +23,10 @@ const SSecurity = styled.div`
       background-color: var(--white-color);
       cursor: text;
     }
+    h5 {
+      color: red;
+      margin: 0;
+    }
   }
   button {
     width: 180px;

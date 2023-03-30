@@ -11,6 +11,7 @@ import { RiAccountPinCircleLine } from "react-icons/ri";
 import GoogleLogin from "../LoginModal/GoogleLogin/GoogleLogin";
 import Loading from "../UI/Status/Loading";
 import "./Signup.scss";
+import PasswordValidation from "../UI/PasswordValidation/PasswordValidation";
 
 const Signup = () => {
   const [onSuccess, setOnSuccess] = useState();
@@ -105,18 +106,23 @@ const Signup = () => {
                   <input
                     type="password"
                     placeholder="Password"
-                    minLength={6}
                     {...register("password", {
                       required: true,
                       maxLength: 16,
+                      minLength: 6,
                       pattern:
-                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\w\W]{6,}$/,
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\w\W]{6,}$/,
                     })}
                   />
                   {errors.password && (
-                    <h5>Password must contain one symbol and an uppercase.</h5>
+                    <h5>
+                      Must be atleast 6 characters. The checks below must
+                      qualify.
+                    </h5>
                   )}
                 </div>
+                <PasswordValidation password={watch("password")} />
+
                 <div>
                   <input
                     type="password"

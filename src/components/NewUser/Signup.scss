@@ -58,16 +58,17 @@ $headingFontSize: 1.5rem;
     font-size: $validateFontSize;
     max-width: 323px;
   }
-  svg {
-    height: 50px;
-    width: 50px;
-  }
+
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 3rem 1rem;
     gap: 0.5rem;
+    & > svg {
+      height: 50px;
+      width: 50px;
+    }
     label {
       text-align: center;
     }
