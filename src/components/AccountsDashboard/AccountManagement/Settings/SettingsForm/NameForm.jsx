@@ -12,7 +12,12 @@ export const NameForm = (props) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      firstName,
+      lastName,
+    },
+  });
   const submitHandler = async (formData) => {
     try {
       const token = localStorage.getItem("accessToken");
@@ -39,7 +44,6 @@ export const NameForm = (props) => {
       <div>
         <input
           type="text"
-          placeholder={firstName}
           disabled={props.toggle.personalDetailsInput}
           className={
             !props.toggle.personalDetailsInput ? "input__enabled" : undefined
@@ -57,7 +61,6 @@ export const NameForm = (props) => {
       </div>
       <div>
         <input
-          placeholder={lastName}
           disabled={props.toggle.personalDetailsInput}
           type="text"
           className={
@@ -74,39 +77,6 @@ export const NameForm = (props) => {
         )}
       </div>
       {!props.toggle.personalDetailsInput && (
-        <PrimaryButton backgroundColor="blue" textColor="white">
-          Save
-        </PrimaryButton>
-      )}
-    </form>
-  );
-};
-
-export const EmailForm = (props) => {
-  const email = useSelector((state) => state.auth.email);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const submitHandler = async (formData) => {
-    console.log(formData);
-  };
-  return (
-    <form onSubmit={handleSubmit(submitHandler)}>
-      <input
-        disabled={props.toggle.emailInput}
-        type="text"
-        placeholder={email}
-        className={!props.toggle.emailInput ? "input__enabled" : undefined}
-        {...register("email", {
-          required: true,
-          maxLength: 30,
-          pattern: /^[\w-._]+@([\w-]{3,}\.)+[\w-]{2,4}$/,
-        })}
-      />
-      {errors.email && <h5>Please enter a valid E-mail.</h5>}
-      {!props.toggle.emailInput && (
         <PrimaryButton backgroundColor="blue" textColor="white">
           Save
         </PrimaryButton>

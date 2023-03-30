@@ -21,7 +21,7 @@ const AuthOptions = (props) => {
   const logoutHandler = () => {
     localStorage.removeItem("accessToken");
     dispatch(authActions.logout());
-    window.location.reload();
+    window.location.replace("/");
   };
 
   return (

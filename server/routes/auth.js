@@ -1,6 +1,6 @@
 import express from "express";
 import userController from "../controllers/auth.js";
-import resendOtp from "../helpers/resendOtp.js";
+import { resendOtp } from "../helpers/otp.js";
 import rateLimiter from "../middleware/rateLimiter.js";
 import bodyParser from "body-parser";
 

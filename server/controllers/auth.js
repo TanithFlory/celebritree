@@ -2,7 +2,7 @@ import mongoConnection from "../db.js";
 import { encryptData, decryptData } from "../services/encryption.js";
 import emailOtp from "../services/emailService.js";
 import { User } from "../models/user.js";
-import resendOtp from "../helpers/resendOtp.js";
+import { resendOtp } from "../helpers/otp.js";
 import { getAccessToken } from "../helpers/jwtToken.js";
 import jwt from "jsonwebtoken";
 const userController = {};

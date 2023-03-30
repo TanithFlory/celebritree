@@ -16,6 +16,7 @@ const SSettings = styled.div`
       cursor: not-allowed;
       padding: 16px;
       width: 180px;
+      height:17px;
       outline: none;
       border: 1px solid var(--gray-color);
       border-radius: 3px;
@@ -30,6 +31,11 @@ const SSettings = styled.div`
       margin: 10px 0 0;
       max-width: 160px;
     }
+  }
+  h5 {
+    color: red;
+    margin: 10px 0 0;
+    text-align: center;
   }
   button {
     width: 180px;

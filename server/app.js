@@ -5,7 +5,6 @@ import articleRoute from "./routes/articles.js";
 import googleAuth from "./routes/googleAuth.js";
 import cors from "cors";
 import * as dotenv from "dotenv";
-import verifyJwt from "./middleware/jwtMiddleware.js";
 import cookieParser from "cookie-parser";
 import userContact from "./controllers/userContact.js";
 dotenv.config({ path: "../.env" });
@@ -28,7 +27,7 @@ app.use("/auth", googleAuth);
 
 app.use("/posts", articleRoute);
 
-app.use("/user", verifyJwt, userRoutes);
+app.use("/user", userRoutes);
 
 app.post("/contact", (req, res) => {
   userContact(req, res);

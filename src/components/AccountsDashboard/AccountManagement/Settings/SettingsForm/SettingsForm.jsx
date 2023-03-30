@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { NameForm, EmailForm } from "./Forms";
+import { NameForm } from "./NameForm";
+import { EmailForm } from "./EmailForm";
 const SettingsForm = () => {
   const [toggle, setToggle] = useState({
     personalDetailsInput: true,

@@ -28,6 +28,9 @@ const usersSchema = new mongoose.Schema({
   otpExpiry: {
     type: Number,
   },
+  newEmail: {
+    type: String,
+  },
 });
 
 export const User = mongoose.model("User", usersSchema);
