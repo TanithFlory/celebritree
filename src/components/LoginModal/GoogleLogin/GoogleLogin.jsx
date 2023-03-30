@@ -8,8 +8,8 @@ const GoogleLogin = (props) => {
       url: "http://localhost:3001/auth/google/login",
     })
       .then((res) => {
-        var left = window.screen.width / 2 - (500 / 2 + 10);
-        var top = window.screen.height / 2 - (600 / 2 + 50);
+        const left = window.screen.width / 2 - (500 / 2 + 10);
+        const top = window.screen.height / 2 - (600 / 2 + 50);
         const options = `width=${500},height=${600},resizable=yes,scrollbars=yes,top=${top},left=${left}`;
         window.open(res.data, "Google Sign-In", options);
         const tokenHandler = (event) => {

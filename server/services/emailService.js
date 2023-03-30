@@ -8,37 +8,41 @@ const createTransport = async () => {
   const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
   const clientID = process.env.REACT_APP_CLIENT_ID;
   const refreshToken = process.env.REACT_APP_REFRESH_TKN;
-  const client = new OAuth2(
-    clientID,
-    clientSecret,
-    "https://developers.google.com/oauthplayground"
-  );
-  client.setCredentials({
-    refresh_token: refreshToken,
-  });
-  const accessToken = await new Promise((resolve, reject) => {
-    client.getAccessToken((err, res) => {
-      if (err) {
-        reject(new Error("Error, failed to generate token."));
-      }
-      resolve(res);
+  try {
+    const client = new OAuth2(
+      clientID,
+      clientSecret,
+      "https://developers.google.com/oauthplayground"
+    );
+    client.setCredentials({
+      refresh_token: refreshToken,
     });
-  });
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      accessToken,
-      type: "OAuth2",
-      user: email,
-      clientId: clientID,
-      clientSecret: clientSecret,
-      refreshToken: refreshToken,
-    },
-    tls: {
-      rejectUnauthorized: false,
-    },
-  });
-  return transporter;
+    const accessToken = await new Promise((resolve, reject) => {
+      client.getAccessToken((err, res) => {
+        if (err) {
+          reject(new Error("Error, failed to generate token."));
+        }
+        resolve(res);
+      });
+    });
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        accessToken,
+        type: "OAuth2",
+        user: email,
+        clientId: clientID,
+        clientSecret: clientSecret,
+        refreshToken: refreshToken,
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    });
+    return transporter;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const emailOtp = async (otp, email) => {

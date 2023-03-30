@@ -18,6 +18,7 @@ const redirect = "http://localhost:3001/auth/google/callback";
 const OAuth2Client = new google.auth.OAuth2(clientID, clientSecret, redirect);
 
 router.get("/google/login", (req, res) => {
+  console.log("hi");
   const url = OAuth2Client.generateAuthUrl({
     access_type: "offline",
     scope: [

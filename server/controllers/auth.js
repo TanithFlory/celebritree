@@ -128,8 +128,4 @@ userController.authenticated = async (req, res) => {
   }
 };
 
-userController.logout = (req, res) => {
-  return res.send(200);
-};
-
 export default userController;

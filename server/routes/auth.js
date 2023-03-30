@@ -20,15 +20,11 @@ router.post("/login", (req, res) => {
   userController.login(req, res);
 });
 
-router.post("/logout", (req, res) => {
-  userController.logout(req, res);
-});
-
 router.post("/verify-otp", (req, res) => {
   userController.verifyOtp(req, res);
 });
 
-router.post("/resend-otp", rateLimiter(5, 15), (req, res) => {
+router.post("/resend-otp", rateLimiter(3, 15), (req, res) => {
   resendOtp(req.body.email).then(() =>
     res.json({ message: "OTP sent! check your mailbox! " })
   );

@@ -27,6 +27,29 @@ const SSecurity = styled.div`
       color: red;
       margin: 0;
     }
+    .otp__input {
+      position: relative;
+      & > button {
+        position: absolute;
+        width: 40%;
+        height: 85%;
+        inset: 3px 5px auto auto;
+        &:hover {
+          transform: scale(1);
+        }
+      }
+      .button__disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .button__enabled {
+        opacity: 1;
+        cursor: pointer;
+        &:hover {
+          background-color: var(--green-color);
+        }
+      }
+    }
   }
   button {
     width: 180px;

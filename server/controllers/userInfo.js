@@ -2,7 +2,7 @@ import mongoConnection from "../db.js";
 import { getAccessToken } from "../helpers/jwtToken.js";
 import { resendOtp } from "../helpers/otp.js";
 import { User } from "../models/user.js";
-import { decryptData } from "../services/encryption.js";
+import { decryptData, encryptData } from "../services/encryption.js";
 
 const userInfo = {};
 
@@ -98,6 +98,37 @@ userInfo.verifyOtp = async (req, res) => {
     res.status(200).json(accessToken);
   } catch (err) {
     console.log(err);
+    res.status(500).json("Internal Server Error");
+  }
+};
+
+userInfo.changePassword = async (req, res) => {
+  try {
+    const { userOtp, password } = req.body;
+    const { email } = req.data;
+
+    await mongoConnection();
+
+    const { otp, otpExpiry } = await User.findOne({ email });
+
+    if (Date.now() > otpExpiry) {
+      return res.status(400).json("Otp Expired!");
+    }
+    const decryptedOtp = await decryptData(userOtp, otp);
+    console.log(decryptedOtp);
+    if (!decryptedOtp) {
+      return res.status(409).json("Invalid OTP");
+    }
+    const hashedPass = await encryptData(password);
+    await User.updateOne(
+      { email },
+      {
+        $set: { password: hashedPass },
+        $unset: { otpExpiry: "", otp: "" },
+      }
+    );
+    res.status(200).json("Success");
+  } catch (err) {
     res.status(500).json("Internal Server Error");
   }
 };

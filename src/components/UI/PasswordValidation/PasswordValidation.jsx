@@ -3,7 +3,6 @@ import { RxCheckCircled, RxCrossCircled } from "react-icons/rx";
 import SPasswordValidation from "./PasswordValidation.styles";
 
 const PasswordValidation = (props) => {
-  console.log(props.password);
   const [hasNumber, setHasNumber] = useState(false);
   const [hasUppercase, setHasUppercase] = useState(false);
   const [hasLowercase, setHasLowercase] = useState(false);
