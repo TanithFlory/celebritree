@@ -4,14 +4,14 @@ import AirQualityIndex from "../AirQualityIndex/AirQualityIndex";
 import { PrimaryButton } from "../UI/Button/StyledButtons";
 
 const AnimatedHeader = () => {
-  let easeing = [0.6, -0.05, 0.01, 0.99];
+  const ease = [0.6, -0.05, 0.01, 0.99];
   const fadeIn = {
     initial: {
       y: 60,
       opacity: 0,
       transition: {
         duration: 0.6,
-        ease: easeing,
+        ease,
       },
     },
     animate: {
@@ -20,18 +20,17 @@ const AnimatedHeader = () => {
       transition: {
         duration: 0.6,
         delay: 1,
-        ease: easeing,
+        ease,
       },
     },
   };
-  const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
   const letterAnimation = {
     initial: {
       x: -500,
     },
     animate: {
       x: 0,
-      transition: { duration: 0.5, ...transition },
+      transition: { duration: 0.5, ease: [0.6, 0.03, -0.06, 1] },
     },
   };
   const stagger = {
@@ -60,16 +59,28 @@ const AnimatedHeader = () => {
           <motion.div variants={letterAnimation}>r</motion.div>
           <motion.div variants={letterAnimation}>l</motion.div>
           <motion.div variants={letterAnimation}>d</motion.div>{" "}
-          <motion.div variants={letterAnimation}>{"\u00A0"}a</motion.div>
+          <motion.div variants={letterAnimation}>{"\u00A0"}A</motion.div>
         </motion.div>
       </motion.h2>
       <motion.h1>
-        {" "}
         <motion.div variants={stagger} initial="initial" animate="animate">
-          <motion.div variants={letterAnimation}>Better</motion.div>
-          <motion.div variants={letterAnimation}>{"\u00A0"}Place</motion.div>
-          <motion.div variants={letterAnimation}>{"\u00A0"}To</motion.div>
-          <motion.div variants={letterAnimation}>{"\u00A0"}Live</motion.div>
+          <motion.div variants={letterAnimation}>B</motion.div>
+          <motion.div variants={letterAnimation}>e</motion.div>
+          <motion.div variants={letterAnimation}>t</motion.div>
+          <motion.div variants={letterAnimation}>t</motion.div>
+          <motion.div variants={letterAnimation}>e</motion.div>
+          <motion.div variants={letterAnimation}>r</motion.div>
+          <motion.div variants={letterAnimation}>{"\u00A0"}P</motion.div>
+          <motion.div variants={letterAnimation}>l</motion.div>
+          <motion.div variants={letterAnimation}>a</motion.div>
+          <motion.div variants={letterAnimation}>c</motion.div>
+          <motion.div variants={letterAnimation}>e</motion.div>
+          <motion.div variants={letterAnimation}>{"\u00A0"}T</motion.div>
+          <motion.div variants={letterAnimation}>o</motion.div>
+          <motion.div variants={letterAnimation}>{"\u00A0"}L</motion.div>
+          <motion.div variants={letterAnimation}>i</motion.div>
+          <motion.div variants={letterAnimation}>v</motion.div>
+          <motion.div variants={letterAnimation}>e</motion.div>
         </motion.div>
       </motion.h1>
       <motion.p variants={fadeIn}>

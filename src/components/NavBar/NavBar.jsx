@@ -36,7 +36,7 @@ const Navbar = () => {
         className={`app__navbar ${scrollStatus.partialVisible && "on__scroll"}`}
       >
         <motion.div variants={topDown} className="app__navbar-logo">
-          <Link to={"/home"}>
+          <Link to={"/home"} onClick={() => scrollTop()}>
             <img src={images.logo} alt="logo" className="app__navbar-logo" />
           </Link>
         </motion.div>
