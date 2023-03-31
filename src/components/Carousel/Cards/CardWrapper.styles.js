@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 const CardWrapper = styled.div`
   display: grid;
   grid-template-rows: minmax(100px, 1fr) 2fr;
