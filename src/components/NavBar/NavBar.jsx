@@ -8,6 +8,7 @@ import "./NavBar.scss";
 import AuthOptions from "./AuthOptions";
 import { useSelector } from "react-redux";
 import scrollTop from "../Utils/scrollTop";
+import { topDown, stagger } from "./Navbar.animations";
 const Navbar = () => {
   const loginStatus = useSelector((state) => state.auth);
   const scrollStatus = useSelector((state) => state.scroll);
@@ -29,18 +30,21 @@ const Navbar = () => {
       {loginModal && (
         <LoginModal toggle={setLoginModal} loginStatus={loginStatus} />
       )}
-      <nav
+      <motion.nav
+        initial="initial"
+        animate="animate"
         className={`app__navbar ${scrollStatus.partialVisible && "on__scroll"}`}
       >
-        <div className="app__navbar-logo">
+        <motion.div variants={topDown} className="app__navbar-logo">
           <Link to={"/home"}>
             <img src={images.logo} alt="logo" className="app__navbar-logo" />
           </Link>
-        </div>
-        <ul className="app__navbar-bullets">
+        </motion.div>
+        <motion.ul variants={stagger} className="app__navbar-bullets">
           {["home", "about", "contact", "blog"].map((data) => {
             return (
               <motion.li
+                variants={topDown}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 key={`link-${data}`}
@@ -64,9 +68,13 @@ const Navbar = () => {
               </motion.li>
             );
           })}
-        </ul>
-        <AuthOptions setLoginModal={setLoginModal} loginStatus={loginStatus} />
-      </nav>
+        </motion.ul>
+        <AuthOptions
+          variants={topDown}
+          setLoginModal={setLoginModal}
+          loginStatus={loginStatus}
+        />
+      </motion.nav>
       <MobileNavigation />
     </>
   );

@@ -12,7 +12,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import { FadeInWrapper } from "../UI/Wrapper/MotionWrappers";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../store/features/auth/authSlice";
-
+import { motion } from "framer-motion";
 const AuthOptions = (props) => {
   const dispatch = useDispatch();
   const [extraOptions, setExtraOptions] = useCycle(false, true);
@@ -25,7 +25,7 @@ const AuthOptions = (props) => {
   };
 
   return (
-    <div className="app__navbar-user-options">
+    <motion.div variants={props.variants} className="app__navbar-user-options">
       <div
         onMouseEnter={() => setExtraOptions()}
         onMouseLeave={() => setExtraOptions()}
@@ -88,7 +88,7 @@ const AuthOptions = (props) => {
           </SecondaryButton>
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
 
