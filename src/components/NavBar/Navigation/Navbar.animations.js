@@ -16,9 +16,9 @@ export const topDown = {
   animate: {
     y: 0,
     opacity: 1,
-    animation: {
-      duration: 0.6,
+    transition: {
+      ease: "easeIn",
+      duration: 0.7,
     },
-    transition: "easeIn",
   },
 };

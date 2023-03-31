@@ -8,20 +8,14 @@ const colours = [
   "#F6EAAE",
   "#E8FFC6",
   "#E4FFF6",
-  "#F8EFBA",
   "#F7ECD0",
   "#FFFFFF",
-  "#E4FFF6",
-  "#F6EAAE",
-  "#E8FFC6",
-  "#9AECDB",
 ];
 
 const CardDetails = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${(props) =>
-    colours[props.backgroundIndex].replace(/["]+/g, "")};
+  background-color: ${(props) => colours[props.backgroundIndex]};
   & > h1 {
     margin: 0;
     padding-top: 55px;

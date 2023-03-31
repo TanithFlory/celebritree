@@ -13,12 +13,6 @@ const useInView = (ref, options) => {
     if (ref) {
       observer.observe(ref);
     }
-
-    return () => {
-      if (ref) {
-        observer.unobserve(ref);
-      }
-    };
   }, [ref, options]);
   return visible;
 };

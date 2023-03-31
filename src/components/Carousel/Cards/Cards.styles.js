@@ -1,11 +1,11 @@
 import styled from "styled-components";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export const SCards = styled.div`
   background-color: var(--secondary-color);
 `;
 
-export const StyledH1 = styled.h1`
+export const StyledH1 = styled(motion.h1)`
   text-align: center;
   margin: auto;
   color: var(--black-color);
