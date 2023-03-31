@@ -1,0 +1,22 @@
+.react-multiple-carousel__arrow {
+  background-color: rgb(68, 189, 50, 0.3);
+  z-index: 9;
+  &:hover {
+    background-color: rgb(68, 189, 50, 0.5);
+  }
+}
+.react-multi-carousel-list {
+  li {
+    left: 15px;
+  }
+}
+.react-multi-carousel-dot button {
+  width: 15px;
+  height: 15px;
+}
+
+.react-multi-carousel-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

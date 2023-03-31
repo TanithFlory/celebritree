@@ -1,9 +1,9 @@
 import cardDetails from "./cardDetails";
 import { PrimaryButton } from "../../../components/UI/Button/StyledButtons";
-import CardWrapper from "./CardWraps/CardWrapper.styles";
-import CardImg from "./CardWraps/CardImg.styles";
-import CardDetails from "./CardWraps/CardDetails.styles";
-import CardCarousel from "./CardCarousel";
+import CardWrapper from "./CardWrapper.styles";
+import CardImg from "./CardImg.styles";
+import CardCarousel from "../CarouselWrapper/CardCarousel";
+import CardDetails from "./CardDetails.styles";
 import { Link } from "react-router-dom";
 import { SCards, StyledH1 } from "./Cards.styles";
 const Cards = () => {

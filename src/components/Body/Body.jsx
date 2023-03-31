@@ -1,4 +1,4 @@
-import Cards from "../Plans/Cards/Cards";
+import Cards from "../Carousel/Cards/Cards";
 import About from "../About/About";
 const Body = () => {
   return (

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import images from "../../constants/images";
-import MobileNavigation from "./MobileNavigation/MobileNavigation";
-import LoginModal from "../LoginModal/LoginModal";
+import images from "../../../constants/images";
+import MobileNavigation from "../MobileNavigation/MobileNavigation";
+import LoginModal from "../../LoginModal/LoginModal";
 import { motion } from "framer-motion";
-import "./NavBar.scss";
 import AuthOptions from "./AuthOptions";
 import { useSelector } from "react-redux";
-import scrollTop from "../Utils/scrollTop";
-import { topDown, stagger } from "./Navbar.animations";
+import scrollTop from "../../Utils/scrollTop";
+import { stagger, topDown } from "./Navbar.animations";
+import "./NavBar.scss";
+
 const Navbar = () => {
   const loginStatus = useSelector((state) => state.auth);
   const scrollStatus = useSelector((state) => state.scroll);

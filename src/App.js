@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./components/Navbar/NavBar";
+import Navbar from "./components/Navbar/Navigation/NavBar";
 import AllRoutes from "./AllRoutes";
 
 function App() {

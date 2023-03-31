@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, useCycle } from "framer-motion";
-import { SecondaryButton } from "../UI/Button/StyledButtons";
+import { SecondaryButton } from "../../UI/Button/StyledButtons";
 import {
   MdAccountCircle,
   MdOutlineLogin,
@@ -9,9 +9,9 @@ import {
   MdLogout,
 } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { FadeInWrapper } from "../UI/Wrapper/MotionWrappers";
+import { FadeInWrapper } from "../../UI/Wrapper/MotionWrappers";
 import { useDispatch } from "react-redux";
-import { authActions } from "../../store/features/auth/authSlice";
+import { authActions } from "../../../store/features/auth/authSlice";
 import { motion } from "framer-motion";
 const AuthOptions = (props) => {
   const dispatch = useDispatch();

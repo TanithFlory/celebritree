@@ -6,6 +6,7 @@
   height: 100svh;
   z-index: 15;
   background: rgba(0, 0, 0, 0.75);
+  overflow-y: scroll;
   h2 {
     text-align: center;
     margin-bottom: 0;
@@ -64,7 +65,7 @@
 }
 .login__modal,
 .forgot__password {
-  margin: 5rem auto;
+  margin: 8rem auto;
   padding: 1rem 3rem;
   max-width: 350px;
   color: var(--black-color);
