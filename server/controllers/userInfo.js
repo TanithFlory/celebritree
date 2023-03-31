@@ -104,18 +104,14 @@ userInfo.verifyOtp = async (req, res) => {
 
 userInfo.changePassword = async (req, res) => {
   try {
-    const { userOtp, password } = req.body;
-    const { email } = req.data;
-
+    const { userOtp, password, email } = req.body;
     await mongoConnection();
 
     const { otp, otpExpiry } = await User.findOne({ email });
-
     if (Date.now() > otpExpiry) {
       return res.status(400).json("Otp Expired!");
     }
     const decryptedOtp = await decryptData(userOtp, otp);
-    console.log(decryptedOtp);
     if (!decryptedOtp) {
       return res.status(409).json("Invalid OTP");
     }

@@ -19,12 +19,8 @@ router.post("/verify-otp", [verifyJwt, rateLimiter(1, 1440)], (req, res) => {
   userInfo.verifyOtp(req, res);
 });
 
-router.post(
-  "/change-password",
-  [verifyJwt, rateLimiter(5, 1440)],
-  (req, res) => {
-    userInfo.changePassword(req, res);
-  }
-);
+router.post("/change-password", [rateLimiter(15, 1440)], (req, res) => {
+  userInfo.changePassword(req, res);
+});
 
 export default router;

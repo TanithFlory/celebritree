@@ -17,16 +17,7 @@
     color: red;
   }
 }
-
-.login__modal {
-  margin: 5rem auto;
-  padding: 1rem 3rem;
-  max-width: 350px;
-  color: var(--black-color);
-  background-color: var(--white-color);
-  border-radius: 18px;
-  border: 3px solid var(--secondary-color);
-  z-index: 20;
+.login__modal-form {
   form {
     display: flex;
     flex-direction: column;
@@ -40,8 +31,7 @@
       svg {
         position: absolute;
         transform: scale(1.9);
-        top: 12px;
-        left: 10px;
+        inset: 10px 0 0 10px;
       }
     }
     input,
@@ -52,6 +42,7 @@
       width: 100%;
       border-radius: 6px;
       padding-left: 36px;
+      box-sizing: border-box;
     }
     label {
       width: 100%;
@@ -64,10 +55,37 @@
     a {
       text-decoration: none;
       color: var(--black-color);
+      cursor: pointer;
       &:hover {
         transform: scale(1.03);
       }
     }
+  }
+}
+.login__modal,
+.forgot__password {
+  margin: 5rem auto;
+  padding: 1rem 3rem;
+  max-width: 350px;
+  color: var(--black-color);
+  background-color: var(--white-color);
+  border-radius: 18px;
+  border: 3px solid var(--secondary-color);
+}
+
+.forgot__password {
+  form {
+    input,
+    input:focus {
+      padding-left: 5px;
+    }
+    label {
+      padding-left: 5px;
+    }
+  }
+  h5 {
+    color: red;
+    margin: 0;
   }
 }
 

@@ -3,6 +3,8 @@ import userController from "../controllers/auth.js";
 import { resendOtp } from "../helpers/otp.js";
 import rateLimiter from "../middleware/rateLimiter.js";
 import bodyParser from "body-parser";
+import mongoConnection from "../db.js";
+import { User } from "../models/user.js";
 
 const router = express.Router();
 
@@ -24,10 +26,16 @@ router.post("/verify-otp", (req, res) => {
   userController.verifyOtp(req, res);
 });
 
-router.post("/resend-otp", rateLimiter(3, 15), (req, res) => {
-  resendOtp(req.body.email).then(() =>
-    res.json({ message: "OTP sent! check your mailbox! " })
-  );
+router.post("/resend-otp", rateLimiter(5, 15), async (req, res) => {
+  const email = req.body.email;
+  await mongoConnection();
+  const response = await User.findOne({ email });
+
+  if (!response) {
+    return res.status(404).json("User not found");
+  }
+  await resendOtp(email);
+  res.status(200).json("OTP Sent, check your mailbox");
 });
 
 export default router;

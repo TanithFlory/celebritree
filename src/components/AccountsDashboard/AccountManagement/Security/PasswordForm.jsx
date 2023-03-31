@@ -4,13 +4,11 @@ import { PrimaryButton } from "../../../UI/Button/StyledButtons";
 import PasswordValidation from "../../../UI/PasswordValidation/PasswordValidation";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import SPasswordForm from "./PasswordForm.styles";
 const PasswordForm = (props) => {
-  const email = useSelector((state) => state.auth.email);
+  const email = useSelector((state) => state.auth.email) || props.email;
   const [status, setStatus] = useState();
-  const [error, setError] = useState({
-    status: false,
-    message: "",
-  });
+  const [error, setError] = useState("");
   const {
     register,
     handleSubmit,
@@ -19,30 +17,26 @@ const PasswordForm = (props) => {
   } = useForm();
 
   const submitHandler = async (formData) => {
-    const token = localStorage.getItem("accessToken");
+    formData.email = email;
     setStatus("");
     try {
-      const response = await axios({
+      await axios({
         method: "POST",
         url: "http://localhost:3001/user/change-password",
         data: formData,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
       });
+      setError("");
       setStatus("Successful");
       setTimeout(() => {
         window.location.reload();
       }, 1000);
     } catch (err) {
-      setError({
-        state: true,
-        message: err.response.data,
-      });
+      setError(err.response.data);
     }
   };
   const otpHandler = async () => {
     setStatus("");
+    setError("");
     try {
       await axios({
         method: "POST",
@@ -53,14 +47,11 @@ const PasswordForm = (props) => {
       });
       setStatus("OTP Sent!");
     } catch (err) {
-      setError({
-        state: true,
-        message: err.response.data,
-      });
+      setError(err.response.data);
     }
   };
   return (
-    <form onSubmit={handleSubmit(submitHandler)}>
+    <SPasswordForm onSubmit={handleSubmit(submitHandler)}>
       <input
         type="password"
         placeholder="Password"
@@ -111,14 +102,14 @@ const PasswordForm = (props) => {
           Send Otp
         </PrimaryButton>
       </div>
-      {!error.state && <h5>{status}</h5>}
-      {error.state && <h5>{error.message}</h5>}
+      {status && <h5>{status}</h5>}
+      {error && <h5>{error}</h5>}
       {!props.toggle && (
         <PrimaryButton backgroundColor="blue" textColor="white" type="submit">
           Save
         </PrimaryButton>
       )}
-    </form>
+    </SPasswordForm>
   );
 };
 
