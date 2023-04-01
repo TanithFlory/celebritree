@@ -14,7 +14,7 @@ export const postLogin = (login) => {
       dispatch(authActions.login());
       window.location.reload();
     } catch (err) {
-      throw err.response.data.message;
+      throw err.response?.data.message || err.message;
     }
   };
 };

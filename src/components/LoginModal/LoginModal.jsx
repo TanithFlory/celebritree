@@ -82,7 +82,7 @@ const LoginModal = (props) => {
       {forgotPass && (
         <div className="forgot__password">
           <h2>Reset Password</h2>
-          <ForgotPassword/>
+          <ForgotPassword />
         </div>
       )}
     </MotionWrapper>
