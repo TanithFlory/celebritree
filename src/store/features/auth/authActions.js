@@ -2,22 +2,19 @@ import { authActions } from "./authSlice";
 import axios from "axios";
 
 export const postLogin = (login) => {
-  return (dispatch) => {
-    return new Promise((resolve, reject) => {
-      axios({
+  return async (dispatch) => {
+    try {
+      const response = await axios({
         method: "POST",
         url: "http://localhost:3001/api/login",
         data: login,
         withCredentials: true,
-      })
-        .then((response) => {
-          localStorage.setItem("accessToken", response.data);
-          dispatch(authActions.login());
-          window.location.reload();
-        })
-        .catch((err) => {
-          reject(err.response.data.message);
-        });
-    });
+      });
+      localStorage.setItem("accessToken", response.data);
+      dispatch(authActions.login());
+      window.location.reload();
+    } catch (err) {
+      throw err.response.data.message;
+    }
   };
 };

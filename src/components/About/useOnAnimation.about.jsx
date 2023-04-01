@@ -19,9 +19,8 @@ const useOnAnimation = (
       contentControls.start({
         opacity: 1,
         transition: {
-          duration: 1.6,
+          duration: 1.3,
           ease: "easeIn",
-          delay: 0.5,
         },
       });
     }
