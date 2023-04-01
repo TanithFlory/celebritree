@@ -1,5 +1,4 @@
 import React from "react";
-import Data from "./ContributionDummy";
 import styled from "styled-components";
 import images from "../../../constants/images";
 const OrderCard = styled.div`
@@ -65,7 +64,7 @@ const Contributions = () => {
           My <span>Contributions</span>
         </h1>
       </div>
-      {Data.map((data, index) => {
+      {/* {Data.map((data, index) => {
         return (
           <div key={`order-${index}`}>
             <div>
@@ -81,7 +80,7 @@ const Contributions = () => {
             </div>
           </div>
         );
-      })}
+      })} */}
     </OrderCard>
   );
 };
