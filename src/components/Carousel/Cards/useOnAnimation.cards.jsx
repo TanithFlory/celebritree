@@ -30,7 +30,7 @@ const useOnAnimation = (
     if (headingVisible) {
       headingControls.start({
         opacity: 1,
-        y: 0,
+        translateY: 0,
         transition: {
           duration: 0.6,
           ease: "easeIn",
@@ -40,40 +40,18 @@ const useOnAnimation = (
     if (subHeadingVisible) {
       subHeadingControls.start({
         opacity: 1,
-        y: 0,
+        translateY: 0,
         transition: {
           duration: 0.6,
           ease: "easeIn",
         },
       });
     }
-    return () => {
-      if (!cardRef) {
-        carouselControls.set({
-          opacity: 0,
-        });
-      }
-      if (!headingRef) {
-        headingControls.set({
-          opacity: 0,
-          y: -80,
-        });
-      }
-      if (!subHeadingRef) {
-        subHeadingControls.set({
-          opacity: 0,
-          y: 80,
-        });
-      }
-    };
   }, [
-    cardRef,
     cardVisible,
     carouselControls,
-    headingRef,
     headingVisible,
     headingControls,
-    subHeadingRef,
     subHeadingVisible,
     subHeadingControls,
   ]);

@@ -32,7 +32,7 @@ const Cards = () => {
     <SCards>
       <StyledH1
         animate={headingControls}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0, translateY: -80 }}
         ref={setHeadingRef}
         fontSize="xxl"
         padding="2rem 0 0"
@@ -75,7 +75,7 @@ const Cards = () => {
       </motion.div>
       <StyledH1
         ref={setSubHeadingRef}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0, translateY: 50 }}
         animate={subHeadingControls}
         fontSize="l"
         margin="auto"
