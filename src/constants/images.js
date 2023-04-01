@@ -11,7 +11,6 @@ import EarthRotate from "../assets/EarthRotate.svg";
 import CheckMark from "../assets/CheckMark.gif";
 import Information from "../assets/Information.gif";
 import EmailVerify from "../assets/EmailVerify.png";
-import Confetti from "../assets/Confetti.png";
 import ContributionTree from "../assets/ContributionTree.gif";
 
 import HomeMob from "../assets/HomeMob.png";
@@ -49,7 +48,6 @@ const images = {
   EarthRotate,
   CheckMark,
   Information,
-  Confetti,
   ContributionTree,
   Settings,
   Security,

@@ -9,7 +9,7 @@ const OrderCard = styled.div`
   h2 {
     text-align: center;
     margin: 0;
-    padding-inline:10px;
+    padding-inline: 10px;
     span {
       color: var(--green-color);
     }
@@ -19,10 +19,11 @@ const OrderCard = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom:1rem;
-    img{
-      width:80px;
-      aspect-ratio:1/1;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    img {
+      width: 80px;
+      aspect-ratio: 1/1;
     }
   }
   & > div:not(:first-child) {
@@ -59,11 +60,10 @@ const Contributions = () => {
   return (
     <OrderCard>
       <div>
-        <img src={images.Confetti} alt="Confetti" />
-        <h1>
-          Your <span>Contributions</span>
-        </h1>
         <img src={images.ContributionTree} alt="Confetti" />
+        <h1>
+          My <span>Contributions</span>
+        </h1>
       </div>
       {Data.map((data, index) => {
         return (
