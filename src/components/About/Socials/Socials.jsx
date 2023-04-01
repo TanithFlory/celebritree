@@ -1,9 +1,15 @@
 import React from "react";
 import images from "../../../constants/images";
 import "./Socials.scss";
+import { motion } from "framer-motion";
 const Socials = (props) => {
   return (
-    <div className="about__socials">
+    <motion.div
+      className="about__socials"
+      ref={props.socialsRef}
+      animate={props.animate}
+      initial={props.initial}
+    >
       <img src={images.logo} alt="logo" />
       <div>
         <div>
@@ -19,7 +25,7 @@ const Socials = (props) => {
           </h2>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

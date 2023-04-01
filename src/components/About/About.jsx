@@ -1,20 +1,40 @@
-import React from "react";
+import { useState } from "react";
 import "./About.scss";
 import Socials from "./Socials/Socials";
 import AboutContent from "./AboutContent";
-
+import { motion } from "framer-motion";
+import useOnAnimation from "./useOnAnimation.about";
+import { useAnimation } from "framer-motion";
 const About = () => {
+  const [socialsRef, setSocialsRef] = useState();
+  const [contentRef, setContentRef] = useState();
+
+  const socialControls = useAnimation();
+  const contentControls = useAnimation();
+
+  useOnAnimation(socialsRef, socialControls, contentRef, contentControls);
+
   return (
     <>
       <div className="about">
         <div>
-          <h1>
+          <motion.h1 animate={socialControls} initial={{ opacity: 0 }}>
             About <span>Celebritree</span>
-          </h1>
+          </motion.h1>
         </div>
         <div>
-          <Socials text="Follow for updates!" />
-          <div className="about__content">
+          <Socials
+            socialsRef={setSocialsRef}
+            initial={{ opacity: 0 }}
+            animate={socialControls}
+            text="Follow for updates!"
+          />
+          <motion.div
+            ref={setContentRef}
+            animate={contentControls}
+            initial={{ opacity: 0 }}
+            className="about__content"
+          >
             <h1>
               Welcome to <span>Celebritree</span>, a non-profit organization
               dedicated to fighting both global starvation and climate change.
@@ -24,7 +44,7 @@ const About = () => {
                 <AboutContent />
               </ul>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </>
