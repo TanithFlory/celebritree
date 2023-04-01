@@ -68,7 +68,7 @@ const Footer = () => {
             <NewsLetter />
           </motion.div>
         </motion.div>
-        <motion.div custom={1} {...fadeInProps}>
+        <motion.div custom={6} {...fadeInProps}>
           <h1>
             © {new Date().getFullYear()} <span>Celebritree</span> All rights
             reserved.

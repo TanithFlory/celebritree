@@ -10,7 +10,7 @@ const useOnAnimation = (
   subHeadingControls
 ) => {
   const options = {
-    rootMargin: "-160px 0px 0px 0px",
+    threshold: 0.45,
   };
   const cardVisible = useInView(cardRef, options);
   const headingVisible = useInView(headingRef, options);
