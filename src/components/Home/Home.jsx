@@ -14,8 +14,8 @@ const Home = () => {
 
   return (
     <>
-      <Header />
-      <Body />
+      {/* <Header /> */}
+      {/* <Body /> */}
       <Footer />
     </>
   );

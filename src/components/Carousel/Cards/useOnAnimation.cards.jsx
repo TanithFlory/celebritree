@@ -10,12 +10,12 @@ const useOnAnimation = (
   subHeadingControls
 ) => {
   const options = {
-    rootMargin: "-160px",
+    rootMargin: "-160px 0px 0px 0px",
   };
   const cardVisible = useInView(cardRef, options);
   const headingVisible = useInView(headingRef, options);
   const subHeadingVisible = useInView(subHeadingRef, {
-    rootMargin: "0px",
+    rootMargin: "-15px 0px 0px 0px",
   });
   useEffect(() => {
     if (cardVisible) {

@@ -2,9 +2,8 @@ import { useState } from "react";
 import "./About.scss";
 import Socials from "./Socials/Socials";
 import AboutContent from "./AboutContent";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import useOnAnimation from "./useOnAnimation.about";
-import { useAnimation } from "framer-motion";
 const About = () => {
   const [socialsRef, setSocialsRef] = useState();
   const [contentRef, setContentRef] = useState();
@@ -13,7 +12,6 @@ const About = () => {
   const contentControls = useAnimation();
 
   useOnAnimation(socialsRef, socialControls, contentRef, contentControls);
-
   return (
     <>
       <div className="about">
