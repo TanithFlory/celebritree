@@ -3,7 +3,6 @@ import { google } from "googleapis";
 import axios from "axios";
 import mongoConnection from "../db.js";
 import { User } from "../models/user.js";
-import { storeCookie } from "../helpers/storeCookie.js";
 import { getAccessToken } from "../helpers/jwtToken.js";
 
 import * as dotenv from "dotenv";
@@ -18,7 +17,6 @@ const redirect = "http://localhost:3001/auth/google/callback";
 const OAuth2Client = new google.auth.OAuth2(clientID, clientSecret, redirect);
 
 router.get("/google/login", (req, res) => {
-  console.log("hi");
   const url = OAuth2Client.generateAuthUrl({
     access_type: "offline",
     scope: [
