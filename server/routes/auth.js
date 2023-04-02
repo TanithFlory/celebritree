@@ -10,10 +10,6 @@ const router = express.Router();
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.get("/authenticated", (req, res) => {
-  userController.authenticated(req, res);
-});
-
 router.post("/signup", rateLimiter(15, 60), (req, res) => {
   userController.signup(req, res);
 });

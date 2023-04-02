@@ -11,6 +11,7 @@ import Security from "./components/AccountsDashboard/AccountManagement/Security/
 import HelpCentre from "./components/AccountsDashboard/Help/HelpCentre";
 import Contact from "./components/Contact/ContactPage";
 import ComingSoon from "./components/ComingSoon/ComingSoon";
+import NotFound from "./components/NotFound/NotFound";
 
 const AllRoutes = () => {
   return (
@@ -45,6 +46,7 @@ const AllRoutes = () => {
         <Route path="/account/contributions" element={<Contributions />} />
         <Route path="/account/help-centre" element={<HelpCentre />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

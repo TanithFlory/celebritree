@@ -4,7 +4,6 @@ import emailOtp from "../services/emailService.js";
 import { User } from "../models/user.js";
 import { resendOtp } from "../helpers/otp.js";
 import { getAccessToken } from "../helpers/jwtToken.js";
-import jwt from "jsonwebtoken";
 const userController = {};
 
 userController.signup = async (req, res) => {
@@ -46,6 +45,9 @@ userController.signup = async (req, res) => {
 userController.login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    if (!email) {
+      throw "Error";
+    }
     await mongoConnection();
     const response = await User.findOne({ email });
     if (!response) {
@@ -79,10 +81,13 @@ userController.login = async (req, res) => {
 userController.verifyOtp = async (req, res) => {
   try {
     const { email, otp } = req.body;
+    if (!email) {
+      throw "Error";
+    }
     await mongoConnection();
     const response = await User.findOne({ email });
-    const hashedOtp = response.otp;
-    const otpExpiry = response.otpExpiry;
+    const hashedOtp = response?.otp;
+    const otpExpiry = response?.otpExpiry;
 
     if (Date.now() > otpExpiry) {
       return res.status(401).json({
@@ -110,21 +115,6 @@ userController.verifyOtp = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Internal Server Error!" });
-  }
-};
-
-userController.authenticated = async (req, res) => {
-  try {
-    const { accessToken } = req.cookies;
-    const decoded = await jwt.verify(
-      accessToken,
-      process.env.REACT_APP_JWT_ACCESS_SECRET
-    );
-    const { userId, firstName } = decoded;
-    res.status(200).json({ message: "OK", firstName, userId });
-  } catch (err) {
-    console.log("JWT verification failed ");
-    res.status(403).json({ message: "Unauthorized" });
   }
 };
 
