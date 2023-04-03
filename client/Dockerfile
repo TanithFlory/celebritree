@@ -1,8 +1,8 @@
-FROM node:18-alpine as react_app
+FROM node:19.8.1-alpine as react_app
 WORKDIR /app
-COPY /client /app/
+COPY . /app/
 RUN npm install --silent --production
-RUN npm install react-scripts@5.0.1 -g --silent
+# RUN npm install react-scripts@5.0.1 -g --silent
 RUN npm run build
 
 ###########################################

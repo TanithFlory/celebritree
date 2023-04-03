@@ -1,0 +1,21 @@
+version: "3.9"
+networks:
+  celebritree_network:
+    driver: bridge
+services:
+  client:
+    build: ./client
+    ports:
+      - "3000:80"
+  server:
+    build: ./server
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/celebritree
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest-alpine
+
+      

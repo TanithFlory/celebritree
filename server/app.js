@@ -5,7 +5,6 @@ import articleRoute from "./routes/articles.js";
 import googleAuth from "./routes/googleAuth.js";
 import cors from "cors";
 import * as dotenv from "dotenv";
-import cookieParser from "cookie-parser";
 import userContact from "./controllers/userContact.js";
 dotenv.config({ path: "../.env" });
 
@@ -19,7 +18,6 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(cookieParser());
 
 app.use("/api", authRoutes);
 
@@ -36,7 +34,7 @@ app.post("/contact", (req, res) => {
 app.disable("x-powered-by");
 
 app.listen(port, () => {
-  console.log(`listening to ${port}`);
+  console.log(`Listening To ${port}`);
 });
 
 //https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=
