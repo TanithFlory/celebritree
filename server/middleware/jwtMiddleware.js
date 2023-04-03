@@ -6,7 +6,7 @@ const verifyJwt = (req, res, next) => {
     if (!token) {
       return res.status(401).json({ success: false, message: "No token provided" });
     }
-    const decoded = jwt.verify(token, process.env.REACT_APP_JWT_ACCESS_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
     req.data = {...decoded};
     next();
   } catch (err) {

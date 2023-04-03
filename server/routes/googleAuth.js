@@ -5,9 +5,6 @@ import mongoConnection from "../db.js";
 import { User } from "../models/user.js";
 import { getAccessToken } from "../helpers/jwtToken.js";
 
-import * as dotenv from "dotenv";
-dotenv.config({ path: "../.env" });
-
 const router = express.Router();
 
 const clientSecret = process.env.REACT_APP_CLIENT_SECRET;

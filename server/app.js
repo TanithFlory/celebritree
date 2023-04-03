@@ -4,13 +4,12 @@ import userRoutes from "./routes/userDetails.js";
 import articleRoute from "./routes/articles.js";
 import googleAuth from "./routes/googleAuth.js";
 import cors from "cors";
-import * as dotenv from "dotenv";
+// import * as dotenv from "dotenv";
 import userContact from "./controllers/userContact.js";
-dotenv.config({ path: "../.env" });
+// dotenv.config({ path: "../.env" });
 
 const port = 3001;
 const app = express();
-
 app.use(
   cors({
     credentials: true,

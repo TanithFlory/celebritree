@@ -38,7 +38,7 @@ userController.signup = async (req, res) => {
     resendOtp(email);
     return res.status(200).json({ message: "OK" });
   } catch (err) {
-    res.status(500).json({ message: "Internal Server Error! " });
+    res.status(500).json(err);
   }
 };
 

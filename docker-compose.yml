@@ -3,19 +3,27 @@ networks:
   celebritree_network:
     driver: bridge
 services:
-  client:
-    build: ./client
+  nginx:
+    image: nginx:1.23.4-alpine
     ports:
       - "3000:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+  client:
+    build: ./client
+    volumes:
+    - client:/app/build
   server:
     build: ./server
     ports:
       - "3001:3001"
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/celebritree
+    volumes:
+    - server:/app/build
+    env_file:
+      - ./.env
     depends_on:
       - mongo
   mongo:
-    image: mongo:latest-alpine
+    image: mongo
 
       

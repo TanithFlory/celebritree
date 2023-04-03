@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 export const getAccessToken = (payload) => {
   const accessToken = jwt.sign(
     payload,
-    process.env.REACT_APP_JWT_ACCESS_SECRET,
+    process.env.JWT_ACCESS_SECRET,
     {
       expiresIn: "365d",
     }
