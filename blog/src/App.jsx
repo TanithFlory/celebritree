@@ -10,10 +10,10 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="articles/:tag/:title" element={<ArticlePreview />} />
-        <Route path="/credits" element={<Credits />} />
+        <Route exact path="/blog/" element={<Home />} />
+        <Route path="/blog/home" element={<Home />} />
+        <Route path="/blog/articles/:tag/:title" element={<ArticlePreview />} />
+        <Route path="/blog/credits" element={<Credits />} />
       </Routes>
       <Pagebreak margin="3rem 0" />
       <Footer />

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, useCycle } from "framer-motion";
 import MenuToggle from "./MenuToggle";
 import NavigationLinks from "./NavigationLinks";
@@ -25,7 +25,7 @@ const MobileNavigation = () => {
 
   const [isOpen, toggleOpen] = useCycle(false, true);
   const [enableBtn, setEnableBtn] = useCycle(false, true);
-  const navRef = useRef();
+  const [navRef,setNavRef] = useState();
   /*Animation requires certain time to close, setTimeout was causing issues. Hence the following code. */
   // const toggler = () => {
   //   if (isOpen) {
@@ -44,17 +44,17 @@ const MobileNavigation = () => {
     if (!isOpen) {
       setEnableBtn();
       setTimeout(() => {
-        navRef.current?.classList.remove("expanded");
+        navRef?.classList.remove("expanded");
         setEnableBtn();
       }, 700);
     }
     return () => {
-      navRef.current?.classList.add("expanded");
+      navRef?.classList.add("expanded");
     };
-  }, [isOpen]);
+  }, [isOpen,navRef,setEnableBtn]);
   return (
     <motion.nav
-      ref={navRef}
+      ref={setNavRef}
       className="app__navbar-mobile"
       animate={isOpen ? "open" : "closed"}
       initial={false}

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { PrimaryButton } from "../../../../UI/Button/StyledButtons";
-import { useSelector, useDispatch } from "react-redux";
-import { authActions } from "../../../../../store/features/auth/authSlice";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
 export const EmailForm = (props) => {

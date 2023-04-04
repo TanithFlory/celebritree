@@ -57,15 +57,21 @@ const Navbar = () => {
                     : null
                 }
               >
-                <NavLink
-                  to={`/${data}`}
-                  className={({ isActive }) =>
-                    isActive ? "active" : undefined
-                  }
-                >
-                  {data}
-                  <div />
-                </NavLink>
+                {data === "blog" ? (
+                  <a href={`/blog/`} target="_blank">
+                    {data}
+                  </a>
+                ) : (
+                  <NavLink
+                    to={`/${data}`}
+                    className={({ isActive }) =>
+                      isActive ? "active" : undefined
+                    }
+                  >
+                    {data}
+                    <div />
+                  </NavLink>
+                )}
               </motion.li>
             );
           })}

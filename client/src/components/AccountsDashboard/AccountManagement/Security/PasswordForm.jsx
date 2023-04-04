@@ -65,7 +65,9 @@ const PasswordForm = (props) => {
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\w\W]{6,}$/,
         })}
       />
-
+      {errors.password && (
+        <h5>Must be atleast 6 characters. The checks below must qualify.</h5>
+      )}
       <input
         type="password"
         placeholder="Confirm Password"

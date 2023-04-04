@@ -14,7 +14,7 @@ const useOnAnimation = (linksRef, fadeInControl) => {
         transition: { duration: 0.8, delay: i * 0.5 },
       }));
     }
-  }, [linksVisible]);
+  }, [linksVisible, fadeInControl]);
 };
 
 export default useOnAnimation;

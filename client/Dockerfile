@@ -1,16 +1,17 @@
-FROM node:19.8.1-alpine as react_app
+FROM node:18-alpine
 WORKDIR /app
-COPY . /app/
+COPY package.json ./
 RUN npm install --silent --production
 # RUN npm install react-scripts@5.0.1 -g --silent
+COPY . ./
 RUN npm run build
 
 ###########################################
 
 # FROM nginx:1.23.4-alpine
-# COPY --from=react_app /app/build /usr/share/nginx/html
+# COPY --from=react_app /app/build /usr/share/nginx/client
 # RUN rm /etc/nginx/conf.d/default.conf
-# COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+# COPY ../nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 ###########################################
 

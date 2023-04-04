@@ -4,6 +4,6 @@ COPY package.json /app/
 RUN npm install --silent
 ##RUN npm install fails, package json contains everything, above command works fine.
 # RUN npm rebuild bcrypt --build-from-source
-COPY . /usr/src/app/
+COPY . ./
 EXPOSE 3001
 CMD ["node","app"]

@@ -31,7 +31,7 @@ const AirQualityIndex = () => {
 
   useEffect(() => {
     getLocation();
-  }, []);
+  }, [getLocation]);
 
   return (
     <>

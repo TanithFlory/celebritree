@@ -69,7 +69,7 @@ const Footer = () => {
             initial={{ opacity: 0 }}
           >
             <Link>Celebritree</Link>
-            <Link to="/credits">Credits</Link>
+            <Link to="/blog/credits">Credits</Link>
           </motion.div>
         </>
       )}
