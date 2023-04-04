@@ -11,6 +11,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - client:/usr/share/nginx/client
       - blog:/usr/share/nginx/blog
+      - ./blog/images:/usr/share/nginx/blog/images
   client:
     build: client
     volumes:
