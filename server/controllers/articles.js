@@ -3,7 +3,7 @@ import { article } from "../models/articles.js";
 import { createClient } from "redis";
 
 const redisClient = createClient({
-  url: "redis://default:redispw@localhost:32770",
+  url: process.env.REDIS_URI,
 });
 
 export const getArticles = async (req, res) => {

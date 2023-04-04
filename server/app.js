@@ -4,9 +4,7 @@ import userRoutes from "./routes/userDetails.js";
 import articleRoute from "./routes/articles.js";
 import googleAuth from "./routes/googleAuth.js";
 import cors from "cors";
-// import * as dotenv from "dotenv";
 import userContact from "./controllers/userContact.js";
-// dotenv.config({ path: "../.env" });
 
 const port = 3001;
 const app = express();
@@ -35,6 +33,3 @@ app.disable("x-powered-by");
 app.listen(port, () => {
   console.log(`Listening To ${port}`);
 });
-
-//https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=
-//await google.oauth2('v2').userinfo.get({ auth: oauth2Client, userId: 'me' });

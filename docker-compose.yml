@@ -15,11 +15,11 @@ services:
   client:
     build: client
     volumes:
-    - client:/app/build
+      - client:/app/build
   blog:
     build: blog
     volumes:
-    - blog:/app/dist
+      - blog:/app/dist
   server:
     build: ./server
     ports:
@@ -28,9 +28,15 @@ services:
       - ./.env
     depends_on:
       - mongo
+      - redis
   mongo:
     image: mongo
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
 volumes:
   client:
-  blog:      
+  blog:
+
 
