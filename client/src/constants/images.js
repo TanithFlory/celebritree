@@ -9,7 +9,6 @@ import Instagram from "../assets/Instagram.svg";
 import Arrow from "../assets/Arrow.png";
 import EarthRotate from "../assets/EarthRotate.svg";
 import CheckMark from "../assets/CheckMark.gif";
-import Information from "../assets/Information.gif";
 import EmailVerify from "../assets/EmailVerify.png";
 import ContributionTree from "../assets/ContributionTree.gif";
 
@@ -47,7 +46,6 @@ const images = {
   Arrow,
   EarthRotate,
   CheckMark,
-  Information,
   ContributionTree,
   Settings,
   Security,

@@ -26,13 +26,11 @@ const SNewsletter = styled.form`
     font-weight: bold;
     color: var(--clr-white);
     cursor: pointer;
-    border-radius: 7px;
     border: 2px solid var(--clr-orange);
     transition: 0.5s ease-in-out;
     transition: transform 0.3s;
     position: absolute;
     border-radius: 30px;
-    width: 150px;
     margin: 5px;
     &:hover {
       transform: scale(1.01);

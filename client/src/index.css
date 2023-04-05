@@ -2,6 +2,11 @@
 
 * {
   font-family: "Signika Negative", sans-serif;
+  --fs-xl: 2rem;
+  --fs-l: 1.5rem;
+  --fs-xxl: 2.5rem;
+  --fs-s: 1rem;
+  --fs-m: 1.2rem;
 }
 html {
   scroll-behavior: smooth;

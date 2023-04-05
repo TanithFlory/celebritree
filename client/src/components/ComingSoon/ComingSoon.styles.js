@@ -26,6 +26,8 @@ const SComingSoon = styled.div`
       rgb(0, 158, 172, 0.7)
     );
     padding: 1rem;
+    padding-inline: 10px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,30 +43,13 @@ const SComingSoon = styled.div`
     }
   }
   form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    position: relative;
-    height: 60px;
-    width: 100%;
     input,
     input:focus {
-      height: 60px;
-      padding-left: 10px;
-      outline: none;
-      border: 2px solid var(--blue-color);
-      border-radius: 30px;
-      white-space: pre-line;
+      padding-left: 150px;
     }
     button {
-      position: absolute;
-      border-radius: 30px;
-      width: 150px;
-      margin: 5px;
-      right: 0;
-      &:hover {
-        transform: scale(1.01);
-      }
+      width: 100%;
+      max-width: 130px;
     }
   }
 `;
