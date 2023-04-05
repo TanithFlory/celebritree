@@ -5,6 +5,7 @@ import ArticlePreview from "./components/Articles/ArticlePreview/ArticlePreview"
 import Footer from "./components/Footer/Footer";
 import Pagebreak from "./components/UI/Pagebreak";
 import Credits from "./components/Credits/Credits";
+import NotFound from "./components/NotFound/NotFound";
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/blog/home" element={<Home />} />
         <Route path="/blog/articles/:tag/:title" element={<ArticlePreview />} />
         <Route path="/blog/credits" element={<Credits />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Pagebreak margin="3rem 0" />
       <Footer />

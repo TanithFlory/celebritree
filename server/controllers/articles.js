@@ -30,6 +30,7 @@ export const getArticles = async (req, res) => {
         }
       )
     );
+    console.log(response);
 
     await redisClient.set(list, response, "EX", 3600);
     await redisClient.disconnect();

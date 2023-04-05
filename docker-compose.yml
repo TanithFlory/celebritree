@@ -22,6 +22,8 @@ services:
     build: blog
     volumes:
       - blog:/app/dist
+    env_file:
+      - ./.env
   server:
     build: ./server
     ports:

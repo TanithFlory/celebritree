@@ -20,7 +20,7 @@ const SNewsletter = styled.form`
   }
   button {
     background-color: var(--clr-black);
-    width: 220px;
+    width: 150px;
     height: 50px;
     font-size: 1rem;
     font-weight: bold;

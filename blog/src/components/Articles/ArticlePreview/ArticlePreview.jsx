@@ -19,7 +19,7 @@ const ArticlePreview = () => {
     (async () => {
       const response = await axios({
         method: "GET",
-        url: `${process.env.REACT_APP_API_BASE_URL}/posts/article-preview`,
+        url: `${import.meta.env.VITE_APP_API_BASE_URL}/posts/article-preview`,
         params: {
           title: title?.replace(/[-]+/g, " "),
           tag,
