@@ -16,6 +16,8 @@ services:
     build: client
     volumes:
       - client:/app/build
+    env_file:
+      - ./.env
   blog:
     build: blog
     volumes:

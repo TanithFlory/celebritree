@@ -23,7 +23,7 @@ export const NameForm = (props) => {
       const token = localStorage.getItem("accessToken");
       const response = await axios({
         method: "POST",
-        url: "http://localhost:3001/user/change-name",
+        url: `${process.env.REACT_APP_API_BASE_URL}/user/change-name`,
         headers: {
           Authorization: `Bearer ${token}`,
         },

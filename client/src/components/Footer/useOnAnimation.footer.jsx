@@ -9,7 +9,6 @@ const useOnAnimation = (linksRef, fadeInControl) => {
 
   const linksVisible = useInView(linksRef, options);
   useEffect(() => {
-    console.log(linksVisible);
     if (linksVisible) {
       fadeInControl.start((i) => ({
         opacity: 1,

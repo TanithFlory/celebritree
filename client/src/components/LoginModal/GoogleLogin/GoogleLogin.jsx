@@ -5,7 +5,7 @@ const GoogleLogin = (props) => {
   const googleAuth = () => {
     axios({
       method: "GET",
-      url: "http://localhost:3001/auth/google/login",
+      url: `${process.env.REACT_APP_API_BASE_URL}/auth/google/login`,
     })
       .then((res) => {
         const left = window.screen.width / 2 - (500 / 2 + 10);

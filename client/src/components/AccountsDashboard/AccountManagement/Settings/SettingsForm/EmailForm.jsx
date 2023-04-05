@@ -26,7 +26,7 @@ export const EmailForm = (props) => {
     try {
       const response = await axios({
         method: "POST",
-        url: "http://localhost:3001/user/change-email",
+        url: `${process.env.REACT_APP_API_BASE_URL}/user/change-email`,
         data: formData,
       });
       if (response) {
@@ -46,7 +46,7 @@ export const EmailForm = (props) => {
     try {
       const response = await axios({
         method: "POST",
-        url: "http://localhost:3001/user/verify-otp",
+        url: `${process.env.REACT_APP_API_BASE_URL}/user/verify-otp`,
         headers: {
           Authorization: `Bearer ${token}`,
         },

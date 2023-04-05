@@ -31,7 +31,7 @@ const Signup = () => {
     try {
       await axios({
         method: "POST",
-        url: "http://localhost:3001/api/signup",
+        url: `${process.env.REACT_APP_API_BASE_URL}/api/signup`,
         data: formData,
       });
       setLoading(false);

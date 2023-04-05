@@ -20,7 +20,7 @@ const OtpVerification = (props) => {
     try {
       const response = await axios({
         method: "POST",
-        url: "http://localhost:3001/api/verify-otp",
+        url: `${process.env.REACT_APP_API_BASE_URL}/api/verify-otp`,
         data: formData,
       });
       setStatus("");
@@ -67,7 +67,7 @@ const OtpVerification = (props) => {
           setStatus("");
           axios({
             method: "POST",
-            url: "http://localhost:3001/api/resend-otp",
+            url: `${process.env.REACT_APP_API_BASE_URL}/api/resend-otp`,
             data: { email: props.email },
           })
             .then(() => {

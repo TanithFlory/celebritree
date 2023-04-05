@@ -6,7 +6,7 @@ export const postLogin = (login) => {
     try {
       const response = await axios({
         method: "POST",
-        url: "http://localhost:3001/api/login",
+        url: `${process.env.REACT_APP_API_BASE_URL}/api/login`,
         data: login,
         withCredentials: true,
       });

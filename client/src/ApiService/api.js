@@ -33,7 +33,7 @@ const getAqi = (city) => {
   });
 };
 const subscribe = (emailID) => {
-  const url = "https://connect.mailerlite.com/api/subscribers";
+  const url = process.env.REACT_APP_NEWSLETTER_BASE_URL;
   const apiKey = process.env.REACT_APP_NEWSLETTER_API;
   const headers = {
     Authorization: `Bearer ${apiKey}`,

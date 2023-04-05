@@ -23,7 +23,7 @@ const ContactForm = () => {
     });
     const response = await axios({
       method: "POST",
-      url: "http://localhost:3001/contact",
+      url: `${process.env.REACT_APP_API_BASE_URL}/contact`,
       data: formData,
     });
     if (response) {

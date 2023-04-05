@@ -10,7 +10,7 @@ const ArticleList = (props) => {
       (async () => {
         const response = await axios({
           method: "GET",
-          url: "http://localhost:3001/posts/get-articles",
+          url: `${process.env.REACT_APP_API_BASE_URL}/posts/get-articles`,
           params: {
             list: props.list,
           },

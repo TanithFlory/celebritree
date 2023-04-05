@@ -9,7 +9,7 @@ const router = express.Router();
 
 const clientSecret = process.env.OAUTH_CLIENT_SECRET;
 const clientID = process.env.OAUTH_CLIENTID;
-const redirect = "http://localhost:3001/auth/google/callback";
+const redirect = `${process.env.REACT_APP_API_BASE_URL}/auth/google/callback`;
 
 const OAuth2Client = new google.auth.OAuth2(clientID, clientSecret, redirect);
 

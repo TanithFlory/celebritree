@@ -24,7 +24,6 @@ const AirQualityIndex = () => {
           city: data[2],
         });
       } else {
-        console.log("Cookie doesnt exists");
         const res = await fetchLocation();
         const city = res[1];
         const aqi = await api.getAqi(city);
