@@ -5,9 +5,9 @@ const OAuth2 = google.auth.OAuth2;
 
 const createTransport = async () => {
   const email = process.env.REACT_APP_EMAIL;
-  const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
-  const clientID = process.env.REACT_APP_CLIENT_ID;
-  const refreshToken = process.env.REACT_APP_REFRESH_TKN;
+  const clientSecret = process.env.OAUTH_CLIENT_SECRET;
+  const clientID = process.env.OAUTH_CLIENTID;
+  const refreshToken = process.env.OAUTH_REFRESH_TKN;
   try {
     const client = new OAuth2(
       clientID,

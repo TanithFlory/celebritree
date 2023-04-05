@@ -10,7 +10,6 @@ const initialState = {
 export const getInitialState = createAsyncThunk("/", () => {
   const accessToken = localStorage.getItem("accessToken");
   const decoded = JSON.parse(window.atob(accessToken.split(".")[1]));
-  console.log(decoded);
   const { firstName, lastName, email, exp } = decoded;
   if (Date.now() > exp * 1000) {
     return {

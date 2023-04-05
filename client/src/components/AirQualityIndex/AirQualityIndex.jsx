@@ -8,22 +8,37 @@ import { useCallback } from "react";
 
 const AirQualityIndex = () => {
   const [userLocation, setUserLocation] = useState({
-    location: "",
+    state: "",
     flag: false,
     aqi: "",
     city: "",
   });
   const getLocation = useCallback(async () => {
     try {
-      const res = await fetchLocation();
-      const city = res[2];
-      const aqi = await api.getAqi(city);
-      setUserLocation({
-        location: res[0],
-        flag: res[1].toString().toLowerCase(),
-        city,
-        aqi,
-      });
+      if (document.cookie) {
+        const data = document.cookie.replace(/"/g, "").slice(5).split(",");
+        setUserLocation({
+          state: data[0],
+          flag: data[1],
+          aqi: data[3],
+          city: data[2],
+        });
+      } else {
+        console.log("Cookie doesnt exists");
+        const res = await fetchLocation();
+        const city = res[1];
+        const aqi = await api.getAqi(city);
+        setUserLocation({
+          state: res[0],
+          flag: res[2],
+          city,
+          aqi,
+        });
+        const date = new Date();
+        const data = JSON.stringify(`${res[0]},${res[2]},${city},${aqi}`);
+        date.setTime(date.getTime() + 2 * 24 * 60 * 60 * 1000);
+        document.cookie = `data=${data};expires=${date.toUTCString()}`;
+      }
     } catch (err) {
       console.log(err);
     }
@@ -40,14 +55,14 @@ const AirQualityIndex = () => {
           <ImLocation2 />
           {userLocation.flag && (
             <img
-              src={`https://flagcdn.com/${userLocation.flag}.svg`}
+              src={`https://flagcdn.com/${userLocation.flag.toLowerCase()}.svg`}
               alt="flag"
             />
           )}
           <h3>
-            {userLocation.location === ""
+            {userLocation.state === ""
               ? "Location permission required "
-              : userLocation.location}
+              : `${userLocation.state}, ${userLocation.city}`}
           </h3>
         </div>
         <div>

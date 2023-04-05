@@ -1,16 +1,14 @@
 import axios from "axios";
 
-const getLocation = (lat, lng) => {
+const getLocation = (lat, lon) => {
   const apiKey = process.env.REACT_APP_GEO_API;
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
+  const url = `${process.env.REACT_APP_GEO_BASE_URL}${lat},${lon}.json?key=${apiKey}&radius=100`;
   return new Promise((resolve, reject) => {
     resolve(
       axios.get(url).then((response) => {
-        return [
-          response.data.results[5]?.formatted_address,
-          response.data.results[0]?.address_components[5].short_name,
-          response.data.results[0]?.address_components[1].long_name,
-        ];
+        const { countrySubdivision, municipality, countryCode } =
+          response.data.addresses[0].address;
+        return [countrySubdivision, municipality.split(" ")[0], countryCode];
       })
     );
   });
@@ -55,11 +53,8 @@ const subscribe = (emailID) => {
 };
 
 const api = {
-  //for aqi
   getLocation,
   getAqi,
-
-  //for newsletter
   subscribe,
 };
 

@@ -11,9 +11,9 @@ const getUserLocation = () => {
 };
 const fetchLocation = async () => {
   const position = await getUserLocation();
-  const lng = position.coords.longitude;
+  const lon = position.coords.longitude;
   const lat = position.coords.latitude;
-  return api.getLocation(lat, lng);
+  return api.getLocation(lat, lon);
 };
 
 export default fetchLocation;
