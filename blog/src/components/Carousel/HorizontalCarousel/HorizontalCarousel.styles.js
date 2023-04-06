@@ -14,6 +14,7 @@ const SItem = styled.div`
   p {
     margin: 10px 0 0;
     text-align: center;
+    color: var(--clr-green);
   }
 
   @media screen and (max-width: 911px) and (min-width: 550px) {

@@ -36,17 +36,6 @@ const SHome = styled.div`
       grid-template-columns: 1fr;
       margin-top: 0;
     }
-    .carousel {
-      max-height: 416px!important;
-      img {
-        width: 150px;
-      }
-      div {
-        height: 123px;
-        max-width: 450px;
-        margin: auto;
-      }
-    }
     * {
       --fs-l: 1rem;
       --fs-m: 0.75rem;

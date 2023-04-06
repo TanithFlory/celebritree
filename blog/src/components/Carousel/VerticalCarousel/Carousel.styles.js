@@ -86,6 +86,25 @@ const SVerticalCarousel = styled.div`
       }
     }
   }
+  .carousel {
+    max-height: 416px;
+    img {
+      width: 150px;
+    }
+    div {
+      height: 123px;
+      max-width: 450px;
+      margin: auto;
+    }
+  }
+  @media screen and (max-width: 310px) {
+    .carousel {
+      img {
+        min-width: 130px;
+        width: 120px;
+      }
+    }
+  }
 `;
 
 export default SVerticalCarousel;
