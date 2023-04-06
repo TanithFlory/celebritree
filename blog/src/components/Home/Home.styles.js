@@ -37,13 +37,23 @@ const SHome = styled.div`
       margin-top: 0;
     }
     .carousel {
+      max-height: 416px!important;
       img {
-        max-width: 125px;
+        width: 150px;
       }
       div {
         height: 123px;
+        max-width: 450px;
+        margin: auto;
       }
     }
+    * {
+      --fs-l: 1rem;
+      --fs-m: 0.75rem;
+    }
+  }
+  @media screen and (max-width: 310px) {
+    margin: 6rem 0 0;
   }
 `;
 export default SHome;

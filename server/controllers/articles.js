@@ -1,19 +1,13 @@
 import mongoConnection from "../db.js";
 import { article } from "../models/articles.js";
-import { createClient } from "redis";
-
-const redisClient = createClient({
-  url: process.env.REDIS_URI,
-});
+import redis from "../helpers/redisClient.js";
 
 export const getArticles = async (req, res) => {
   try {
     const list = req.query.list;
-    await redisClient.connect();
 
-    const cachedContent = JSON.parse(await redisClient.get(list));
+    const cachedContent = JSON.parse(await redis.get(list));
     if (cachedContent) {
-      await redisClient.disconnect();
       return res.status(200).json(cachedContent);
     }
 
@@ -30,11 +24,9 @@ export const getArticles = async (req, res) => {
         }
       )
     );
-    console.log(response);
 
-    await redisClient.set(list, response, "EX", 3600);
-    await redisClient.disconnect();
-    return res.status(200).json(response);
+    await redis.set(list, response, "EX", 3600);
+    return res.status(200).json(JSON.parse(response));
   } catch (err) {
     console.log(err);
   }
@@ -48,10 +40,8 @@ export const articlePreview = async (req, res) => {
       .join(" ");
     const tag = req.query.tag;
 
-    await redisClient.connect();
-    const cachedContent = JSON.parse(await redisClient.get(title));
+    const cachedContent = JSON.parse(await redis.get(title));
     if (cachedContent) {
-      await redisClient.disconnect();
       return res.status(200).json(cachedContent.items);
     }
 
@@ -69,8 +59,7 @@ export const articlePreview = async (req, res) => {
       },
     ]);
 
-    await redisClient.set(title, JSON.stringify(response[0]), "EX", 3600);
-    await redisClient.disconnect();
+    await redis.set(title, JSON.stringify(response[0]), "EX", 3600);
     return res.status(200).json(response[0].items);
   } catch (err) {
     console.log(err);

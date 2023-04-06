@@ -1,11 +1,12 @@
-import dataz from "./Dummydata";
 import SVerticalCarousel from "./Carousel.styles";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { FaChevronCircleUp, FaChevronCircleDown } from "react-icons/fa";
-
 const VerticalCarousel = () => {
   const [carouselRef, setCarouselRef] = useState();
   const [disable, setDisable] = useState(false);
+  const [articleData, setArticleData] = useState();
+
   let interval;
   const scroll = (type) => {
     clearInterval(interval);
@@ -36,6 +37,30 @@ const VerticalCarousel = () => {
       clearInterval(interval2);
     };
   }, [scroll, disable]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    try {
+      (async () => {
+        const response = await axios({
+          method: "GET",
+          url: `${import.meta.env.VITE_APP_API_BASE_URL}/posts/get-articles`,
+          params: {
+            list: "latest",
+          },
+          signal: controller.signal,
+        });
+        setArticleData(response.data?.items);
+      })();
+    } catch (err) {
+      if (err.message === "canceled") {
+        console.log("Aborted");
+      } else console.log(err);
+    }
+    return () => {
+      controller.abort();
+    };
+  }, []);
   return (
     <SVerticalCarousel>
       <div className="buttons" onClick={() => (disable ? null : scroll("up"))}>
@@ -44,10 +69,14 @@ const VerticalCarousel = () => {
         </button>
       </div>
       <div ref={setCarouselRef} className="carousel">
-        {dataz.map((data) => {
+        {articleData?.map((data) => {
           return (
             <div key={data.id}>
-              <img src={data.img} />
+              <img
+                src={`/blog/images/${data.title
+                  .replace(/\s/g, "-")
+                  .toLowerCase()}.jpg`}
+              />
               <div>
                 <h3>{data.title}</h3>
                 <p>{data.description}</p>

@@ -35,6 +35,8 @@ services:
       - redis
   mongo:
     image: mongo
+    volumes:
+      - mongodb_data:/data/db
   redis:
     image: redis
     ports:
@@ -42,5 +44,5 @@ services:
 volumes:
   client:
   blog:
-
+  mongodb_data:
 

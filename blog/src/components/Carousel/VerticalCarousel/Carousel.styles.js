@@ -13,11 +13,14 @@ const SVerticalCarousel = styled.div`
     position: relative;
     scroll-behavior: smooth;
     img {
-      max-height: 125px;
-      max-width: 200px;
+      min-width: 180px;
+      height: 125px;
+      width: 180px;
     }
     h3 {
-      margin: 10px 0 0;
+      font-size: var(--fs-l);
+      margin: 0 0 5px 0;
+      color: var(--clr-green);
     }
     & > div:last-child {
       margin-bottom: 1rem;
@@ -25,9 +28,12 @@ const SVerticalCarousel = styled.div`
     & > div {
       display: flex;
       div {
+        padding: 5px;
         text-align: center;
+        box-sizing: border-box;
         p {
           margin: 0;
+          font-size: var(--fs-m);
         }
       }
     }

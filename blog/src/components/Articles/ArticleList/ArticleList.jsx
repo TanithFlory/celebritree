@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 const ArticleList = (props) => {
   const [articleData, setArticleData] = useState(null);
   useEffect(() => {
-    console.log("Runs");
     const controller = new AbortController();
     try {
       (async () => {
