@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const ArticleList = (props) => {
   const [articleData, setArticleData] = useState(null);
   useEffect(() => {
+    console.log("Runs");
     const controller = new AbortController();
     try {
       (async () => {
@@ -29,7 +30,7 @@ const ArticleList = (props) => {
   }, [props.list]);
   return (
     <SArticle>
-      {articleData?.map((data) => {
+      {articleData?.map((data, index) => {
         return (
           <Link
             key={data.id}
@@ -39,7 +40,12 @@ const ArticleList = (props) => {
           >
             <div className="article__card">
               <div>
-                <img src={data.img} alt="zxc1" />
+                <img
+                  src={`/blog/images/${data.title
+                    .replace(/\s/g, "-")
+                    .toLowerCase()}.jpg`}
+                  alt={`${props.list}-${index}`}
+                />
               </div>
               <div>
                 <h4>{data.title}</h4>

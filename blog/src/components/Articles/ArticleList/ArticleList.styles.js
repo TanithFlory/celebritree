@@ -3,7 +3,7 @@ import styled from "styled-components";
 const SArticle = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 5px;
   margin-top: 1rem;
   a {
     text-decoration: none;
@@ -15,6 +15,7 @@ const SArticle = styled.div`
     border-right: 3px solid rgb(255, 255, 255, 0.4);
     border-image: linear-gradient(rgba(0, 0, 0, 0), white, rgba(0, 0, 0, 0)) 0
       100 0;
+    padding-right: 5px;
     p {
       margin: 0;
       font-size: var(--fs-m);

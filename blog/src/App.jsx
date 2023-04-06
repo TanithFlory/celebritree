@@ -15,7 +15,7 @@ function App() {
         <Route path="/blog/home" element={<Home />} />
         <Route path="/blog/articles/:tag/:title" element={<ArticlePreview />} />
         <Route path="/blog/credits" element={<Credits />} />
-        <Route path="*" element={<NotFound />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
       <Pagebreak margin="3rem 0" />
       <Footer />

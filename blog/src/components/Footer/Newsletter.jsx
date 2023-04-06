@@ -3,14 +3,13 @@ import { motion } from "framer-motion";
 const SNewsletter = styled.form`
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 350px;
   position: relative;
   height: 60px;
   width: 100%;
   input,
   input:focus {
     height: 60px;
-    max-width: 400px;
     padding-left: 160px;
     outline: none;
     border-radius: 30px;
@@ -34,6 +33,16 @@ const SNewsletter = styled.form`
     margin: 5px;
     &:hover {
       transform: scale(1.01);
+    }
+  }
+  @media screen and (max-width: 376px) {
+    max-width: 280px;
+    input,
+    input:focus {
+      padding-left: 120px;
+    }
+    button {
+      width: 110px;
     }
   }
 `;

@@ -36,7 +36,7 @@ const createTransport = async () => {
       refreshToken: refreshToken,
     },
     tls: {
-      rejectUnauthorized: false,
+      rejectUnauthorized: true,
     },
   });
   return transporter;
@@ -50,11 +50,14 @@ const emailOtp = async (otp, email) => {
       text: "OTP",
       to: email,
       from: process.env.REACT_APP_EMAIL,
-      html: `        <div
+      html: `<div
       style="
         font-family: Franklin Gothic;
         max-width: 550px;
+        background: #FBFCFA;
         margin: auto;
+        padding: 10px;
+        border-radius: 15px;
       "
     >
       <div>

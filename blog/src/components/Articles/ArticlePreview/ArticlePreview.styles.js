@@ -1,8 +1,13 @@
 import styled from "styled-components";
-
-const SArticlePreview = styled.div`
+import { motion } from "framer-motion";
+const SArticlePreview = styled(motion.div)`
   margin: 7rem 10rem 0;
-
+  img {
+    height: 100%;
+    width: 100%;
+    max-height: 600px;
+    border-radius: 15px;
+  }
   h1 {
     font-size: var(--fs-xxl);
     margin: 0;
