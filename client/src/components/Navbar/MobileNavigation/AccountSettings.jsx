@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FadeInWrapper } from "../../UI/Wrapper/MotionWrappers";
 import images from "../../../constants/images";
+import { useSelector } from "react-redux";
 const show = {
   opacity: 1,
 };
@@ -12,6 +13,7 @@ const hide = {
 };
 
 const AccountSettings = (props) => {
+  const isLogged = useSelector((state) => state.auth.isLogged);
   return (
     <AnimatePresence>
       {props.toggle && (
@@ -31,11 +33,12 @@ const AccountSettings = (props) => {
               },
             ].map((data) => {
               return (
-                <Link to={`/${data.title}`} key={data.id}>
-                  <FadeInWrapper
-                    delay="0.2"
-                    animate={props.toggle ? show : hide}
-                  >
+                <Link
+                  to={`/account/${data.title}`}
+                  key={data.id}
+                  onClick={() => props.toggleOpen()}
+                >
+                  <FadeInWrapper animate={props.toggle ? show : hide}>
                     <div className="app__navbar-phone-icon" style={props.style}>
                       <img src={data.icon} alt={data.title} />
                     </div>

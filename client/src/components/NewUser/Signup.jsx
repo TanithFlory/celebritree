@@ -12,8 +12,10 @@ import GoogleLogin from "../LoginModal/GoogleLogin/GoogleLogin";
 import Loading from "../UI/Status/Loading";
 import "./Signup.scss";
 import PasswordValidation from "../UI/PasswordValidation/PasswordValidation";
+import useOnLogged from "../../CustomHooks/useOnLogged";
 
 const Signup = () => {
+  useOnLogged();
   const [onSuccess, setOnSuccess] = useState();
   const [loading, setLoading] = useState(false);
   const [onFailureMessage, setOnFailureMessage] = useState("");

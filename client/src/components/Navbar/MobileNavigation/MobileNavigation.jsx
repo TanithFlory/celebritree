@@ -6,11 +6,11 @@ import "./MobileNavigation.scss";
 
 const MobileNavigation = () => {
   const sidebar = {
-    open: (height = 300) => ({
+    open: (height = 1000) => ({
       clipPath: `circle(${height * 2 + 200}px at 30px 20px)`,
       transition: {
         type: "spring",
-        stiffness: 20,
+        stiffness: 5,
       },
     }),
     closed: {
@@ -61,7 +61,7 @@ const MobileNavigation = () => {
     >
       <>
         <motion.div className="background" variants={sidebar} />
-        <NavigationLinks onClick={toggleOpen} />
+        <NavigationLinks toggleOpen={toggleOpen} />
       </>
       <MenuToggle toggle={() => toggleOpen()} disabled={enableBtn} />
     </motion.nav>

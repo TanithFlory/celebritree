@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "./LoginModal.scss";
 import { postLogin } from "../../store/features/auth/authActions";
@@ -7,16 +7,18 @@ import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
 import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
 import GoogleLogin from "./GoogleLogin/GoogleLogin";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
+import useOnLogged from "../../CustomHooks/useOnLogged";
+
 const LoginModal = (props) => {
+  useOnLogged();
+
   const dispatch = useDispatch();
   const [forgotPass, setForgotPass] = useState(false);
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
-
   const [error, setError] = useState("");
-
   const changeHandler = (e) => {
     setError("");
     const { name, value } = e.target;
