@@ -1,10 +1,10 @@
 import { useState } from "react";
-import "./Footer.scss";
 import images from "../../constants/images";
 import NewsLetter from "./NewsLetter/NewsLetter";
 import { motion, useAnimation } from "framer-motion";
 import useOnAnimation from "./useOnAnimation.footer";
-
+import { Link } from "react-router-dom";
+import "./Footer.scss";
 const Footer = () => {
   const fadeInControl = useAnimation();
   const [linksRef, setLinksRef] = useState();
@@ -33,36 +33,55 @@ const Footer = () => {
             </div>
           </motion.div>
           <motion.div {...fadeInProps} custom={2.1} id="articles-1">
-            {["Deforestation", "Climate Change", "World Environment Day"].map(
-              (data, index) => {
-                return (
-                  <a
-                    href={`#article1-${data
-                      .replace(/[\s]/g, "-")
-                      .toLowerCase()}`}
-                    key={`article-1-${index}`}
-                  >
-                    {data}
-                  </a>
-                );
-              }
-            )}
+            {[
+              { title: "Deforestation", tag: "latest" },
+              { title: "Climate Change", tag: "latest" },
+              { title: "World Environment Day", tag: "trending" },
+            ].map((data, index) => {
+              return (
+                <a
+                  href={`/blog/articles/${data.tag}/${data.title
+                    .replace(/[\s]/g, "-")
+                    .toLowerCase()}`}
+                  key={`article-set1-${index}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {data.title}
+                </a>
+              );
+            })}
           </motion.div>
           <motion.div {...fadeInProps} custom={2.8} id="articles-2">
-            {["Celebritree", "Our Mission", "About AQI", "Anti Smog Trees"].map(
-              (data, index) => {
-                return (
-                  <a
-                    href={`article2-${data
-                      .replace(/[\s]+/g, "-")
-                      .toLowerCase()}`}
-                    key={`article-2-${index}`}
-                  >
-                    {data}
-                  </a>
-                );
-              }
-            )}
+            {[
+              {
+                title: "Celebritree",
+                link: "the-story-behind-celebritree",
+                tag: "latest",
+              },
+              { title: "Our Mission", link: "our-mission", tag: "latest" },
+              {
+                title: "About AQI",
+                link: "about-air-quality-index",
+                tag: "latest",
+              },
+              {
+                title: "Anti Smog Trees",
+                link: "anti-smog-trees",
+                tag: "trending",
+              },
+            ].map((data, index) => {
+              return (
+                <a
+                  href={`/blog/articles/${data.tag}/${data.link}`}
+                  key={`article-set2-${index}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {data.title}
+                </a>
+              );
+            })}
           </motion.div>
           <motion.div {...fadeInProps} custom={3.5} id="newsletter">
             <NewsLetter />
@@ -73,9 +92,10 @@ const Footer = () => {
             © {new Date().getFullYear()} <span>Celebritree</span> All rights
             reserved.
           </h1>
-          <a>Privacy Policy</a>
-          <a>Terms and usage</a>
-          <a>Contact</a>
+          <a href="/blog/credits" target="_blank" rel="noreferrer">
+            Credits
+          </a>
+          <Link to="/contact">Contact</Link>
         </motion.div>
       </motion.div>
     </footer>

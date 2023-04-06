@@ -2,7 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import AirQualityIndex from "../AirQualityIndex/AirQualityIndex";
 import { PrimaryButton } from "../UI/Button/StyledButtons";
-
+import { scrollAbout } from "../Utils/scrolls";
+import { Link } from "react-router-dom";
 const AnimatedHeader = () => {
   const ease = [0.6, -0.05, 0.01, 0.99];
   const fadeIn = {
@@ -88,11 +89,15 @@ const AnimatedHeader = () => {
         issues: starvation and climate change."
       </motion.p>
       <motion.div variants={fadeIn}>
-        <PrimaryButton textColor="white" backgroundColor="green">
+        <PrimaryButton
+          textColor="white"
+          backgroundColor="green"
+          onClick={() => scrollAbout()}
+        >
           About
         </PrimaryButton>
         <PrimaryButton textColor="white" backgroundColor="green">
-          Join Us
+          <Link to="/contact"> Join Us</Link>
         </PrimaryButton>
       </motion.div>
       <motion.div variants={fadeIn}>

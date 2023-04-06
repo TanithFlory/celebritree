@@ -4,7 +4,7 @@ import { motion, useCycle } from "framer-motion";
 import AccountSettings from "./AccountSettings";
 import images from "../../../constants/images";
 import { useSelector } from "react-redux";
-
+import { scrollAbout } from "../../Utils/scrolls";
 const colors = [
   "#53C24D",
   "#534DC2",
@@ -72,7 +72,11 @@ const NavigationLinks = (props) => {
                 <Link
                   to={data.link ? data.link : `/${data.title}`}
                   onClick={() => {
-                    data.title === "account" ? setToggle() : props.toggleOpen();
+                    data.title === "account"
+                      ? setToggle()
+                      : data.title === "about"
+                      ? scrollAbout()
+                      : props.toggleOpen();
                   }}
                 >
                   <div className="app__navbar-phone-icon" style={style}>

@@ -125,5 +125,12 @@
         color: var(--green-color);
       }
     }
+    a {
+      text-decoration: none;
+      color: var(--white-color);
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
   }
 }

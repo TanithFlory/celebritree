@@ -9,7 +9,7 @@ const useOnLogged = () => {
     if (isLogged) {
       return navigate("/");
     }
-  }, []);
+  }, [isLogged, navigate]);
 };
 
 export default useOnLogged;

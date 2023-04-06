@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FadeInWrapper } from "../../UI/Wrapper/MotionWrappers";
 import images from "../../../constants/images";
-import { useSelector } from "react-redux";
 const show = {
   opacity: 1,
 };
@@ -13,7 +12,6 @@ const hide = {
 };
 
 const AccountSettings = (props) => {
-  const isLogged = useSelector((state) => state.auth.isLogged);
   return (
     <AnimatePresence>
       {props.toggle && (

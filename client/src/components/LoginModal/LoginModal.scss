@@ -48,13 +48,16 @@
     label {
       width: 100%;
     }
-    button {
+    button[type="submit"] {
       height: 36px;
       width: 100%;
       margin: 10px;
     }
-    a {
-      text-decoration: none;
+    .forgot__pass {
+      display: inline-block;
+      background-color: transparent;
+      border: none;
+      margin: 0;
       color: var(--black-color);
       cursor: pointer;
       &:hover {

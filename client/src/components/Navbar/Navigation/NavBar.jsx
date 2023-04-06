@@ -6,7 +6,7 @@ import LoginModal from "../../LoginModal/LoginModal";
 import { motion } from "framer-motion";
 import AuthOptions from "./AuthOptions";
 import { useSelector } from "react-redux";
-import scrollTop from "../../Utils/scrollTop";
+import { scrollTop, scrollAbout } from "../../Utils/scrolls";
 import { stagger, topDown } from "./Navbar.animations";
 import "./NavBar.scss";
 
@@ -16,11 +16,7 @@ const Navbar = () => {
   const [loginModal, setLoginModal] = useState(false);
   const scrollHandler = (type) => {
     if (type === "about") {
-      const aboutUs = document.getElementsByClassName("about__socials")[0];
-      aboutUs.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-      });
+      scrollAbout();
     }
     if (type === "home") {
       scrollTop();
@@ -58,7 +54,7 @@ const Navbar = () => {
                 }
               >
                 {data === "blog" ? (
-                  <a href={`/blog/`} target="_blank">
+                  <a href={`/blog/`} target="_blank" rel="noreferrer">
                     {data}
                   </a>
                 ) : (

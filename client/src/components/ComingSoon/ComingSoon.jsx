@@ -1,4 +1,3 @@
-import { PrimaryButton } from "../UI/Button/StyledButtons";
 import SComingSoon from "./ComingSoon.styles";
 import Newsletter from "../Footer/NewsLetter/NewsLetter";
 const ComingSoon = () => {

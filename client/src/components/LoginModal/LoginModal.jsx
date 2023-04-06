@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./LoginModal.scss";
 import { postLogin } from "../../store/features/auth/authActions";
@@ -70,8 +70,8 @@ const LoginModal = (props) => {
               ></input>
             </div>
             <p> {error}</p>
-            <a onClick={() => setForgotPass(true)}>Forgot Password?</a>
-            <PrimaryButton backgroundColor="green" textColor="black">
+            <button className="forgot__pass" onClick={() => setForgotPass(true)}>Forgot Password?</button>
+            <PrimaryButton backgroundColor="green" textColor="black" type="submit">
               Login
             </PrimaryButton>
             <div className="border__or">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PrimaryButton } from "../UI/Button/StyledButtons";
 import Footer from "../Footer/Footer";
 import OtpVerification from "./OtpVerification";
@@ -13,9 +13,14 @@ import Loading from "../UI/Status/Loading";
 import "./Signup.scss";
 import PasswordValidation from "../UI/PasswordValidation/PasswordValidation";
 import useOnLogged from "../../CustomHooks/useOnLogged";
+import { scrollTop } from "../Utils/scrolls";
 
 const Signup = () => {
   useOnLogged();
+  
+  useEffect(() => {
+    scrollTop();
+  });
   const [onSuccess, setOnSuccess] = useState();
   const [loading, setLoading] = useState(false);
   const [onFailureMessage, setOnFailureMessage] = useState("");

@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import Socials from "../About/Socials/Socials";
 import ContactForm from "./ContactForm";
 import SContact from "./Contact.styles";
-
+import { scrollTop } from "../Utils/scrolls";
 const Contact = () => {
+  useEffect(() => {
+    scrollTop();
+  }, []);
   return (
     <SContact>
       <div>
