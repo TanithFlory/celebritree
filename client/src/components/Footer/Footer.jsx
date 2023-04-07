@@ -34,7 +34,7 @@ const Footer = () => {
           </motion.div>
           <motion.div {...fadeInProps} custom={2.1} id="articles-1">
             {[
-              { title: "Deforestation", tag: "latest" },
+              { title: "Deforestation", tag: "trending" },
               { title: "Climate Change", tag: "latest" },
               { title: "World Environment Day", tag: "trending" },
             ].map((data, index) => {

@@ -24,7 +24,7 @@ export const getArticles = async (req, res) => {
         }
       )
     );
-    if (response) {
+    if (response.length) {
       await redis.set(list, response, "EX", 3600);
       return res.status(200).json(JSON.parse(response));
     }
@@ -40,9 +40,9 @@ export const articlePreview = async (req, res) => {
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
     const tag = req.query.tag;
-
     const cachedContent = JSON.parse(await redis.get(title));
     if (cachedContent) {
+      console.log("cached");
       return res.status(200).json(cachedContent.items);
     }
 
@@ -59,7 +59,7 @@ export const articlePreview = async (req, res) => {
         },
       },
     ]);
-    if (response) {
+    if (response.length) {
       await redis.set(title, JSON.stringify(response[0]), "EX", 3600);
       return res.status(200).json(response[0].items);
     }
