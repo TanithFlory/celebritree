@@ -18,7 +18,7 @@ const SVerticalCarousel = styled.div`
       width: 180px;
     }
     h3 {
-      font-size: var(--fs-l);
+      font-size: var(--fs-m);
       margin: 0 0 5px 0;
       color: var(--clr-green);
     }
@@ -33,7 +33,7 @@ const SVerticalCarousel = styled.div`
         box-sizing: border-box;
         p {
           margin: 0;
-          font-size: var(--fs-m);
+          font-size: var(--fs-s);
         }
       }
     }

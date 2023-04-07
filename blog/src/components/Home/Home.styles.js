@@ -29,9 +29,7 @@ const SHome = styled.div`
 
   @media screen and (max-width: 912px) {
     margin: 6rem 1rem 0;
-    h1 {
-      font-size: var(--fs-xxl);
-    }
+
     .home__carousels {
       grid-template-columns: 1fr;
       margin-top: 0;
@@ -39,6 +37,7 @@ const SHome = styled.div`
     * {
       --fs-l: 1rem;
       --fs-m: 0.75rem;
+      --fs-custom: 2.5rem;
     }
   }
   @media screen and (max-width: 310px) {

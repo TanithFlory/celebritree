@@ -50,7 +50,7 @@ const NavigationLinks = (props) => {
         { title: "home", icon: images.HomeMob },
         { title: "about", icon: images.AboutMob },
         { title: "contact", icon: images.ContactMob },
-        { title: "blog", icon: images.MissionMob, link: `/blog/` },
+        { title: "blog", icon: images.MissionMob, link: "/blog/home" },
         {
           title: "account",
           icon: images.UserMob,

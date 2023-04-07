@@ -16,7 +16,7 @@ const Footer = () => {
   };
   return (
     <footer ref={setLinksRef} className="footer">
-      <motion.div {...fadeInProps} custom={0.7} className="footer__heading">
+      <motion.div {...fadeInProps} custom={0.1} className="footer__heading">
         <h1>
           When we plant trees,
           <br /> we plant the <span>seeds of peace and seeds of hope.</span>

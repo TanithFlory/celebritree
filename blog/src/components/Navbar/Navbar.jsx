@@ -27,7 +27,7 @@ const Navbar = () => {
   return (
     <SNav>
       <motion.ul animate="animate" initial="initial" variants={topDown}>
-        <Link to={`/blog/`}>
+        <Link to={`/blog/home`}>
           <li onClick={() => scrollTop()}>Home</li>
         </Link>
         <img src={images.logo} alt="logo" />

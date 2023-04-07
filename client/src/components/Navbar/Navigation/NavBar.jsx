@@ -54,7 +54,7 @@ const Navbar = () => {
                 }
               >
                 {data === "blog" ? (
-                  <a href={`/blog/`} target="_blank" rel="noreferrer">
+                  <a href="/blog/home" target="_blank" rel="noreferrer">
                     {data}
                   </a>
                 ) : (
