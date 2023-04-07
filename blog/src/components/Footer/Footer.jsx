@@ -68,7 +68,9 @@ const Footer = () => {
             transition={{ ease: "easeIn", delay: 0.5, duration: 0.5 }}
             initial={{ opacity: 0 }}
           >
-            <Link to="/">Celebritree</Link>
+            <a href="/" rel="noreferrer">
+              Celebritree
+            </a>
             <Link to="/blog/credits">Credits</Link>
           </motion.div>
         </>

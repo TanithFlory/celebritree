@@ -11,11 +11,16 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route exact path="/blog/" element={<Home />} />
-        <Route path="/blog/home" element={<Home />} />
-        <Route path="/blog/articles/:tag/:title" element={<ArticlePreview />} />
-        <Route path="/blog/credits" element={<Credits />} />
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="/blog">
+          <Route exact path="/blog" element={<Home />} />
+          <Route path="/blog/home" element={<Home />} />
+          <Route
+            path="/blog/articles/:tag/:title"
+            element={<ArticlePreview />}
+          />
+          <Route path="/blog/credits" element={<Credits />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
       <Pagebreak margin="3rem 0" />
       <Footer />

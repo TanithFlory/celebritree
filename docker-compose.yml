@@ -16,14 +16,10 @@ services:
     build: client
     volumes:
       - client:/app/build
-    env_file:
-      - ./.env
   blog:
     build: blog
     volumes:
       - blog:/app/dist
-    env_file:
-      - ./.env
   server:
     build: ./server
     ports:
@@ -35,6 +31,8 @@ services:
       - redis
   mongo:
     image: mongo
+    ports:
+      - "27017:27017"
     volumes:
       - mongodb_data:/data/db
   redis:
