@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FadeInWrapper } from "../../UI/Wrapper/MotionWrappers";
 import images from "../../../constants/images";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../../store/features/auth/authSlice";
 const show = {
   opacity: 1,
 };
@@ -12,6 +14,13 @@ const hide = {
 };
 
 const AccountSettings = (props) => {
+  const dispatch = useDispatch();
+  const logoutHandler = () => {
+    localStorage.removeItem("accessToken");
+    dispatch(authActions.logout());
+    window.location.replace("/");
+  };
+
   return (
     <AnimatePresence>
       {props.toggle && (
@@ -21,20 +30,23 @@ const AccountSettings = (props) => {
         >
           <motion.li variants={props.variants} key={`link-${props.title}`}>
             {[
-              { title: "settings", id: 1, icon: images.SettingsMob },
-              { title: "change-password", id: 2, icon: images.ResetPassMob },
-              { title: "help-centre", id: 3, icon: images.HelpCentreMob },
+              { title: "settings", icon: images.SettingsMob },
+              { title: "change-password", icon: images.ResetPassMob },
+              { title: "help-centre", icon: images.HelpCentreMob },
               {
                 title: "my-contributions",
-                id: 4,
+
                 icon: images.ContributionsMob,
               },
-            ].map((data) => {
+              { title: "logout", icon: images.LogoutMob, logout: true },
+            ].map((data, index) => {
               return (
                 <Link
                   to={`/account/${data.title}`}
-                  key={data.id}
-                  onClick={() => props.toggleOpen()}
+                  key={`link-${index}`}
+                  onClick={() =>
+                    !data.logout ? props.toggleOpen() : logoutHandler
+                  }
                 >
                   <FadeInWrapper animate={props.toggle ? show : hide}>
                     <div className="app__navbar-phone-icon" style={props.style}>

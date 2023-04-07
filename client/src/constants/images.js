@@ -22,6 +22,7 @@ import ContributionsMob from "../assets/ContributionsMob.png";
 import SettingsMob from "../assets/SettingsMob.png";
 import HelpCentreMob from "../assets/HelpCentreMob.png";
 import ResetPassMob from "../assets/PasswordResetMob.png";
+import LogoutMob from "../assets/LogoutMob.png";
 import Settings from "../assets/Settings.png";
 import Contributions from "../assets/Contribution.png";
 import FAQ from "../assets/FAQ.png";
@@ -56,6 +57,7 @@ const images = {
   SignupMob,
   LoginMob,
   UserMob,
+  LogoutMob,
   EmailVerify,
   ContributionsMob,
   SettingsMob,
