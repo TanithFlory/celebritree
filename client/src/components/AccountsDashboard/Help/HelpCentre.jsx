@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import useOnLogged from "../../../CustomHooks/useOnLogged";
+import { useOnNotLogged } from "../../../CustomHooks/useOnLogged";
 const StyledDiv = styled.div`
   h1 {
     font-size: var(--fs-xxl);
@@ -16,7 +16,7 @@ const StyledDiv = styled.div`
 `;
 
 const HelpCentre = () => {
-  useOnLogged();
+  useOnNotLogged();
   return (
     <>
       <StyledDiv>

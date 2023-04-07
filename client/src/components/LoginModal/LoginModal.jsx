@@ -7,7 +7,7 @@ import { MotionWrapper } from "../UI/Wrapper/MotionWrappers";
 import { RiLockPasswordFill, RiAccountCircleFill } from "react-icons/ri";
 import GoogleLogin from "./GoogleLogin/GoogleLogin";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
-import useOnLogged from "../../CustomHooks/useOnLogged";
+import { useOnLogged } from "../../CustomHooks/useOnLogged";
 
 const LoginModal = (props) => {
   useOnLogged();
@@ -70,8 +70,17 @@ const LoginModal = (props) => {
               ></input>
             </div>
             <p> {error}</p>
-            <button className="forgot__pass" onClick={() => setForgotPass(true)}>Forgot Password?</button>
-            <PrimaryButton backgroundColor="green" textColor="black" type="submit">
+            <button
+              className="forgot__pass"
+              onClick={() => setForgotPass(true)}
+            >
+              Forgot Password?
+            </button>
+            <PrimaryButton
+              backgroundColor="green"
+              textColor="black"
+              type="submit"
+            >
               Login
             </PrimaryButton>
             <div className="border__or">
