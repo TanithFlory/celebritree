@@ -4,6 +4,7 @@ import NewsLetter from "./NewsLetter/NewsLetter";
 import { motion, useAnimation } from "framer-motion";
 import useOnAnimation from "./useOnAnimation.footer";
 import { Link } from "react-router-dom";
+import EarthFooter from "../../assets/EarthFooter.mp4";
 import "./Footer.scss";
 const Footer = () => {
   const fadeInControl = useAnimation();
@@ -15,6 +16,9 @@ const Footer = () => {
   };
   return (
     <footer ref={setFooterRef} className="footer">
+      <video autoPlay loop muted>
+        <source src={EarthFooter} type="video/mp4" />
+      </video>
       <motion.div {...fadeInProps} custom={0.1} className="footer__heading">
         <h1>
           When we plant trees,
