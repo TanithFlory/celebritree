@@ -1,46 +1,28 @@
 const cardDetails = [
-    {   
-        id:1,
-        title: "Fruit Trees",
-        price: "₹120",
-        desc: "Grow a Fruit Tree, the edibles will be donated to the needy.", 
-        img:"https://images.pexels.com/photos/3541364/pexels-photo-3541364.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
-    {   id:2,
-        title: "Celebritree",
-        price: "₹80",
-        desc: "Celebrate your ocassion by contributing towards mother earth!", 
-        img:"https://images.pexels.com/photos/762679/pexels-photo-762679.jpeg?auto=compress&cs=tinysrgb&w=600",
-
-    },
-    {   id:3,
-        title: "Anti-Smog Trees",
-        price: "₹150",
-        desc: "Take a step towards saving the nature! Lets grow some anti smog trees.", 
-        img:"https://images.pexels.com/photos/975416/pexels-photo-975416.jpeg?auto=compress&cs=tinysrgb&w=600",
-
-    },
-    {   id:4,
-        title: "Anti-Smog Trees",
-        price: "₹150",
-        desc: "Take a step towards saving the nature! Lets grow some anti smog trees.", 
-        img:"https://images.pexels.com/photos/975416/pexels-photo-975416.jpeg?auto=compress&cs=tinysrgb&w=600",
-
-    },
-    {   id:5,
-        title: "Anti-Smog Trees",
-        price: "₹150",
-        desc: "Take a step towards saving the nature! Lets grow some anti smog trees.", 
-        img:"https://images.pexels.com/photos/975416/pexels-photo-975416.jpeg?auto=compress&cs=tinysrgb&w=600",
-
-    },
-    {   id:6,
-        title: "Anti-Smog Trees",
-        price: "₹150",
-        desc: "Take a step towards saving the nature! Lets grow some anti smog trees.", 
-        img:"https://images.pexels.com/photos/975416/pexels-photo-975416.jpeg?auto=compress&cs=tinysrgb&w=600",
-
-    },
-]
+  {
+    id: 1,
+    title: "Fruit Trees",
+    desc: "Plant Fruit Trees - Join the effort to give back to your community!",
+    img: "/blog/images/fruit-trees.jpg",
+  },
+  {
+    id: 2,
+    title: "Celebritree",
+    desc: "Plant a tree and celebrate life's special moments with Celebritree.",
+    img: "/blog/images/celebrate-tree.jpg",
+  },
+  {
+    id: 3,
+    title: "Anti Smog Trees",
+    desc: "Fight air pollution with anti-smog trees - start planting today!",
+    img: "/blog/images/anti-smog-trees.jpg",
+  },
+  {
+    id: 4,
+    title: "Native Trees",
+    desc: "Plant native trees to support the local ecosystem and wildlife!",
+    img: "/blog/images/native-trees.jpg",
+  },
+];
 
 export default cardDetails;

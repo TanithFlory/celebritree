@@ -1,9 +1,10 @@
 import express from "express";
+import helmet from "helmet";
+import cors from "cors";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/userDetails.js";
 import articleRoute from "./routes/articles.js";
 import googleAuth from "./routes/googleAuth.js";
-import cors from "cors";
 import userContact from "./controllers/userContact.js";
 
 const port = 3001;
@@ -15,6 +16,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(helmet());
 
 app.use("/api", authRoutes);
 

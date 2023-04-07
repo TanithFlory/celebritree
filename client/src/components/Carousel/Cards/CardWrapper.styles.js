@@ -13,8 +13,11 @@ const CardWrapper = styled.div`
   &:hover {
     transform: scale(1.03);
   }
-  & > div {
-    border-radius: 6px;
+  div:first-child {
+    border-radius: 4px 4px 0 0;
+  }
+  div:nth-child(2) {
+    border-radius: 0 0 4px 4px;
   }
 `;
 
