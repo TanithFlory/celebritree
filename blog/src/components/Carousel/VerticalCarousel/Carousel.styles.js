@@ -8,33 +8,46 @@ const SVerticalCarousel = styled.div`
     gap: 1rem;
     color: var(--clr-white);
     overflow-y: hidden;
-    max-height: 423px;
-    margin-top: 14px;
+    max-height: 416px;
+    padding-top: 14px;
     position: relative;
     scroll-behavior: smooth;
     img {
       min-width: 180px;
-      height: 125px;
       width: 180px;
+      height: 123px;
     }
     h3 {
       font-size: var(--fs-m);
       margin: 0 0 5px 0;
       color: var(--clr-green);
     }
-    & > div:last-child {
+
+    & > a:last-child {
       margin-bottom: 1rem;
     }
-    & > div {
-      display: flex;
+    a {
+      text-decoration:none;
       div {
-        padding: 5px;
-        text-align: center;
-        box-sizing: border-box;
-        p {
-          margin: 0;
-          font-size: var(--fs-s);
+        display: flex;
+        height: 123px;
+        max-width: 450px;
+        margin: auto;
+        div {
+          padding: 5px;
+          text-align: center;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          p {
+            margin: 0;
+            font-size: calc(var(--fs-s) + 0.15rem);
+          }
         }
+      }
+      &:hover {
+        box-shadow: 0 0 8px cyan;
       }
     }
   }
@@ -84,17 +97,6 @@ const SVerticalCarousel = styled.div`
       svg {
         fill: var(--clr-green);
       }
-    }
-  }
-  .carousel {
-    max-height: 416px;
-    img {
-      width: 150px;
-    }
-    div {
-      height: 123px;
-      max-width: 450px;
-      margin: auto;
     }
   }
   @media screen and (max-width: 310px) {

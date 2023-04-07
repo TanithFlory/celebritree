@@ -24,9 +24,10 @@ export const getArticles = async (req, res) => {
         }
       )
     );
-
-    await redis.set(list, response, "EX", 3600);
-    return res.status(200).json(JSON.parse(response));
+    if (response) {
+      await redis.set(list, response, "EX", 3600);
+      return res.status(200).json(JSON.parse(response));
+    }
   } catch (err) {
     console.log(err);
   }
@@ -58,9 +59,10 @@ export const articlePreview = async (req, res) => {
         },
       },
     ]);
-
-    await redis.set(title, JSON.stringify(response[0]), "EX", 3600);
-    return res.status(200).json(response[0].items);
+    if (response) {
+      await redis.set(title, JSON.stringify(response[0]), "EX", 3600);
+      return res.status(200).json(response[0].items);
+    }
   } catch (err) {
     console.log(err);
   }

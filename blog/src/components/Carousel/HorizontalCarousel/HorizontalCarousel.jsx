@@ -3,7 +3,7 @@ import data from "./Dummydata";
 import CarouselWrapper from "./Carousel";
 import axios from "axios";
 import SItem from "./HorizontalCarousel.styles";
-
+import { Link } from "react-router-dom";
 const HorizontalCarousel = () => {
   const [articleData, setArticleData] = useState(null);
   useEffect(() => {
@@ -35,15 +35,20 @@ const HorizontalCarousel = () => {
       {articleData
         ? articleData.map((data) => {
             return (
-              <SItem key={data.id}>
-                <img
-                  src={`/blog/images/${data.title
-                    .replace(/\s/g, "-")
-                    .toLowerCase()}.jpg`}
-                />
-                <h3>{data.title}</h3>
-                <p>{data.description}</p>
-              </SItem>
+              <Link
+                to={`/blog/articles/trending/${data.title}`}
+                key={`trending${data.id}`}
+              >
+                <SItem>
+                  <img
+                    src={`/blog/images/${data.title
+                      .replace(/\s/g, "-")
+                      .toLowerCase()}.jpg`}
+                  />
+                  <h3>{data.title}</h3>
+                  <p>{data.description}</p>
+                </SItem>
+              </Link>
             );
           })
         : data.map((data) => {

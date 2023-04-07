@@ -8,6 +8,7 @@ const SArticle = styled.div`
   a {
     text-decoration: none;
   }
+
   .article__card {
     display: grid;
     grid-template-rows: 200px 1fr;
@@ -15,6 +16,12 @@ const SArticle = styled.div`
     border-image: linear-gradient(rgba(0, 0, 0, 0), white, rgba(0, 0, 0, 0)) 0
       100 0;
     padding-right: 10px;
+    background-color: rgb(220, 220, 220, 0.2);
+    background-clip: content-box;
+    height: 100%;
+    & > div {
+      overflow: hidden;
+    }
     p {
       margin: 0;
       font-size: var(--fs-m);
@@ -23,6 +30,11 @@ const SArticle = styled.div`
       min-height: 200px;
       max-height: 200px;
       width: 100%;
+      transition: all 1s ease-in;
+      transform-origin: left center;
+      &:hover {
+        transform: scale(1.05);
+      }
     }
     h4 {
       font-size: var(--fs-m);
@@ -36,6 +48,12 @@ const SArticle = styled.div`
       justify-content: flex-start;
       gap: 10px;
     }
+    &:hover {
+      background-color: rgb(220, 220, 220, 0.25);
+    }
+  }
+  .no-border-right {
+    border: 0;
   }
   @media screen and (max-width: 1084px) {
     grid-template-columns: repeat(2, 1fr);
@@ -61,7 +79,6 @@ const SArticle = styled.div`
       --fs-m: 0.75rem;
     }
   }
-
 `;
 
 export default SArticle;

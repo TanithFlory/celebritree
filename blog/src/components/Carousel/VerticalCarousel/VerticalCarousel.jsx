@@ -2,6 +2,7 @@ import SVerticalCarousel from "./Carousel.styles";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaChevronCircleUp, FaChevronCircleDown } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const VerticalCarousel = () => {
   const [carouselRef, setCarouselRef] = useState();
   const [disable, setDisable] = useState(false);
@@ -71,17 +72,22 @@ const VerticalCarousel = () => {
       <div ref={setCarouselRef} className="carousel">
         {articleData?.map((data) => {
           return (
-            <div key={data.id}>
-              <img
-                src={`/blog/images/${data.title
-                  .replace(/\s/g, "-")
-                  .toLowerCase()}.jpg`}
-              />
+            <Link
+              to={`/blog/articles/latest/${data.title}`}
+              key={`latest-${data.id}`}
+            >
               <div>
-                <h3>{data.title}</h3>
-                <p>{data.description}</p>
+                <img
+                  src={`/blog/images/${data.title
+                    .replace(/\s/g, "-")
+                    .toLowerCase()}.jpg`}
+                />
+                <div>
+                  <h3>{data.title}</h3>
+                  <p>{data.description}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

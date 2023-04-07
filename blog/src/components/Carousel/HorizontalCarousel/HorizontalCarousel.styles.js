@@ -19,7 +19,7 @@ const SItem = styled.div`
     text-align: center;
   }
 
-  @media screen and (max-width: 911px) and (min-width: 550px) {
+  @media screen and (max-width: 912px) and (min-width: 550px) {
     width: 60%;
     margin: auto;
   }

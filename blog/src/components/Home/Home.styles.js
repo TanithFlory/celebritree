@@ -25,6 +25,14 @@ const SHome = styled.div`
         background: rgba(255, 255, 255, 0.3);
       }
     }
+    .react-multi-carousel-item {
+      a {
+        text-decoration: none;
+      }
+      &:hover {
+        box-shadow: 0 0 8px cyan;
+      }
+    }
   }
 
   @media screen and (max-width: 912px) {
@@ -38,6 +46,7 @@ const SHome = styled.div`
       --fs-l: 1rem;
       --fs-m: 0.75rem;
       --fs-custom: 2.5rem;
+      --fs-s: 0.65rem;
     }
   }
   @media screen and (max-width: 310px) {
