@@ -70,6 +70,8 @@ const NavigationLinks = (props) => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
+                  rel="noreferrer"
+                  target={data.link && "_blank"}
                   to={data.link ? data.link : `/${data.title}`}
                   onClick={() => {
                     data.title === "account"

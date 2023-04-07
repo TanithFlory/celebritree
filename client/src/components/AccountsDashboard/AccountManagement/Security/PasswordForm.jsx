@@ -40,7 +40,7 @@ const PasswordForm = (props) => {
     try {
       await axios({
         method: "POST",
-        url: `${process.env.REACT_APP_API_BASE_URL}/api/resend-otp`,
+        url: `${process.env.REACT_APP_API_BASE_URL}/resend-otp`,
         data: {
           email,
         },

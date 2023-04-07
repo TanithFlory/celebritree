@@ -18,13 +18,13 @@ app.use(express.json());
 
 app.use("/api", authRoutes);
 
-app.use("/auth", googleAuth);
+app.use("/api/auth", googleAuth);
 
-app.use("/posts", articleRoute);
+app.use("/api/posts", articleRoute);
 
-app.use("/user", userRoutes);
+app.use("/api/user", userRoutes);
 
-app.post("/contact", (req, res) => {
+app.post("/api/contact", (req, res) => {
   userContact(req, res);
 });
 
