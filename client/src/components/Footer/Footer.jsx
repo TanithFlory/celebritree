@@ -7,15 +7,14 @@ import { Link } from "react-router-dom";
 import "./Footer.scss";
 const Footer = () => {
   const fadeInControl = useAnimation();
-  const [linksRef, setLinksRef] = useState();
-
-  useOnAnimation(linksRef, fadeInControl);
+  const [footerRef, setFooterRef] = useState();
+  useOnAnimation(footerRef, fadeInControl);
   const fadeInProps = {
     animate: fadeInControl,
     initial: { opacity: 0 },
   };
   return (
-    <footer ref={setLinksRef} className="footer">
+    <footer ref={setFooterRef} className="footer">
       <motion.div {...fadeInProps} custom={0.1} className="footer__heading">
         <h1>
           When we plant trees,

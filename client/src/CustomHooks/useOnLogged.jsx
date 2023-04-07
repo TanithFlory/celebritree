@@ -17,7 +17,7 @@ export const useOnNotLogged = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!isLogged) {
-      return navigate("/");
+      return navigate("/login");
     }
   }, [isLogged, navigate]);
 };

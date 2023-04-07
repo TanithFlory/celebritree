@@ -1,21 +1,21 @@
 import { useEffect } from "react";
 import useInView from "../../CustomHooks/useInView";
 
-const useOnAnimation = (linksRef, fadeInControl) => {
+const useOnAnimation = (footerRef, fadeInControl) => {
   const options = {
     rootMargin: "-150px 0px 0px 0px",
     threshold: 0.2,
   };
 
-  const linksVisible = useInView(linksRef, options);
+  const footerVisible = useInView(footerRef, options);
   useEffect(() => {
-    if (linksVisible) {
+    if (footerVisible) {
       fadeInControl.start((i) => ({
         opacity: 1,
         transition: { duration: 0.8, delay: i * 0.5 },
       }));
     }
-  }, [linksVisible, fadeInControl]);
+  }, [footerVisible, fadeInControl]);
 };
 
 export default useOnAnimation;
