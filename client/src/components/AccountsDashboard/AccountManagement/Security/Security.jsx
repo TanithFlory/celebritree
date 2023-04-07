@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import PasswordForm from "./PasswordForm";
 import SSecurity from "./Security.styles";
-
+import useOnLogged from "../../../../CustomHooks/useOnLogged";
 const Security = () => {
+  useOnLogged();
   const toggler = () => {
     setDisable((prevState) => !prevState);
   };

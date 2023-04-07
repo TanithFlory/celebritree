@@ -9,6 +9,9 @@ const useOnLogged = () => {
     if (isLogged) {
       return navigate("/");
     }
+    if (!isLogged) {
+      return navigate("/login");
+    }
   }, [isLogged, navigate]);
 };
 

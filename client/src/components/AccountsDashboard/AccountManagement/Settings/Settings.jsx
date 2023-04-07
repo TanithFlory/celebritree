@@ -2,7 +2,11 @@ import React from "react";
 import faq from "./settingsFaq";
 import SettingsForm from "./SettingsForm/SettingsForm";
 import SSettings from "./Settings.styles";
+import useOnLogged from "../../../../CustomHooks/useOnLogged";
+
 const Settings = () => {
+  useOnLogged();
+
   return (
     <SSettings>
       <SettingsForm />

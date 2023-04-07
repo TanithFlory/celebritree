@@ -1,25 +1,28 @@
 import React from "react";
 import styled from "styled-components";
-
+import useOnLogged from "../../../CustomHooks/useOnLogged";
 const StyledDiv = styled.div`
-  h1{
-    font-size:var(--fs-xxl);
-    span{
-      color:var(--green-color);
+  h1 {
+    font-size: var(--fs-xxl);
+    span {
+      color: var(--green-color);
     }
-    border-bottom:1px solid var(--brown-color);
+    border-bottom: 1px solid var(--brown-color);
   }
-  
-  p{
-    font-size:var(--fs-m);
+
+  p {
+    font-size: var(--fs-m);
   }
 `;
 
 const HelpCentre = () => {
+  useOnLogged();
   return (
     <>
       <StyledDiv>
-        <h1><span>Help</span> Centre</h1>
+        <h1>
+          <span>Help</span> Centre
+        </h1>
         <p>
           Welcome to our Help Center! We're here to help you with any questions
           or issues you may have. Please select a topic below to get started.
