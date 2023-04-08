@@ -20,6 +20,8 @@ services:
     build: blog
     volumes:
       - blog:/app/dist
+    depends_on:
+      - server
   server:
     build: ./server
     ports:
@@ -43,4 +45,5 @@ volumes:
   client:
   blog:
   mongodb_data:
+
 

@@ -37,9 +37,9 @@ const Footer = () => {
           </motion.div>
           <motion.div {...fadeInProps} custom={2.1} id="articles-1">
             {[
-              { title: "Deforestation", tag: "trending" },
-              { title: "Climate Change", tag: "latest" },
-              { title: "World Environment Day", tag: "trending" },
+              { title: "Deforestation", tag: "trending/2" },
+              { title: "Climate Change", tag: "latest/4" },
+              { title: "World Environment Day", tag: "trending/3" },
             ].map((data, index) => {
               return (
                 <a
@@ -60,18 +60,18 @@ const Footer = () => {
               {
                 title: "Celebritree",
                 link: "the-story-behind-celebritree",
-                tag: "latest",
+                tag: "latest/1",
               },
-              { title: "Our Mission", link: "our-mission", tag: "latest" },
+              { title: "Our Mission", link: "our-mission", tag: "latest/2" },
               {
                 title: "About AQI",
                 link: "about-air-quality-index",
-                tag: "latest",
+                tag: "latest/2",
               },
               {
                 title: "Anti Smog Trees",
                 link: "anti-smog-trees",
-                tag: "trending",
+                tag: "trending/2",
               },
             ].map((data, index) => {
               return (
