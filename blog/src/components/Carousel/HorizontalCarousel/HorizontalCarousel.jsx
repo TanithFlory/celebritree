@@ -36,7 +36,9 @@ const HorizontalCarousel = () => {
         ? articleData.map((data) => {
             return (
               <Link
-                to={`/blog/articles/trending/${data.title}`}
+                to={`/blog/articles/trending/${data.id}/${data.title
+                  .replace(/[\s]+/g, "-")
+                  .toLowerCase()}`}
                 key={`trending${data.id}`}
               >
                 <SItem>

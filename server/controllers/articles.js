@@ -18,7 +18,6 @@ export const getArticles = async (req, res) => {
         {
           tag: 0,
           _id: 0,
-          "items._id": 0,
           "items.content": 0,
           "items.highlights": 0,
         }
@@ -35,14 +34,9 @@ export const getArticles = async (req, res) => {
 
 export const articlePreview = async (req, res) => {
   try {
-    const title = req.query.title
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-    const tag = req.query.tag;
-    const cachedContent = JSON.parse(await redis.get(title));
+    const { id, tag } = req.query;
+    const cachedContent = JSON.parse(await redis.get(`${tag}-${id}`));
     if (cachedContent) {
-      console.log("cached");
       return res.status(200).json(cachedContent.items);
     }
 
@@ -50,7 +44,7 @@ export const articlePreview = async (req, res) => {
     const response = await article.aggregate([
       { $match: { tag } },
       { $unwind: "$items" },
-      { $match: { "items.title": title } },
+      { $match: { "items.id": Number(id) } },
       {
         $project: {
           _id: 0,
@@ -60,7 +54,7 @@ export const articlePreview = async (req, res) => {
       },
     ]);
     if (response.length) {
-      await redis.set(title, JSON.stringify(response[0]), "EX", 3600);
+      await redis.set(`${tag}-${id}`, JSON.stringify(response[0]), "EX", 3600);
       return res.status(200).json(response[0].items);
     }
   } catch (err) {

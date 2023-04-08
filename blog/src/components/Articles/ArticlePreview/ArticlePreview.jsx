@@ -10,7 +10,7 @@ import DOMPurify from "dompurify";
 import scrollTop from "../../Utils/scrollTop";
 const ArticlePreview = () => {
   scrollTop();
-  const { title, tag } = useParams();
+  const { title, tag, id } = useParams();
   const [article, setArticle] = useState();
   const [highlights, setHighlights] = useState();
   useEffect(() => {
@@ -20,7 +20,7 @@ const ArticlePreview = () => {
         method: "GET",
         url: `${import.meta.env.VITE_APP_API_BASE_URL}/posts/article-preview`,
         params: {
-          title: title?.replace(/[-]+/g, " "),
+          id,
           tag,
         },
         signal: controller.signal,
@@ -42,9 +42,7 @@ const ArticlePreview = () => {
     >
       <div>
         <img
-          src={`/blog/images/${title
-            .replace(/\s/g, "-")
-            .toLowerCase()}.jpg`}
+          src={`/blog/images/${title.replace(/\s/g, "-").toLowerCase()}.jpg`}
         />
       </div>
       <div>

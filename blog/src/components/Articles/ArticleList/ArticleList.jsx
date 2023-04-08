@@ -33,7 +33,7 @@ const ArticleList = (props) => {
         return (
           <Link
             key={data.id}
-            to={`/blog/articles/${props.list}/${data.title
+            to={`/blog/articles/${props.list}/${data.id}/${data.title
               .replace(/[\s]+/g, "-")
               .toLowerCase()}`}
           >

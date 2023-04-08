@@ -15,7 +15,7 @@ function App() {
           <Route exact path="/blog" element={<Home />} />
           <Route path="/blog/home" element={<Home />} />
           <Route
-            path="/blog/articles/:tag/:title"
+            path="/blog/articles/:tag/:id/:title"
             element={<ArticlePreview />}
           />
           <Route path="/blog/credits" element={<Credits />} />

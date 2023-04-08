@@ -73,7 +73,9 @@ const VerticalCarousel = () => {
         {articleData?.map((data) => {
           return (
             <Link
-              to={`/blog/articles/latest/${data.title}`}
+              to={`/blog/articles/latest/${data.id}/${data.title
+                .replace(/[\s]+/g, "-")
+                .toLowerCase()}`}
               key={`latest-${data.id}`}
             >
               <div>
