@@ -9,17 +9,18 @@ services:
       - "3000:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - client:/usr/share/nginx/client
-      - blog:/usr/share/nginx/blog
-      - ./blog/images:/usr/share/nginx/blog/images
+      - ./blog/images:/usr/share/nginx/blog/dist/images
+    volumes_from:
+      - client
+      - blog
   client:
     build: client
     volumes:
-      - client:/app/build
+      - /usr/share/nginx/client/build
   blog:
     build: blog
     volumes:
-      - blog:/app/dist
+      - /usr/share/nginx/blog/dist
     depends_on:
       - server
   server:
@@ -42,8 +43,6 @@ services:
     ports:
       - "6379:6379"
 volumes:
-  client:
-  blog:
   mongodb_data:
 
 

@@ -1,11 +1,12 @@
 FROM node:18-alpine
-WORKDIR /app
+WORKDIR /usr/share/nginx/client
 COPY package.json ./
 RUN npm install --silent --production
 # RUN npm install react-scripts@5.0.1 -g --silent
 COPY . ./
 RUN npm run build
-
+# RUN apk add --update darkhttpd
+# CMD ["darkhttpd","/build"]
 ###########################################
 
 # FROM nginx:1.23.4-alpine
