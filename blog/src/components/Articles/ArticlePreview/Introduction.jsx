@@ -12,7 +12,7 @@ const SIntroduction = styled.div`
     font-size: var(--fs-m);
     font-weight: 100;
     text-align: center;
-    margin: 1px;
+    margin: 3px;
     background: var(--clr-black);
   }
   div {

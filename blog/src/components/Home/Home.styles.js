@@ -15,7 +15,6 @@ const SHome = styled.div`
     gap: 1.5rem;
     margin: 1rem 0 0;
     place-content: center;
-    height: 550px;
     .react-multiple-carousel__arrow,
     .react-multiple-carousel__arrow {
       background: rgba(255, 255, 255, 0.6);
@@ -37,7 +36,7 @@ const SHome = styled.div`
     }
   }
 
-  @media screen and (max-width: 912px) {
+  @media screen and (max-width: 1023px) {
     margin: 6rem 1rem 0;
 
     .home__carousels {

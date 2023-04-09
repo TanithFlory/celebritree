@@ -56,7 +56,7 @@ const Home = () => {
         <HorizontalCarousel />
         <VerticalCarousel />
       </motion.div>
-      <Pagebreak margin="3rem 0 2rem" />
+      <Pagebreak margin="8rem 0" />
       <ArticleNavigation />
     </SHome>
   );

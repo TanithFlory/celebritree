@@ -13,7 +13,7 @@ const SVerticalCarousel = styled.div`
     position: relative;
     scroll-behavior: smooth;
     img {
-      min-width: 250px;
+      max-width: 220px;
       height: 166px;
     }
     h3 {
@@ -30,7 +30,6 @@ const SVerticalCarousel = styled.div`
       height: 168px;
       div {
         display: flex;
-        height: 123px;
         margin: auto;
         div {
           padding: 5px;
@@ -39,7 +38,7 @@ const SVerticalCarousel = styled.div`
           display: flex;
           flex-direction: column;
           justify-content: center;
-          max-width: 400px;
+          max-width: 500px;
           p {
             margin: 0;
             font-size: calc(var(--fs-s) + 0.15rem);
