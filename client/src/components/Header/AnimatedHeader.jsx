@@ -27,7 +27,7 @@ const AnimatedHeader = () => {
   };
   const letterAnimation = {
     initial: {
-      x: -500,
+      x: -1500,
     },
     animate: {
       x: 0,

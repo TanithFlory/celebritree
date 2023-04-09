@@ -22,20 +22,29 @@ const Header = () => {
     <>
       <header ref={setRef}>
         <motion.div initial="initial" animate="animate" className="header">
-          <AnimatedHeader />
           <motion.div
             initial={{ x: 1000, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="header__svg"
           >
-            <img
-              alt="contribute"
-              src={images.contribute}
-              className="header__main-button"
-              onClick={scrollHandler}
-            />
             <img src={images.mainTree} alt="" />
+            <div className="animated_header-wrapper">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration:1, delay: 1 }}
+              >
+                <img
+                  alt="contribute"
+                  src={images.contribute}
+                  className="header__main-button"
+                  onClick={scrollHandler}
+                />
+              </motion.div>
+
+              <AnimatedHeader />
+            </div>
           </motion.div>
         </motion.div>
       </header>
