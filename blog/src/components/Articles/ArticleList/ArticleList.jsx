@@ -29,7 +29,7 @@ const ArticleList = (props) => {
   }, [props.list]);
   return (
     <SArticle>
-      {articleData?.map((data, index, array) => {
+      {articleData?.map((data, index) => {
         return (
           <Link
             key={data.id}
@@ -37,13 +37,7 @@ const ArticleList = (props) => {
               .replace(/[\s]+/g, "-")
               .toLowerCase()}`}
           >
-            <div
-              className={
-                (index + 1) % 4 === 0 || index + 1 === array.length
-                  ? "article__card no-border-right"
-                  : "article__card"
-              }
-            >
+            <div className="article__card">
               <div>
                 <img
                   src={`/blog/images/${data.title

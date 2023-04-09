@@ -3,10 +3,13 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100svh;
+  height: 100vh;
   z-index: 15;
   background: rgba(0, 0, 0, 0.75);
   overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   h2 {
     text-align: center;
     margin-bottom: 0;
@@ -68,9 +71,8 @@
 }
 .login__modal,
 .forgot__password {
-  margin: 8rem auto;
   padding: 1rem 3rem;
-  max-width: 350px;
+  width: 350px;
   color: var(--black-color);
   background-color: var(--white-color);
   border-radius: 18px;

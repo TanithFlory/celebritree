@@ -14,6 +14,8 @@ const SHome = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     margin: 1rem 0 0;
+    place-content: center;
+    height: 550px;
     .react-multiple-carousel__arrow,
     .react-multiple-carousel__arrow {
       background: rgba(255, 255, 255, 0.6);

@@ -17,12 +17,12 @@ const VerticalCarousel = () => {
       if (offsetHeight + scrollTop >= scrollHeight) {
         return carouselRef.scrollTo(0, 0);
       }
-      carouselRef.scrollBy({ top: 141, behavior: "smooth" });
+      carouselRef.scrollBy({ top: 184, behavior: "smooth" });
     } else {
       if (Math.floor(scrollTop) === 0) {
         return carouselRef.scrollTo(0, scrollHeight);
       }
-      carouselRef.scrollBy({ top: -141, behavior: "smooth" });
+      carouselRef.scrollBy({ top: -184, behavior: "smooth" });
     }
   };
 

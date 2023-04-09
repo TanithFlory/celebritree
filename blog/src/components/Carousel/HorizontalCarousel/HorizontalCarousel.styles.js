@@ -5,10 +5,11 @@ const SItem = styled.div`
   align-items: center;
   flex-direction: column;
   color: var(--clr-white);
-  height: 410px;
+  height: 500px;
   img {
-    height: 305px;
+    height: 400px;
     width: 100%;
+    object-fit: cover;
   }
   h3 {
     color: var(--clr-green);

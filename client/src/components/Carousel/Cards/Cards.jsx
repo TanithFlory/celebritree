@@ -58,9 +58,11 @@ const Cards = () => {
                   <h1>{data.title}</h1>
                   <p>{data.desc}</p>
                   <div>
-                    <PrimaryButton backgroundColor="green" textColor="black">
-                      Read More
-                    </PrimaryButton>
+                    <a href={data.link} target="_blank" rel="noreferrer">
+                      <PrimaryButton backgroundColor="green" textColor="black">
+                        Read More
+                      </PrimaryButton>
+                    </a>
                     <Link to="/coming-soon">
                       <PrimaryButton backgroundColor="black" textColor="green">
                         Contribute

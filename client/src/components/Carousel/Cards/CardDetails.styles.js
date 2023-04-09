@@ -39,5 +39,8 @@ const CardDetails = styled.div`
       aspect-ratio: 1/1;
     }
   }
+  a {
+    text-decoration: none;
+  }
 `;
 export default CardDetails;

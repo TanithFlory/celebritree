@@ -5,7 +5,7 @@ const SArticlePreview = styled(motion.div)`
   img {
     height: 100%;
     width: 100%;
-    max-height: 600px;
+    max-height: 750px;
     border-radius: 15px;
   }
   h1 {

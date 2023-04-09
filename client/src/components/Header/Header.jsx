@@ -15,7 +15,7 @@ const Header = () => {
   };
   const [ref, setRef] = useState();
   const options = {
-    threshold: 0.9,
+    threshold: 0.8,
   };
   useOnScroll(ref, options);
   return (
