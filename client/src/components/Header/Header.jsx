@@ -26,7 +26,7 @@ const Header = () => {
             initial={{ x: 1000, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="header__svg"
+            className="header__bg"
           >
             <img src={images.mainTree} alt="" />
             <div className="animated_header-wrapper">
