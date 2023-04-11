@@ -96,9 +96,11 @@ const AnimatedHeader = () => {
         >
           About
         </PrimaryButton>
-        <PrimaryButton textColor="white" backgroundColor="green">
-          <Link to="/contact"> Join Us</Link>
-        </PrimaryButton>
+        <Link to="/contact">
+          <PrimaryButton textColor="white" backgroundColor="green">
+            Join Us
+          </PrimaryButton>
+        </Link>
       </motion.div>
       <motion.div variants={fadeIn}>
         <AirQualityIndex />

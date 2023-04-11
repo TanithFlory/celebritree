@@ -15,7 +15,7 @@ const Header = () => {
   };
   const [ref, setRef] = useState();
   const options = {
-    threshold: 0.8,
+    threshold: 0.65,
   };
   useOnScroll(ref, options);
   return (
@@ -23,17 +23,22 @@ const Header = () => {
       <header ref={setRef}>
         <motion.div initial="initial" animate="animate" className="header">
           <motion.div
-            initial={{ x: 1000, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ ease: "easeIn", duration: 1 }}
             className="header__bg"
           >
             <img src={images.mainTree} alt="" />
-            <div className="animated_header-wrapper">
+            <motion.div
+              initial={{ x: -1000, opacity: 0}}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3, ease: "easeInOut" }}
+              className="animated_header-wrapper"
+            >
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration:1, delay: 1 }}
+                transition={{ duration: 1.5, delay: 1.2, ease: "easeInOut" }}
               >
                 <img
                   alt="contribute"
@@ -44,7 +49,7 @@ const Header = () => {
               </motion.div>
 
               <AnimatedHeader />
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </header>

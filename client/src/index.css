@@ -10,11 +10,12 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 body {
   margin: 0;
   background-color: var(--primary-color);
-  overflow-x: hidden;
+  width: 100vw;
 }
 
 :root {

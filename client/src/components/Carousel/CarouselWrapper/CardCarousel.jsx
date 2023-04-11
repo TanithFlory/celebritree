@@ -4,24 +4,25 @@ import "react-multi-carousel/lib/styles.css";
 import "./CardCarousel.scss";
 const CardCarousel = ({ children }) => {
   const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1750 },
+    largeDesktop: {
+      breakpoint: { max: 3000, min: 1600 },
       items: 4,
-    },
-    miniDesktop: {
-      breakpoint: { max: 1750, min: 1024 },
-      items: 3,
-      partialVisibilityGutter: 10,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
       partialVisibilityGutter: 15,
     },
+    desktop: {
+      breakpoint: { max: 1600, min: 1124 },
+      items: 3,
+      partialVisibilityGutter: 11,
+    },
+    tablet: {
+      breakpoint: { max: 1124, min: 640 },
+      items: 2,
+      partialVisibilityGutter: 13,
+    },
     mobile: {
-      breakpoint: { max: 620, min: 0 },
+      breakpoint: { max: 640, min: 0 },
       items: 1,
-      partialVisibilityGutter: 30,
+      partialVisibilityGutter: 30, 
     },
   };
 

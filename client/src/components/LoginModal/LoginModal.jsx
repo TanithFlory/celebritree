@@ -11,7 +11,6 @@ import { useOnLogged } from "../../CustomHooks/useOnLogged";
 
 const LoginModal = (props) => {
   useOnLogged();
-
   const dispatch = useDispatch();
   const [forgotPass, setForgotPass] = useState(false);
   const [loginData, setLoginData] = useState({
