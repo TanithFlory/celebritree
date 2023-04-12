@@ -1,0 +1,195 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:766916204132:task-definition/celebritree-container:52",
+    "containerDefinitions": [
+        {
+            "name": "nginx",
+            "image": "public.ecr.aws/p6j5d4a0/celebritree:nginx",
+            "cpu": 223,
+            "memory": 200,
+            "memoryReservation": 200,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "mountPoints": [
+                {
+                    "sourceVolume": "clientVolume",
+                    "containerPath": "/usr/share/nginx/client/build",
+                    "readOnly": false
+                },
+                {
+                    "sourceVolume": "blogVolume",
+                    "containerPath": "/usr/share/nginx/blog",
+                    "readOnly": false
+                },
+                {
+                    "sourceVolume": "blogVolume",
+                    "containerPath": "/usr/share/nginx/blog/images"
+                }
+            ],
+            "volumesFrom": [
+                {
+                    "sourceContainer": "blog",
+                    "readOnly": true
+                },
+                {
+                    "sourceContainer": "client",
+                    "readOnly": true
+                }
+            ]
+        },
+        {
+            "name": "redis",
+            "image": "public.ecr.aws/docker/library/redis:alpine3.17",
+            "cpu": 256,
+            "memory": 200,
+            "memoryReservation": 200,
+            "portMappings": [
+                {
+                    "containerPort": 6379,
+                    "hostPort": 6379,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "healthCheck": {
+                "command": [
+                    "CMD redis-server",
+                    "--requirepass ddddddtent"
+                ],
+                "interval": 30,
+                "timeout": 5,
+                "retries": 3
+            }
+        },
+        {
+            "name": "client",
+            "image": "public.ecr.aws/p6j5d4a0/celebritree:client",
+            "cpu": 128,
+            "memory": 128,
+            "memoryReservation": 128,
+            "portMappings": [],
+            "essential": false,
+            "entryPoint": [],
+            "command": [],
+            "mountPoints": [
+                {
+                    "sourceVolume": "clientVolume",
+                    "containerPath": "/usr/share/nginx/client/build",
+                    "readOnly": false
+                }
+            ],
+            "volumesFrom": []
+        },
+        {
+            "name": "blog",
+            "image": "public.ecr.aws/p6j5d4a0/celebritree:blog",
+            "cpu": 128,
+            "memory": 128,
+            "memoryReservation": 128,
+            "portMappings": [],
+            "essential": false,
+            "entryPoint": [],
+            "command": [],
+            "mountPoints": [
+                {
+                    "sourceVolume": "blogVolume",
+                    "containerPath": "/usr/share/nginx/blog/dist",
+                    "readOnly": false
+                },
+                {
+                    "sourceVolume": "blogVolume",
+                    "containerPath": "/usr/share/nginx/blog/images"
+                }
+            ],
+            "volumesFrom": []
+        },
+        {
+            "name": "server",
+            "image": "public.ecr.aws/p6j5d4a0/celebritree:server",
+            "cpu": 223,
+            "memory": 250,
+            "memoryReservation": 250,
+            "links": [
+                "redis"
+            ],
+            "portMappings": [
+                {
+                    "containerPort": 3001,
+                    "hostPort": 3001,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "mountPoints": [],
+            "volumesFrom": []
+        }
+    ],
+    "family": "celebritree-container",
+    "revision": 52,
+    "volumes": [
+        {
+            "name": "clientVolume",
+            "dockerVolumeConfiguration": {
+                "scope": "shared",
+                "autoprovision": true,
+                "driver": "local"
+            }
+        },
+        {
+            "name": "blogVolume",
+            "dockerVolumeConfiguration": {
+                "scope": "shared",
+                "autoprovision": true,
+                "driver": "local"
+            }
+        }
+    ],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.24"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
+            "name": "ecs.capability.docker-plugin.local"
+        },
+        {
+            "name": "ecs.capability.container-health-check"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.25"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EXTERNAL",
+        "EC2"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "1024",
+    "memory": "950",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2023-04-12T12:33:20.491Z",
+    "registeredBy": "arn:aws:iam::766916204132:root",
+    "tags": []
+}
