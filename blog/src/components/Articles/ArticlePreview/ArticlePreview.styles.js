@@ -19,6 +19,7 @@ const SArticlePreview = styled(motion.div)`
   h1,
   h4 {
     text-align: center;
+    font-size: var(--fs-xxl);
   }
   .article__content {
     margin-top: 2rem;
@@ -28,7 +29,7 @@ const SArticlePreview = styled(motion.div)`
     h3,
     p {
       padding: 0 60px;
-      font-size: var(--fs-l);
+      font-size: var(--fs-m);
     }
     h4 {
       margin: 0 0 1rem;
@@ -80,9 +81,10 @@ const SArticlePreview = styled(motion.div)`
   }
   @media screen and (max-width: 912px) {
     margin: 7rem 1rem 0px;
-    * {
-      --fs-l: 1rem;
-      --fs-xxl: 2rem;
+  }
+  @media screen and (min-width: 2000px) {
+    img {
+      max-height: 1000px;
     }
   }
 `;

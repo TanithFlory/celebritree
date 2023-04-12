@@ -48,6 +48,20 @@
       }
     }
   }
+  @media screen and (min-width: 2000px) {
+    * {
+      --fs-xxl: 4rem;
+      --fs-l: 2rem;
+      --fs-s: 1.5rem;
+    }
+    .about__content > div ul > div {
+      width: 500px;
+    }
+    .about__socials {
+      bottom: auto;
+      top: 50px;
+    }
+  }
 }
 
 .about__content {

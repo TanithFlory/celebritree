@@ -6,6 +6,9 @@ const SArticleHighlights = styled.div`
   text-align: center;
   div:not(:first-child, :last-child) {
     padding: 12px;
+    span {
+      font-size: var(--fs-m);
+    }
   }
   & > :first-child {
     display: flex;
@@ -21,6 +24,7 @@ const SArticleHighlights = styled.div`
         position: relative;
         background: black;
         padding: 10px;
+        font-size: var(--fs-m);
       }
       &::after {
         content: "";

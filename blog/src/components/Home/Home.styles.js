@@ -49,6 +49,9 @@ const SHome = styled.div`
       --fs-custom: 2.5rem;
       --fs-s: 0.65rem;
     }
+    hr {
+      margin: 3rem 0;
+    }
   }
   @media screen and (max-width: 310px) {
     margin: 6rem 0 0;

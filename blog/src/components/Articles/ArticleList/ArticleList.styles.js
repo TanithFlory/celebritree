@@ -79,6 +79,21 @@ const SArticle = styled.div`
       --fs-m: 0.75rem;
     }
   }
+  @media screen and (min-width: 2000px) {
+    grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
+    gap: 1.5rem;
+    .article__card {
+      padding-right: 1.5rem;
+      grid-template-rows: 300px 1fr;
+      img {
+        min-height: 300px;
+        max-height: 300px;
+      }
+      & > div:nth-child(2) {
+        text-align: center;
+      }
+    }
+  }
 `;
 
 export default SArticle;
