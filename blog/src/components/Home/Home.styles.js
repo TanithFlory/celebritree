@@ -31,7 +31,7 @@ const SHome = styled.div`
         text-decoration: none;
       }
       &:hover {
-        box-shadow: 0 0 8px cyan;
+        box-shadow: 0 -8px 8px -8px cyan, 0 8px 8px -8px cyan;
       }
     }
   }

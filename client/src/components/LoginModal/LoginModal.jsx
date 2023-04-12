@@ -41,7 +41,9 @@ const LoginModal = (props) => {
     <MotionWrapper
       className="login__modal-backdrop"
       onClick={(e) =>
-        e.target.className === "login__modal-backdrop" && props?.toggle()
+        props.toggle &&
+        e.target.className === "login__modal-backdrop" &&
+        props?.toggle()
       }
     >
       {!forgotPass && (

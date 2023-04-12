@@ -24,6 +24,12 @@ const SItem = styled.div`
     width: 60%;
     margin: auto;
   }
+  @media screen and (min-width: 2000px) {
+    height: 700px;
+    img {
+      height: 600px;
+    }
+  }
 `;
 
 export default SItem;

@@ -46,7 +46,7 @@ const SVerticalCarousel = styled.div`
         }
       }
       &:hover {
-        box-shadow: 0 0 8px cyan;
+        box-shadow: 0 -8px 8px -8px cyan, 0 8px 8px -8px cyan;
       }
     }
   }
@@ -106,6 +106,10 @@ const SVerticalCarousel = styled.div`
         object-fit: contain;
       }
     }
+  }
+  @media screen and (min-width: 2000px) {
+    transform: scale(1.25);
+    margin-top: 5rem;
   }
 `;
 

@@ -4,7 +4,7 @@ networks:
     driver: bridge
 services:
   nginx:
-    image: nginx:1.23.4-alpine
+    image: nginx:latest
     ports:
       - "8080:8080"
     volumes:
