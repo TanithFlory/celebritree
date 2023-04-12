@@ -82,7 +82,7 @@ const SArticlePreview = styled(motion.div)`
   @media screen and (max-width: 912px) {
     margin: 7rem 1rem 0px;
   }
-  @media screen and (min-width: 2000px) {
+  @media screen and (min-width: 1800px) {
     img {
       max-height: 1000px;
     }

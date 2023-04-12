@@ -21,17 +21,17 @@ const SItem = styled.div`
     text-align: center;
   }
   p {
-    font-size: var(--fs-s);
+    font-size: var(--fs-m);
   }
 
   @media screen and (max-width: 912px) and (min-width: 550px) {
     width: 60%;
     margin: auto;
   }
-  @media screen and (min-width: 2000px) {
+  @media screen and (min-width: 1800px) {
     height: 700px;
     img {
-      height: 600px;
+      height: 550px;
     }
   }
 `;
