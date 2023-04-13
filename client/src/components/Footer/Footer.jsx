@@ -95,6 +95,14 @@ const Footer = () => {
             © {new Date().getFullYear()} <span>Celebritree</span> All rights
             reserved.
           </h1>
+          <div className="emails">
+            <a href="mailto:help@celebritree.in" target="_top">
+              help@celebritree.in
+            </a>
+            <a href="mailto:tanithflory7770@gmail.com" target="_top">
+              tanithflory7770@gmail.com
+            </a>
+          </div>
           <a href="/blog/credits" target="_blank" rel="noreferrer">
             Credits
           </a>

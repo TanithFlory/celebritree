@@ -61,7 +61,7 @@ const emailOtp = async (otp, email) => {
       "
     >
       <div>
-        <img src="background.png" style="width: 100%; height: 250px" />
+        <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEORU1kxVz0VMx4JQHoOXl2HYVBcW7naPftlpKJ3vo2d0uA4g5cwSd2Na7l3fpsDjHrO2ZF5pl_IHooD3DmtqCsEb1yFVRg=w1960-h2820" style="width: 100%; height: 250px" />
       </div>
       <div style="color: #7b7b7b">
         <h3 style="color: black">Hello,</h3>
