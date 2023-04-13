@@ -56,7 +56,6 @@ const SArticle = styled.div`
     border: 0;
   }
   @media screen and (max-width: 1084px) {
-    grid-template-columns: repeat(2, 1fr);
     & > div {
       max-height: 500px;
       grid-template-rows: 30% 1fr;
@@ -68,8 +67,6 @@ const SArticle = styled.div`
     }
   }
   @media screen and (max-width: 550px) {
-    grid-template-columns: 1fr;
-    gap: 1rem;
     .article__card {
       border: 0;
       max-width: 350px;

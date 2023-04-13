@@ -44,6 +44,12 @@ const ulVariants = {
 const NavigationLinks = (props) => {
   const isLogged = useSelector((state) => state.auth.isLogged);
   const [toggle, setToggle] = useCycle(false, true);
+
+  const scrollAboutHandler = () => {
+    props.toggleOpen();
+    scrollAbout();
+  };
+
   return (
     <motion.ul variants={ulVariants}>
       {[
@@ -77,7 +83,7 @@ const NavigationLinks = (props) => {
                     data.title === "account"
                       ? setToggle()
                       : data.title === "about"
-                      ? scrollAbout()
+                      ? scrollAboutHandler()
                       : props.toggleOpen();
                   }}
                 >

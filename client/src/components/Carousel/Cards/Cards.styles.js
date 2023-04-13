@@ -23,4 +23,7 @@ export const StyledH1 = styled(motion.h1)`
   & > span {
     color: var(--green-color);
   }
+  @media screen and (max-width:912px) {
+    font-size: var(--fs-l);
+  }
 `;
