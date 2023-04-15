@@ -31,7 +31,7 @@ router.post("/resend-otp", rateLimiter(5, 15), async (req, res) => {
     return res.status(404).json("User not found");
   }
   await resendOtp(email);
-  res.status(200).json("OTP Sent, check your mailbox");
+  res.status(200).json("OTP sent, check inbox and spam folder.");
 });
 
 export default router;

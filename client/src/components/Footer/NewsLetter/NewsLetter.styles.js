@@ -11,8 +11,8 @@ const SNewsletter = styled.form`
     padding-left: 120px;
     outline: none;
     border-radius: 30px;
-    color: var(--clr-black);
-    border: 1px solid var(--clr-green);
+    color: var(--black-color);
+    border: 1px solid var(--green-color);
     box-sizing: border-box;
   }
   button {

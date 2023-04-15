@@ -10,14 +10,7 @@ const GoogleLogin = (props) => {
       .then((res) => {
         const left = window.screen.width / 2 - (500 / 2 + 10);
         const top = window.screen.height / 2 - (600 / 2 + 50);
-        const options = `width=${500},height=${600},resizable=yes,scrollbars=yes,top=${top},left=${left}`;
-        window.open(res.data, "Google Sign-In", options);
-        const tokenHandler = (event) => {
-          localStorage.setItem("accessToken", event.data);
-          window.removeEventListener("message", tokenHandler);
-          window.location.replace("/");
-        };
-        window.addEventListener("message", tokenHandler);
+        window.location.href = res.data;
       })
       .catch((err) => console.log(err));
   };

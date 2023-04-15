@@ -11,6 +11,9 @@ const clientSecret = process.env.OAUTH_CLIENT_SECRET;
 const clientID = process.env.OAUTH_CLIENTID;
 const redirect = `https://celebritree.in${process.env.REACT_APP_API_BASE_URL}/auth/google/callback`;
 
+google.options({
+  http2: true,
+});
 const OAuth2Client = new google.auth.OAuth2(clientID, clientSecret, redirect);
 
 router.get("/google/login", (req, res) => {
@@ -60,8 +63,8 @@ router.get(
             lastName: family_name,
             email,
           });
-          return res.send(
-            `<script>window.opener.postMessage("${accessToken}", 'http://localhost:3000');window.close();</script>`
+          return res.redirect(
+            `https://celebritree.in/#access_token=${accessToken}`
           );
         }
         req.data = { ...foundUser };
@@ -79,12 +82,7 @@ router.get(
       lastName,
       email,
     });
-    return res.send(
-      `<script>window.opener.postMessage("${accessToken}", 'http://localhost:3000');window.close();</script>`
-    );
-    // return res.send(
-    //   `<script>localStorage.setItem("accessToken", "${accessToken}");window.close();</script>`
-    // );
+    return res.redirect(`https://celebritree.in/#access_token=${accessToken}`);
   }
 );
 

@@ -4,10 +4,15 @@ import { google } from "googleapis";
 const OAuth2 = google.auth.OAuth2;
 
 const createTransport = async () => {
+  google.options({
+    http2: true,
+  });
+
   const email = process.env.REACT_APP_EMAIL;
   const clientSecret = process.env.OAUTH_CLIENT_SECRET;
   const clientID = process.env.OAUTH_CLIENTID;
   const refreshToken = process.env.OAUTH_REFRESH_TKN;
+
   const client = new OAuth2(
     clientID,
     clientSecret,
@@ -27,6 +32,7 @@ const createTransport = async () => {
   });
   const transporter = nodemailer.createTransport({
     service: "gmail",
+    secure: true,
     auth: {
       accessToken,
       type: "OAuth2",
@@ -60,9 +66,6 @@ const emailOtp = async (otp, email) => {
         border-radius: 15px;
       "
     >
-      <div>
-        <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEORU1kxVz0VMx4JQHoOXl2HYVBcW7naPftlpKJ3vo2d0uA4g5cwSd2Na7l3fpsDjHrO2ZF5pl_IHooD3DmtqCsEb1yFVRg=w1960-h2820" style="width: 100%; height: 250px" />
-      </div>
       <div style="color: #7b7b7b">
         <h3 style="color: black">Hello,</h3>
         <p>Verify your email address.</p>
@@ -96,7 +99,7 @@ const emailOtp = async (otp, email) => {
             <p style="margin-bottom: 3px">
               Please do not reply directly to this email.
             </p>
-            <p style="margin: 0">You can contact us on help@celebritree.org</p>
+            <p style="margin: 0">You can contact us on <a href="mailto:help@celebritree.in" target="_to"> help@celebritree.in</a></p>
           </div>
         </div>
       </div>
