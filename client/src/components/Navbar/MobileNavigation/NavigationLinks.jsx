@@ -60,7 +60,6 @@ const NavigationLinks = (props) => {
         {
           title: "account",
           icon: images.UserMob,
-          link: true,
           isLogged: !isLogged,
         },
         { title: "login", icon: images.LoginMob, isLogged },

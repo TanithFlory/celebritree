@@ -22,7 +22,7 @@ const Credits = () => {
         from <a href="https://www.pexels.com/">Pexels</a>. I would also like to
         mention that if any of the content goes against copyright or if the
         owner of the content wants it removed from the website, they can contact
-        me on my email, help@celebritree.in or tanithflory7770@gmail.com.
+        me on my email, help@celebritree.in or tanithflory6660@gmail.com.
       </p>
     </SCredits>
   );

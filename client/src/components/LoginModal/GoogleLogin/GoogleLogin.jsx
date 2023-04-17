@@ -8,8 +8,6 @@ const GoogleLogin = (props) => {
       url: `${process.env.REACT_APP_API_BASE_URL}/auth/google/login`,
     })
       .then((res) => {
-        const left = window.screen.width / 2 - (500 / 2 + 10);
-        const top = window.screen.height / 2 - (600 / 2 + 50);
         window.location.href = res.data;
       })
       .catch((err) => console.log(err));

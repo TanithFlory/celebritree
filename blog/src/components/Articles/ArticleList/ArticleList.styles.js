@@ -77,7 +77,7 @@ const SArticle = styled.div`
     }
   }
   @media screen and (min-width: 1800px) {
-    grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     gap: 1.5rem;
     .article__card {
       padding-right: 1.5rem;

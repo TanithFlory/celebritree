@@ -100,7 +100,7 @@ const Footer = () => {
               help@celebritree.in
             </a>
             <a href="mailto:tanithflory7770@gmail.com" target="_top">
-              tanithflory7770@gmail.com
+              tanithflory6660@gmail.com
             </a>
           </div>
           <a href="/blog/credits" target="_blank" rel="noreferrer">
